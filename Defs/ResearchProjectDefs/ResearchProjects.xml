@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<!--<ResearchProjectDef> Throws a config error when Undefined.
+		<defName>Test</defName>
+		<label>Undefined</label>
+		<description>Tier.</description>
+		<baseCost>1</baseCost>
+		<techLevel>Undefined</techLevel>
+	</ResearchProjectDef>-->
+
+	<ResearchProjectDef>
+		<defName>Test0</defName>
+		<label>Animal</label>
+		<description>Tier 0.</description>
+		<baseCost>0</baseCost>
+		<techLevel>Animal</techLevel>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Test1</defName>
+		<label>Neolithic</label>
+		<description>Tier 1.</description>
+		<baseCost>100</baseCost>
+		<techLevel>Neolithic</techLevel>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Test2</defName>
+		<label>Medieval</label>
+		<description>Tier 2.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+	</ResearchProjectDef>
+
+	<!-- ========== BASICS ========== -->
+	<ResearchProjectDef>
+		<defName>BasicAlchemy</defName>
+		<label>Basic Alchemy</label>
+		<description>Some reagents are so common and easy to use that recipes incorporating them have become known to nearly every household.  Allows construction of the alchemy table.  Allows preparation of the common health potion, and a potion to reduce fatigue.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tags>
+			<li>HlaaluStart</li>
+		</tags>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>AdvancedAlchemy</defName>
+		<label>Advanced Alchemy</label>
+		<description>Study of reagents has resulted in the discovery of new recipes and a variety of tools that would facilitate their creation.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>BasicAlchemy</li>
+			<li>Poisons</li>
+			<li>HealingMixtures</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>AlchemyCabinet</defName>
+		<label>Alchemy Cabinet</label>
+		<description>Special tools that allow for more organized and in-depth study of reagents.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MasterAlchemy</defName>
+		<label>Master Alchemy</label>
+		<description>Few alchemists could even understand the unique ways these, sometimes common, reagents can be combined.  New facilities and tools are also available.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+			<li>DeadlyPoisons</li>
+			<li>MalignantPoisons</li>
+			<li>ElementalPoisons</li>
+			<li>MagickaPoisons</li>
+			<li>ExplosiveFlasks</li>
+			<li>PotentHealingMixtures</li>
+			<li>Vitalizers</li>
+			<li>Remedies</li>
+			<li>ElementalMixtures</li>
+			<li>MagickaDraughts</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<!-- ========== POISONS ========== -->
+	<ResearchProjectDef>
+		<defName>Poisons</defName>
+		<label>Poisons</label>
+		<description>No longer an accident to combine reagents that result in a harmful mixture.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>BasicAlchemy</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>DeadlyPoisons</defName>
+		<label>Deadly Poisons</label>
+		<description>A level of mastery has been achieved, lethal concoctions are known.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CripplingPoisons</defName>
+		<label>Crippling Poisons</label>
+		<description>Specifically designed to blind, confuse, or inflict nausea.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>BasicAlchemy</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ElementalPoisons</defName>
+		<label>Elemental Poisons</label>
+		<description>Capable of temporarily changing the imbiber so that they become vulnerable to certain kinds of damage.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+			<li>CripplingPoisons</li>
+			<li>Vitalizers</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MalignantPoisons</defName>
+		<label>Malignant Poisons</label>
+		<description>Not known for their immediate potency, but instead for their long-term effects.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+			<li>CripplingPoisons</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MagickaPoisons</defName>
+		<label>Magicka Poisons</label>
+		<description>Capable of impeding the victim's connection to to magicka.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>CorprusPoisons</defName>
+		<label>Corprus Poisons</label>
+		<description>Corprus diseases act quickly and are debilitating to the mind, though they fortify the body tremendously.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MalignantPoisons</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>BlightPoisons</defName>
+		<label>Blight Poisons</label>
+		<description>The blight is deadly and mysterious.  Perhaps it would be a useful poison?</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+			<li>DeadlyPoisons</li>
+		</prerequisites>
+		<requiredResearchBuilding>AlchemyStation</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>GrandmasterPoisons</defName>
+		<label>Grandmaster Poisons</label>
+		<description>Paralyze, Silence, Reflect, Dispel, Burden.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+		</prerequisites>
+		<requiredResearchBuilding>AlchemyStation</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<!-- ========== FLASKS ========== -->
+	<ResearchProjectDef>
+		<defName>ExplosiveFlasks</defName>
+		<label>Explosive Flasks</label>
+		<description>Properly distilled and combined, some reagents can result in an unstable mixture.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ElementalFlasks</defName>
+		<label>Elemental Flasks</label>
+		<description>Properly distilled and combined, some reagents can result in an unstable mixture.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>ExplosiveFlasks</li>
+			<li>ElementalPoisons</li>
+			<li>ElementalMixtures</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>PoisonFlasks</defName>
+		<label>Poison Flasks</label>
+		<description>Properly distilled and combined, some reagents can result in an unstable mixture.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>ExplosiveFlasks</li>
+			<li>DeadlyPoisons</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>HealingFlasks</defName>
+		<label>Healing Flasks</label>
+		<description>Properly distilled and combined, some reagents can result in an unstable mixture.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+			<li>ExplosiveFlasks</li>
+			<li>PotentHealingMixtures</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>GrandmasterFlasks</defName>
+		<label>Grandmaster Flasks</label>
+		<description>Burden, Light, Paralyze, Silence, Dispel, Spell Absorption, Reflect.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+			<li>ElementalFlasks</li>
+			<li>PoisonFlasks</li>
+			<li>HealingFlasks</li>
+		</prerequisites>
+		<requiredResearchBuilding>AlchemyStation</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<!-- ========== MIXTURES ========== -->
+	<ResearchProjectDef>
+		<defName>HealingMixtures</defName>
+		<label>Healing Mixtures</label>
+		<description>Salves, tinctures, and concoctions to heal and revitalize.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>BasicAlchemy</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>PotentHealingMixtures</defName>
+		<label>Potent Healing Mixtures</label>
+		<description>Salves, tinctures, and concoctions to heal and revitalize.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>Remedies</defName>
+		<label>Remedies</label>
+		<description>Cures to diseases.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>CorprusCures</defName>
+		<label>Corprus Cures</label>
+		<description>Antidotes to potent corprus diseases.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+			<li>Remedies</li>
+			<li>CorprusPoisons</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>BlightCures</defName>
+		<label>Blight Cures</label>
+		<description>Antidotes to blight diseases.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+			<li>Remedies</li>
+			<li>BlightPoisons</li>
+		</prerequisites>
+		<requiredResearchBuilding>AlchemyStation</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Vitalizers</defName>
+		<label>Vitalizers</label>
+		<description>Salves, tinctures, and concoctions to increase productivity and activity.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MagickaDraughts</defName>
+		<label>Magicka Draughts</label>
+		<description>Restores or increases magicka capacity.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>ElementalMixtures</defName>
+		<label>Elemental Mixtures</label>
+		<description>Salves that increase resistance to specific elements.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>AdvancedAlchemy</li>
+			<li>Vitalizers</li>
+		</prerequisites>
+		<requiredResearchBuilding>AlchemyStation</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>GrandmasterElixers</defName>
+		<label>Grandmaster Elixers</label>
+		<description>Feather, Jump, Levitate, Slowfall, Swift Swim, Water Breathing, Water Walking, Invisibility, Chameleon, Night Eye, Light, Interventions, Detect Enchantment, Detect Animal, Detect Key, Dispel, Mark, Recall, Reflect, Spell Absorption, Telekinesis.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>MasterAlchemy</li>
+		</prerequisites>
+		<requiredResearchBuilding>AlchemyStation</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>AlchemyShelves</li>
+			<li>AlchemyCabinet</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	
+	<!-- ========== ========== -->
+	<ResearchProjectDef>
+		<defName>Test3</defName>
+		<label>Industrial</label>
+		<description>Tier 3.</description>
+		<baseCost>300</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Test2</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Test4</defName>
+		<label>Spacer</label>
+		<description>Tier 4.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>Test3</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Test5</defName>
+		<label>Ultra</label>
+		<description>Tier 5.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Ultra</techLevel>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>Test6</defName>
+		<label>Transcendent</label>
+		<description>Tier 6.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Transcendent</techLevel>
+	</ResearchProjectDef>
+
+</Defs>

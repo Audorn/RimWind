@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+		ReagentHarvesting
+		Alchemy
+-->
+
+<Defs>
+
+	<WorkTypeDef>
+		<defName>ReagentHarvesting</defName>
+		<labelShort>Harvesting</labelShort>
+		<pawnLabel>Herbalist</pawnLabel>
+		<gerundLabel>harvesting</gerundLabel>
+		<description>Harvest alchemical reagents.</description>
+		<verb>Harvest reagent</verb>
+		<naturalPriority>500</naturalPriority>
+		<requireCapableColonist>true</requireCapableColonist>
+		<relevantSkills>
+			<li>Alchemy</li>
+		</relevantSkills>
+		<workTags>
+			<li>Intellectual</li>
+			<li>ManualSkilled</li>
+		</workTags>
+	</WorkTypeDef>
+
+	<WorkTypeDef>
+		<defName>Alchemy</defName>
+		<labelShort>Alchemy</labelShort>
+		<pawnLabel>Alchemist</pawnLabel>
+		<gerundLabel>prepare concoction</gerundLabel>
+		<description>Prepare alchemical concoctions.</description>
+		<verb>Prepare at</verb>
+		<naturalPriority>400</naturalPriority>
+		<requireCapableColonist>true</requireCapableColonist>
+		<relevantSkills>
+			<li>Alchemy</li>
+		</relevantSkills>
+		<workTags>
+			<li>Intellectual</li>
+			<li>ManualSkilled</li>
+		</workTags>
+	</WorkTypeDef>
+
+</Defs>

@@ -1,0 +1,17 @@
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Source\RimWind\Assemblies\RimWind.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Source\RimWind\Assemblies\0Harmony.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Source\RimWind\obj\Debug\RimWind.csprojResolveAssemblyReference.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Source\RimWind\obj\Debug\RimWind.csproj.CoreCompileInputs.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Source\RimWind\obj\Debug\RimWind.csproj.CopyComplete
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Source\RimWind\obj\Debug\RimWind.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind\Assemblies\RimWind.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Ambience\Assemblies\RimWind.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Ambience\Source\RimWind\obj\Debug\RimWind.csprojResolveAssemblyReference.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Ambience\Source\RimWind\obj\Debug\RimWind.csproj.CoreCompileInputs.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Ambience\Source\RimWind\obj\Debug\RimWind.csproj.CopyComplete
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Ambience\Source\RimWind\obj\Debug\RimWind.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Complete\Assemblies\RimWind.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Complete\Source\RimWind\obj\Debug\RimWind.csprojResolveAssemblyReference.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Complete\Source\RimWind\obj\Debug\RimWind.csproj.CoreCompileInputs.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Complete\Source\RimWind\obj\Debug\RimWind.csproj.CopyComplete
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\RimWind_Complete\Source\RimWind\obj\Debug\RimWind.dll

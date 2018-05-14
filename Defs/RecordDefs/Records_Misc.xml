@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+		ReagentsHarvested
+-->
+
+<Defs>
+  
+  <RecordDef>
+    <defName>ReagentsHarvested</defName>
+    <label>reagents harvested</label>
+    <description>The number of reagents I have harvested.</description>
+    <type>Int</type>
+  </RecordDef>
+  
+</Defs>

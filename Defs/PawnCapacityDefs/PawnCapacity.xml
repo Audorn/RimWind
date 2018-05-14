@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<PawnCapacityDef>
+		<defName>Arcane</defName>
+		<label>arcane attunement</label>
+		<listOrder>11</listOrder>
+		<workerClass>RimTES.PawnCapacityWorker_Arcane</workerClass>
+		<showOnAnimals>false</showOnAnimals>
+		<showOnCaravanHealthTab>true</showOnCaravanHealthTab>
+	</PawnCapacityDef>
+
+	<PawnCapacityDef>
+		<defName>Mana</defName>
+		<label>mana reservoir</label>
+		<listOrder>12</listOrder>
+		<workerClass>RimTES.PawnCapacityWorker_Mana</workerClass>
+		<minForCapable>0.10</minForCapable>
+		<showOnAnimals>false</showOnAnimals>
+		<showOnCaravanHealthTab>true</showOnCaravanHealthTab>
+	</PawnCapacityDef>
+
+</Defs>

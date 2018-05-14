@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<JobDef>
+		<defName>HarvestReagent</defName>
+		<driverClass>RimTES.JobDriver_HarvestReagent</driverClass>
+		<reportString>harvesting reagents from TargetA.</reportString>
+	</JobDef>
+  
+</Defs>

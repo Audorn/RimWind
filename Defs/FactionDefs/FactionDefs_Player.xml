@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<FactionDef Name="PlayerDunmer" Abstract="True">
+		<colorSpectrum>
+			<li>(0.9, 0.9, 0.1)</li>
+		</colorSpectrum>
+	</FactionDef>
+
+	<FactionDef Parent="PlayerDunmer">
+		<defName>PlayerHouseHlaalu</defName>
+		<label>Settlement of House Hlaalu</label>
+		<description>Your House Hlaalu Settlement.</description>
+		<isPlayer>true</isPlayer>
+		<basicMemberKind>Dunmer</basicMemberKind>
+		<pawnsPlural>House Hlaalu settlers</pawnsPlural>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<pawnNameMaker>NamerPersonDunmer</pawnNameMaker>
+		<baseNameMaker>NamerFactionBasePlayerTribe</baseNameMaker>
+		<baseNameMakerPlayer>NamerFactionTribal</baseNameMakerPlayer>
+		<factionNameMakerPlayer>NamerFactionBaseTribal</factionNameMakerPlayer>
+		<homeIconPath>World/WorldObjects/TribalFactionBase</homeIconPath>
+		<expandingIconTexture>World/HouseHlaaluBase</expandingIconTexture>
+		<geneticVariance>1</geneticVariance>
+		<hairTags>
+			<li>Dunmer</li>
+		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<recipePrerequisiteTags>
+			<li>Tribal</li>
+		</recipePrerequisiteTags>
+		<techLevel>Medieval</techLevel>
+		<startingResearchTags>
+			<li>HlaaluStart</li>
+		</startingResearchTags>
+	</FactionDef>
+
+</Defs>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="AlchemyIngredientBase">
+		<defName>StoneflowerPetals</defName>
+		<label>Stoneflower petals</label>
+		<description>stoneflower petals.</description>
+		<techLevel>Neolithic</techLevel>
+		
+		<graphicData>
+			<texPath>Things/AlchemicalIngredients/StoneflowerPetals</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		
+		<statBases>
+			<MarketValue>1.25</MarketValue>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Mass>0.15</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		
+		<thingCategories>
+			<li>AlchemyPlant</li>
+		</thingCategories>
+		
+		<ingestible>
+			<foodType>Plant</foodType>
+		</ingestible>
+		
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>60</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="AlchemyIngredientBase">
+		<defName>BlackAnther</defName>
+		<label>Black Anther</label>
+		<description>black anther.</description>
+		<techLevel>Neolithic</techLevel>
+		
+		<graphicData>
+			<texPath>Things/AlchemicalIngredients/BlackAnther</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		
+		<statBases>
+			<MarketValue>1.25</MarketValue>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Mass>0.15</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		
+		<thingCategories>
+			<li>AlchemyPlant</li>
+		</thingCategories>
+		
+		<ingestible>
+			<foodType>Plant</foodType>
+		</ingestible>
+		
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>60</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="AlchemyIngredientBase">
+		<defName>Heather</defName>
+		<label>Heather</label>
+		<description>Heather.</description>
+		<techLevel>Neolithic</techLevel>
+		
+		<graphicData>
+			<texPath>Things/AlchemicalIngredients/Heather</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		
+		<statBases>
+			<MarketValue>1.25</MarketValue>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Mass>0.15</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		
+		<thingCategories>
+			<li>AlchemyPlant</li>
+		</thingCategories>
+		
+		<ingestible>
+			<foodType>Plant</foodType>
+		</ingestible>
+		
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>60</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>

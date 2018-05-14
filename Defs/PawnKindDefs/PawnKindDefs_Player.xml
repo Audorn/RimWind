@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<PawnKindDef Name="BasePlayerMer" Abstract="True">
+		<race>DunmerRace</race>
+		<combatPower>45</combatPower>
+		<baseRecruitDifficulty>0.8</baseRecruitDifficulty>
+		<isFighter>false</isFighter>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BasePlayerMer">
+		<defName>Dunmer</defName>
+		<label>dunmer settler</label>
+		<defaultFactionType>PlayerHouseHlaalu</defaultFactionType>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<apparelTags>
+			<li>Tribal</li>
+		</apparelTags>
+		<apparelMoney>
+			<min>1200</min>
+			<max>2400</max>
+		</apparelMoney>
+		<backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+	</PawnKindDef>
+
+</Defs>

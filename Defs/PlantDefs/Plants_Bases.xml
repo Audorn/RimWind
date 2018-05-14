@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="TreeBase" Name="MushroomTreeBase" Abstract="True">
+		<techLevel>Neolithic</techLevel>
+
+		<statBases>
+			<Flammability>0.8</Flammability>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.5</fertilityMin>
+			<fertilitySensitivity>0.70</fertilitySensitivity>
+
+			<wildClusterRadius>7</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>5</max>
+			</wildClusterSizeRange>
+			
+			<growDays>25</growDays>
+			<harvestedThingDef>MushroomLog</harvestedThingDef>
+			<harvestYield>40</harvestYield>
+			<reproduceRadius>20</reproduceRadius>
+		</plant>
+		
+		<ingestible>
+			<nutrition>1.7</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="TreeBase" Name="StandardTreeBase" Abstract="True">
+		<plant>
+			<harvestedThingDef>WoodLog</harvestedThingDef>
+		</plant>
+	</ThingDef>
+	
+</Defs>

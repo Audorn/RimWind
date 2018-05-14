@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Alchemy</defName>
+		<label>Alchemy</label>
+		<parent>Root</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>AlchemyPlant</defName>
+		<label>Plant</label>
+		<parent>Alchemy</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>AlchemyCreature</defName>
+		<label>Creature</label>
+		<parent>Alchemy</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>AlchemyMineral</defName>
+		<label>Mineral</label>
+		<parent>Alchemy</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>AlchemyDaedra</defName>
+		<label>Daedra</label>
+		<parent>Alchemy</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
+</Defs>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThoughtDef>
+		<defName>AteRawMildSpices</defName>
+		<durationDays>0.5</durationDays>
+		<stackLimit>3</stackLimit>
+		<stages>
+			<li>
+				<label>ate mild spices</label>
+				<description>Those spices were pungent, but not too bad.</description>
+				<baseMoodEffect>-1</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>AteRawStrongSpices</defName>
+		<durationDays>0.5</durationDays>
+		<stackLimit>3</stackLimit>
+		<stages>
+			<li>
+				<label>ate strong spices</label>
+				<description>Those spices were extremely potent, I still taste them...</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+</Defs>

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildStoneflower</defName> 
+		<label>stoneflower</label>
+		<description>Stoneflower petals are collected from a small common blue flower of the Ascadian Isles and Azura's Coast.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/Stoneflower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>10</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>0.30</fertilitySensitivity>
+			<topWindExposure>0.3</topWindExposure>
+
+			<wildClusterRadius>3</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>3</min>
+				<max>7</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>0.7</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/Stoneflower_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Small/Stoneflower_Leafless</leaflessGraphicPath>
+			<maxMeshCount>4</maxMeshCount>
+
+			<growDays>3</growDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.85</harvestMinGrowth>
+			<harvestAfterGrowth>0.30</harvestAfterGrowth>
+			<harvestWork>350</harvestWork>
+			<harvestedThingDef>StoneflowerPetals</harvestedThingDef>
+			<harvestYield>2</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>3</reproduceMtbDays>
+			<reproduceRadius>5</reproduceRadius>
+		</plant>
+		
+		<comps>
+			<li Class="RimTES.CompProperties_HarvestableReagent">
+			</li>
+		</comps>
+		
+		<ingestible>
+			<nutrition>0.15</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildBlackAnther</defName> 
+		<label>Black Anther</label>
+		<description>Black anther is a flowering plant that grows along Azura's Coast.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/BlackAnther</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>10</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>0.30</fertilitySensitivity>
+			<topWindExposure>0.3</topWindExposure>
+
+			<wildClusterRadius>4</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>5</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>0.7</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/BlackAnther_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Small/BlackAnther_Leafless</leaflessGraphicPath>
+			<maxMeshCount>4</maxMeshCount>
+
+			<growDays>3</growDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.85</harvestMinGrowth>
+			<harvestAfterGrowth>0.30</harvestAfterGrowth>
+			<harvestWork>350</harvestWork>
+			<harvestedThingDef>BlackAnther</harvestedThingDef>
+			<harvestYield>2</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>3</reproduceMtbDays>
+			<reproduceRadius>5</reproduceRadius>
+		</plant>
+		
+		<comps>
+			<li Class="RimTES.CompProperties_HarvestableReagent">
+			</li>
+		</comps>
+		
+		<ingestible>
+			<nutrition>0.15</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildHeather</defName> 
+		<label>Heather</label>
+		<description>Heather is a low evergreen shrub of the Ascadian Isles, known for its small, pinkish-purple flowers with modest magical properties.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/Heather</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>30</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>0.40</fertilitySensitivity>
+			<topWindExposure>0.3</topWindExposure>
+
+			<wildClusterRadius>3.5</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>5</min>
+				<max>10</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.7</min>
+				<max>1.15</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/Heather_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Small/Heather_Leafless</leaflessGraphicPath>
+
+			<growDays>3.5</growDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.85</harvestMinGrowth>
+			<harvestAfterGrowth>0.30</harvestAfterGrowth>
+			<harvestWork>350</harvestWork>
+			<harvestedThingDef>Heather</harvestedThingDef>
+			<harvestYield>2</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>3</reproduceMtbDays>
+			<reproduceRadius>5</reproduceRadius>
+		</plant>
+		
+		<comps>
+			<li Class="RimTES.CompProperties_HarvestableReagent">
+			</li>
+		</comps>
+		
+		<ingestible>
+			<nutrition>0.15</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildWickwheat</defName> 
+		<label>wickwheat</label>
+		<description>Wickwheat is a wild Ashland grain with modest magical properties that grows in the Grazelands.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/Wickwheat</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>10</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>0.6</fertilitySensitivity>
+			<growDays>3.6</growDays>
+			<topWindExposure>0.3</topWindExposure>
+
+			<wildClusterRadius>4</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>5</min>
+				<max>9</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>0.8</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/Wickwheat_Immature</immatureGraphicPath>
+			<maxMeshCount>4</maxMeshCount>
+
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.80</harvestMinGrowth>
+			<harvestAfterGrowth>0.45</harvestAfterGrowth>
+			<harvestWork>500</harvestWork>
+			<harvestedThingDef>RawWickwheatGrain</harvestedThingDef>
+			<harvestYield>20</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>4</reproduceMtbDays>
+			<reproduceRadius>10</reproduceRadius>
+		</plant>
+
+		<ingestible>
+			<nutrition>0.2</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildSaltrice</defName> 
+		<label>saltrice</label>
+		<description>Saltrice is another of the tasty and nutritious foodstuffs with modest magical properties raised as export crops by Morrowind's farmers and plantation owners. Most saltrice seen in the Empire comes from southeastern Morrowind, but there are also some new and prospering farms and plantations in the Ascadian Isles. Saltrice also grows wild in the Grazelands and on Azura's Coast.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/Saltrice</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>10</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<growDays>3</growDays>
+			<topWindExposure>0.1</topWindExposure> 
+
+			<wildClusterRadius>2.5</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>5</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.4</min>
+				<max>1.0</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/Saltrice_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Small/Saltrice_Leafless</leaflessGraphicPath>
+			<maxMeshCount>4</maxMeshCount>
+
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.80</harvestMinGrowth>
+			<harvestAfterGrowth>0.50</harvestAfterGrowth>
+			<harvestWork>600</harvestWork>
+			<harvestedThingDef>RawSaltriceGrain</harvestedThingDef>
+			<harvestYield>8</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>5</reproduceMtbDays>
+			<reproduceRadius>12</reproduceRadius>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.2</nutrition>
+		</ingestible>		
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildMarshmerrow</defName> 
+		<label>Marshmerrow</label>
+		<description>The sweet pulp of marshmerrow reeds is a delectable foodstuff, and when eaten fresh or prepared, it has modest healing properties. Marshmerrow is an important cash crop of the farms and plantations of the Ascadian Isles, but it also grows wild in the Grazelands and on Azura's Coast.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/Marshmerrow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>10</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<growDays>3</growDays>
+			<topWindExposure>0.1</topWindExposure> 
+
+			<wildClusterRadius>2.5</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>5</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.4</min>
+				<max>1.0</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/Marshmerrow_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Small/Marshmerrow_Immature</leaflessGraphicPath>
+			<maxMeshCount>4</maxMeshCount>
+
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.80</harvestMinGrowth>
+			<harvestAfterGrowth>0.50</harvestAfterGrowth>
+			<harvestWork>600</harvestWork>
+			<harvestedThingDef>RawMarshmerrow</harvestedThingDef>
+			<harvestYield>8</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>5</reproduceMtbDays>
+			<reproduceRadius>12</reproduceRadius>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.2</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantWildKreshweed</defName> 
+		<label>Kreshweed</label>
+		<description>Kreshweed fiber is a resinous fiber with modest magical properties that comes from the coarse grass of the Grazelands and Azura's Coast called kreshweed.</description>
+
+		<graphicData>
+			<texPath>Plants/Small/Kreshweed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>30</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>0.40</fertilitySensitivity>
+			<topWindExposure>0.3</topWindExposure>
+
+			<wildClusterRadius>3.5</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>5</min>
+				<max>10</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.7</min>
+				<max>1.15</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Small/Kreshweed_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Small/Kreshweed_Leafless</leaflessGraphicPath>
+
+			<growDays>3.5</growDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.85</harvestMinGrowth>
+			<harvestAfterGrowth>0.30</harvestAfterGrowth>
+			<harvestWork>350</harvestWork>
+			<harvestedThingDef>KreshFiber</harvestedThingDef>
+			<harvestYield>2</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>3</reproduceMtbDays>
+			<reproduceRadius>5</reproduceRadius>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.15</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+</Defs>

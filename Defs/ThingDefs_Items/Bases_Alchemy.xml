@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="ResourceBase" Name="AlchemyIngredientBase" Abstract="True">
+		<techLevel>Neolithic</techLevel>
+		<stackLimit>50</stackLimit>
+
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>0.015</Mass>
+			<DeteriorationRate>5</DeteriorationRate>
+			<MarketValue>1.2</MarketValue>
+		</statBases>
+		
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<ingestible>
+			<foodType>None</foodType>
+			<preferability>NeverForNutrition</preferability>
+			<!--<tasteThought>RimWind_AteRawMildSpices</tasteThought>-->
+			<nutrition>0.015</nutrition>
+			
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>RawVegetable_Eat</ingestSound>
+		</ingestible>
+	</ThingDef>
+
+</Defs>

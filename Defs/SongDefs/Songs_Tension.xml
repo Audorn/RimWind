@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Knights_Charge</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Bright_Spears_Dark_Blood</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Dance_of_Swords</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Ambush</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Hunters_Pursuit</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Stormclouds_on_the_Battlefield</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Drumbeat_of_the_Dunmer</clipPath>
+		<tense>true</tense>
+	</SongDef>
+
+</Defs>

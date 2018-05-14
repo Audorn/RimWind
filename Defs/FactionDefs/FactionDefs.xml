@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<FactionDef>
+		<defName>HouseHlaalu</defName>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<canMakeRandomly>true</canMakeRandomly>
+		<baseSelectionWeight>1</baseSelectionWeight>
+		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<baseNameMaker>NamerFactionBaseTribal</baseNameMaker>
+		
+		<label>Settlement of House Hlaalu</label>
+		<description>A settlement of House Hlaalu.</description>
+		<expandingIconTexture>World/HouseHlaaluBase</expandingIconTexture>
+		<homeIconPath>World/WorldObjects/TribalFactionBase</homeIconPath>
+		<colorSpectrum> 
+			<li>(0.72, 0.53, 0.04)</li> <!-- darkgoldenrod	184,134,11 -->
+		</colorSpectrum>
+
+		<!--<fixedName>Hlaalu settler</fixedName>-->
+		<pawnNameMaker>NamerPersonDunmer</pawnNameMaker>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<leaderTitle>head of House Hlaalu</leaderTitle>
+		<pawnsPlural>Hlaalu settlers</pawnsPlural>
+		<geneticVariance>0.8</geneticVariance>
+		<hairTags>
+			<li>Dunmer</li>
+		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
+
+		<startingGoodwill>
+			<min>10</min>
+			<max>40</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-60</min>
+			<max>0</max>
+		</naturalColonyGoodwill>
+		<canStageAttacks>true</canStageAttacks>
+		<canSiege>true</canSiege>
+		<rescueesCanJoin>true</rescueesCanJoin>
+		<autoFlee>false</autoFlee>
+		
+		<pawnGroupMakers>
+			<li>
+				<kindDef>Normal</kindDef> <!-- Interesting... -->
+				<options>
+					<Villager>50</Villager> <!-- Selects PawnKindDef... -->
+				</options>
+			</li>
+			<li>
+				<kindDef>Trader</kindDef>
+				<traders>
+					<TownTrader>1</TownTrader>
+				</traders>
+				<carriers>
+					<Muffalo>6</Muffalo>
+				</carriers>
+				<guards>
+					<Villager>15</Villager>
+				</guards>
+			</li>
+			<li>
+				<kindDef>FactionBase</kindDef>
+				<options>
+					<Villager>100</Villager>
+				</options>
+			</li>
+		</pawnGroupMakers>
+
+		<caravanTraderKinds>
+			<li>Caravan_Outlander_BulkGoods</li> <!-- Modify... -->
+		</caravanTraderKinds>
+		
+		<visitorTraderKinds>
+			<li>Visitor_Outlander_Standard</li> <!-- Modify... -->
+		</visitorTraderKinds>
+		
+		<baseTraderKinds>
+			<li>Base_Outlander_Standard</li> <!-- Modify... -->
+		</baseTraderKinds>
+		
+		<allowedArrivalTemperatureRange>
+			<min>-40</min>
+			<max>45</max>
+		</allowedArrivalTemperatureRange>
+
+		<techLevel>Medieval</techLevel>
+	</FactionDef>
+  
+</Defs>

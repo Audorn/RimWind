@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="MushroomTreeBase">
+		<defName>PlantWildOgrimShield</defName> 
+		<label>ogrim-Shield</label>
+		<description>Ogrim-Shield.</description>
+
+		<graphicData>
+			<texPath>Plants/Towering/OgrimShield</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0.65</Flammability>
+		</statBases>
+		
+		<plant>
+			<wildClusterRadius>8</wildClusterRadius>
+			
+			<visualSizeRange>
+				<min>1.3</min>
+				<max>2.4</max>
+			</visualSizeRange>
+			<immatureGraphicPath>Plants/Towering/OgrimShield_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Towering/OgrimShield</leaflessGraphicPath>
+
+			<growDays>45</growDays>
+			<harvestWork>1000</harvestWork>
+			<harvestYield>45</harvestYield>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="MushroomTreeBase">
+		<defName>PlantWildMushroom1_</defName> 
+		<label>mushroom1</label>
+		<description>mushroom1.</description>
+
+		<graphicData>
+			<texPath>Plants/Towering/Mushroom1</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+		<!--  MODIFY ALL THESE STATS WHEN YOU FIGURE OUT WHAT THE PLANT IS! -->
+		
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			
+			<immatureGraphicPath>Plants/Towering/Mushroom1_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Towering/Mushroom1</leaflessGraphicPath>
+
+			<growDays>25</growDays>
+			<harvestWork>700</harvestWork>
+			<harvestYield>30</harvestYield>
+		</plant>
+	</ThingDef>
+
+	<ThingDef ParentName="MushroomTreeBase">
+		<defName>PlantWildMushroom2_</defName> 
+		<label>mushroom2</label>
+		<description>mushroom2.</description>
+
+		<graphicData>
+			<texPath>Plants/Towering/Mushroom2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+		<!--  MODIFY ALL THESE STATS WHEN YOU FIGURE OUT WHAT THE PLANT IS! -->
+		
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			
+			<immatureGraphicPath>Plants/Towering/Mushroom2_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Towering/Mushroom2</leaflessGraphicPath>
+
+			<growDays>25</growDays>
+			<harvestWork>700</harvestWork>
+			<harvestYield>30</harvestYield>
+		</plant>
+	</ThingDef>
+
+	<ThingDef ParentName="StandardTreeBase">
+		<defName>PlantWildGrazelandTree1_</defName> 
+		<label>tree1</label>
+		<description>tree1.</description>
+
+		<graphicData>
+			<texPath>Plants/Towering/GrazelandTree1</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+		<!--  MODIFY ALL THESE STATS WHEN YOU FIGURE OUT WHAT THE PLANT IS! -->
+		
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<wildClusterRadius>12</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>3</min>
+				<max>7</max>
+			</wildClusterSizeRange>
+
+			<immatureGraphicPath>Plants/Towering/GrazelandTree1_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Towering/GrazelandTree1</leaflessGraphicPath>
+
+			<growDays>25</growDays>
+			<harvestWork>700</harvestWork>
+			<harvestYield>30</harvestYield>
+		</plant>
+	</ThingDef>
+
+	<ThingDef ParentName="StandardTreeBase">
+		<defName>PlantWildGrazelandTree2_</defName> 
+		<label>tree2</label>
+		<description>tree2.</description>
+
+		<graphicData>
+			<texPath>Plants/Towering/GrazelandTree2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+		<!--  MODIFY ALL THESE STATS WHEN YOU FIGURE OUT WHAT THE PLANT IS! -->
+		
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<wildClusterRadius>12</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>3</min>
+				<max>7</max>
+			</wildClusterSizeRange>
+			
+			<immatureGraphicPath>Plants/Towering/GrazelandTree2_Immature</immatureGraphicPath>
+			<leaflessGraphicPath>Plants/Towering/GrazelandTree2</leaflessGraphicPath>
+
+			<growDays>25</growDays>
+			<harvestWork>700</harvestWork>
+			<harvestYield>30</harvestYield>
+		</plant>
+	</ThingDef>
+	
+</Defs>

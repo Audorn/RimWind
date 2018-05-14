@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+	<HairDef>
+		<defName>DunmerHairExtendedBun</defName>
+		<label>Extended Bun</label>
+		<hairGender>Male</hairGender>
+		<texPath>Pawns/Dunmer/Hairs/extendedbun</texPath>
+		<hairTags>
+			<li>Dunmer</li>
+			<li>Dunmer_HouseHlaalu</li>
+		</hairTags>
+	</HairDef>
+
+	<HairDef>
+		<defName>DunmerHairShaved</defName>
+		<label>Shaved</label>
+		<hairGender>Female</hairGender>
+		<texPath>Pawns/Dunmer/Hairs/shaved</texPath>
+		<hairTags>
+			<li>Dunmer</li>
+			<li>Dunmer_HouseHlaalu</li>
+		</hairTags>
+	</HairDef>
+ 
+</Defs>

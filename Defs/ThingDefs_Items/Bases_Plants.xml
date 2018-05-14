@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="OrganicProductBase" Name="PlantFoodBase" Abstract="True">
+		<thingCategories>
+			<li>PlantFoodRaw</li>
+		</thingCategories>
+		<techLevel>Neolithic</techLevel>
+		<stackLimit>30</stackLimit>
+
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<ingestible>
+			<foodType>VegetableOrFruit</foodType>
+			<preferability>RawTasty</preferability>
+			<nutrition>0.05</nutrition>
+
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>RawVegetable_Eat</ingestSound>
+		</ingestible>
+		
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>30</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="OrganicProductBase" Name="PlantTextileBase" Abstract="True">
+		<thingCategories>
+			<li>PlantFoodRaw</li>
+		</thingCategories>
+		<techLevel>Neolithic</techLevel>
+		<stackLimit>50</stackLimit>
+
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+
+		<ingestible>
+			<foodType>Plant</foodType>
+			<preferability>NeverForNutrition</preferability>
+			<nutrition>0.015</nutrition>
+			
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>RawVegetable_Eat</ingestSound>
+		</ingestible>
+
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>30</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>

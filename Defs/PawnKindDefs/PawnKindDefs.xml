@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<PawnKindDef>
+		<defaultFactionType>HouseHlaalu</defaultFactionType>
+		<defName>HlaaluRefugee</defName>
+		<label>Hlaalu refugee</label>
+		<race>DunmerRace</race>
+		<combatPower>30</combatPower>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<itemQuality>Normal</itemQuality>
+		<backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
+		<isFighter>false</isFighter>
+		<gearHealthRange>
+			<min>0.2</min>
+			<max>2.0</max>
+		</gearHealthRange>
+		<apparelMoney>
+			<min>1500</min>
+			<max>3000</max>
+		</apparelMoney>
+		<apparelTags>
+			<li>Tribal</li>
+		</apparelTags>
+		<apparelAllowHeadwearChance>0.3</apparelAllowHeadwearChance>
+		<invNutrition>2.55</invNutrition>
+	</PawnKindDef>
+	
+	<PawnKindDef Name="BaseMer" Abstract="True">
+		<defaultFactionType>HouseHlaalu</defaultFactionType>
+		<race>DunmerRace</race>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<chemicalAddictionChance>0.005</chemicalAddictionChance>
+		<baseRecruitDifficulty>0.75</baseRecruitDifficulty>
+		<apparelAllowHeadwearChance>0.3</apparelAllowHeadwearChance>
+		<apparelTags>
+			<li>Tribal</li>
+		</apparelTags>
+	</PawnKindDef>
+  
+	<PawnKindDef Name="DunmerCivBase" ParentName="BaseMer" Abstract="True">
+		<defName>DunmerSettler</defName>
+		<label>dunmer settler</label>
+		<combatPower>35</combatPower>
+		<race>DunmerRace</race>
+		<itemQuality>Normal</itemQuality>
+		<isFighter>false</isFighter>
+		<gearHealthRange>
+			<min>0.2</min>
+			<max>2.0</max>
+		</gearHealthRange>
+		<apparelMoney>
+			<min>750</min>
+			<max>1500</max>
+		</apparelMoney>
+		<weaponMoney>
+			<min>800</min>
+			<max>3000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>Melee</li>
+		</weaponTags>
+		<invNutrition>2.55</invNutrition>
+		<inventoryOptions>
+			<skipChance>0.75</skipChance>
+			<subOptionsChooseOne>
+				<li>
+					<choiceChance>80</choiceChance>
+					<thingDef>Silver</thingDef>
+					<countRange>
+						<min>50</min>
+						<max>200</max>
+					</countRange>
+				</li>
+				<li>
+					<choiceChance>20</choiceChance>
+					<thingDef>Silver</thingDef>
+					<countRange>
+						<min>250</min>
+						<max>900</max>
+					</countRange>
+				</li>
+			</subOptionsChooseOne>
+		</inventoryOptions>
+	</PawnKindDef>
+	
+</Defs>

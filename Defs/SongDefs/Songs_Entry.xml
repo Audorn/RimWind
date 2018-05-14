@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<SongDef>
+		<defName>EntrySong</defName>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<playOnMap>false</playOnMap>
+		<clipPath>Nerevar_Rising</clipPath>
+	</SongDef>
+
+</Defs>

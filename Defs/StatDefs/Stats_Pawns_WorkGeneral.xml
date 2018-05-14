@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<StatDef>
+		<defName>ReagentHarvestingSpeed</defName>
+		<label>reagent harvest speed.</label>
+		<description>Speed at which this person gathers alchemical reagents from any source.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<neverDisabled>true</neverDisabled>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Alchemy</skill>
+				<baseValue>0.20</baseValue>
+				<bonusPerLevel>0.2</bonusPerLevel>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.3</weight>
+				<max>1</max>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>ReagentHarvestingYield</defName>
+		<label>reagent harvest yield.</label>
+		<description>The yield someone gets when harvesting alchemical reagents from any source.  Low yeilds give a chance that this person will accidentally waste the harvest.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<neverDisabled>true</neverDisabled>
+		<skillNeedFactors>
+			<li Class="SkillNeed_Direct">
+				<skill>Alchemy</skill>
+				<valuesPerLevel>
+					<li>0.55</li>
+					<li>0.6</li>
+					<li>0.65</li>
+					<li>0.7</li>
+					<li>0.75</li>
+					<li>0.80</li>
+					<li>0.85</li>
+					<li>0.90</li>
+					<li>0.95</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+					<li>1</li>
+				</valuesPerLevel>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.3</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.2</weight>
+				<max>1</max>
+			</li>
+		</capacityFactors>
+		<scenarioRandomizable>true</scenarioRandomizable>
+	</StatDef>
+
+	<StatDef>
+		<defName>AlchemyProductionSpeed</defName>
+		<label>alchemy production speed</label>
+		<description>How fast this character produces alchemical concoctions.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Intellectual</skill>
+				<baseValue>0.05</baseValue>
+				<bonusPerLevel>0.10</bonusPerLevel>
+			</li>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Alchemy</skill>
+				<baseValue>0.1</baseValue>
+				<bonusPerLevel>0.15</bonusPerLevel>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Arcane</capacity>
+				<weight>0.4</weight>
+				<max>1.2</max>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.6</weight>
+				<max>1</max>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+</Defs>

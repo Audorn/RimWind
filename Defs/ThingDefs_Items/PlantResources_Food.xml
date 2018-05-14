@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="PlantFoodBase">
+		<defName>RawHackleLoLeaf</defName>
+		<label>hackle-Lo leaf</label>
+		<description>Hackle-Lo leaf.</description>
+		
+		<graphicData>
+			<texPath>Things/RawPlantFood/RawHackleLoLeaf</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<statBases>
+			<Mass>0.02</Mass>
+			<DeteriorationRate>8</DeteriorationRate>
+			<MarketValue>1.25</MarketValue>
+		</statBases>
+
+		<ingestible>
+			<nutrition>0.15</nutrition>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantFoodBase">
+		<defName>RawMarshmerrow</defName>
+		<label>marshmerrow</label>
+		<description>marshmerrow.</description>
+		<techLevel>Neolithic</techLevel>
+		
+		<graphicData>
+			<texPath>Things/RawPlantFood/RawMarshmerrow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		
+		<statBases>
+			<Mass>0.02</Mass>
+			<DeteriorationRate>8</DeteriorationRate>
+			<MarketValue>1.25</MarketValue>
+		</statBases>
+		
+		<thingCategories>
+			<li>Medicine</li> <!-- Ingredients -->
+		</thingCategories>
+		
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>30</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantFoodBase">
+		<defName>RawWickwheatGrain</defName>
+		<label>wickwheat grain</label>
+		<description>wickwheat grain.</description>
+		<stackLimit>100</stackLimit>
+
+		<graphicData>
+			<texPath>Things/RawPlantFood/RawWickwheatGrain</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+		<statBases>
+			<Mass>0.02</Mass>
+			<DeteriorationRate>4</DeteriorationRate>
+			<MarketValue>1.1</MarketValue>
+		</statBases>
+
+		<ingestible>
+			<foodType>Seed</foodType>
+			<preferability>RawBad</preferability>
+			<tasteThought>AteRawFood</tasteThought>
+		</ingestible>
+		
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>90</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantFoodBase">
+		<defName>RawSaltriceGrain</defName>
+		<label>saltrice grain</label>
+		<description>saltrice grain.</description>
+		<stackLimit>100</stackLimit>
+
+		<graphicData>
+			<texPath>Things/RawPlantFood/RawSaltriceGrain</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+		<statBases>
+			<Mass>0.02</Mass>
+			<DeteriorationRate>3.5</DeteriorationRate>
+			<MarketValue>1.15</MarketValue>
+		</statBases>
+
+		<ingestible>
+			<foodType>Seed</foodType>
+			<preferability>RawBad</preferability>
+			<tasteThought>AteRawFood</tasteThought>
+		</ingestible>
+
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>120</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>

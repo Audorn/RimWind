@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+		ReagentHarvest
+		DoBillsAlchemy
+-->
+
+<Defs>
+
+	<WorkGiverDef>
+		<defName>ReagentHarvest</defName>
+		<label>harvest reagents</label>
+		<giverClass>RimTES.WorkGiver_HarvestReagents</giverClass>
+		<workType>ReagentHarvesting</workType>
+		<verb>harvesting reagents from</verb>
+		<gerund>harvesting reagents from</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>DoBillsAlchemy</defName>
+		<label>craft alchemical concoction</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Alchemy</workType>
+		<priorityInType>100</priorityInType>
+		<fixedBillGiverDefs>
+			<li>AlchemyTable</li>
+		</fixedBillGiverDefs>
+		<verb>craft</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+</Defs>

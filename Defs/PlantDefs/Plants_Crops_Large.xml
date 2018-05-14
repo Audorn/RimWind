@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantHackleLo</defName> 
+		<label>Hackle-Lo</label>
+		<description>Hackle-lo leaf is a tasty edible succulent leaf of the Grazelands, prized both for its taste and its roborative powers.</description>
+
+		<graphicData>
+			<texPath>Plants/Large/HackleLo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<pathCost>30</pathCost>
+
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilitySensitivity>0.50</fertilitySensitivity>
+			<topWindExposure>0.3</topWindExposure>
+
+			<visualSizeRange>
+				<min>0.7</min>
+				<max>1.2</max>
+			</visualSizeRange>
+			<!--<immatureGraphicPath>Plants/SmallWild/HackleLo_Immature</immatureGraphicPath>-->
+			<leaflessGraphicPath>Plants/Large/HackleLo_Leafless</leaflessGraphicPath>
+
+			<sowMinSkill>4</sowMinSkill>
+			<sowWork>400</sowWork>
+			<sowTags>
+				<li>Ground</li>
+			</sowTags>
+			
+			<growDays>4</growDays>
+			<harvestTag>Standard</harvestTag>
+			<harvestFailable>true</harvestFailable>
+			<harvestMinGrowth>0.60</harvestMinGrowth>
+			<harvestAfterGrowth>0.30</harvestAfterGrowth>
+			<harvestWork>400</harvestWork>
+			<harvestedThingDef>RawHackleLoLeaf</harvestedThingDef>
+			<harvestYield>7</harvestYield>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.25</nutrition>
+		</ingestible>		
+	</ThingDef>
+	
+</Defs>

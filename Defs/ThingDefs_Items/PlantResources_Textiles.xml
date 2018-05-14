@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="PlantTextileBase">
+		<defName>KreshFiber</defName>
+		<label>kresh fiber</label>
+		<description>kresh fiber.</description>
+		<techLevel>Neolithic</techLevel>
+		
+		<graphicData>
+			<texPath>Things/Resources_Plant/KreshFiber</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		
+		<statBases>
+			<MarketValue>1.25</MarketValue>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Mass>0.15</Mass>
+			<Flammability>1.0</Flammability>
+			<!--<MedicalPotency>0.60</MedicalPotency>-->
+			<DeteriorationRate>10</DeteriorationRate>
+		</statBases>
+		
+		<thingCategories>
+			<li>Medicine</li> <!-- Ingredients -->
+		</thingCategories>
+		
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<rotDestroys>true</rotDestroys>
+				<daysToRotStart>45</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>

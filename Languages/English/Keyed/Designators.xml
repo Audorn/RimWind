@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LanguageData>
+
+	<DesignatorHarvestReagent>Harvest Reagent</DesignatorHarvestReagent>
+	<DesignatorHarvestReagentDesc>Harvest reagents from plants or other natural sources.</DesignatorHarvestReagentDesc>
+	<!-- Failure messages -->
+
+	<NoHarvestableReagentPresent>Must designate harvestable, sufficiently grown, reagents.</NoHarvestableReagentPresent>
+	<PlantOnlyBearsReagents>Must designate plants with harvestables other than reagents.</PlantOnlyBearsReagents>
+	
+</LanguageData>

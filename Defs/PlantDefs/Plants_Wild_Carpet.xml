@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>GrazelandGrass</defName>
+		<label>grass</label>
+		<description>Grazeland grasses are tenacious and thick.</description>
+		
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<graphicData>
+<!--			<texPath>Plants/Background/Mushrooms</texPath>-->
+			<texPath>Plants/Carpet/GrazelandGrass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.3</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<topWindExposure>0.3</topWindExposure>
+			
+			<maxMeshCount>16</maxMeshCount>
+			<visualSizeRange>
+				<min>0.5</min>
+				<max>0.8</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Plants/Carpet/GrazelandGrass</leaflessGraphicPath>
+
+			<harvestWork>40</harvestWork>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>GrazelandTallGrass</defName>
+		<label>grass</label>
+		<description>Grazeland grasses are tenacious and thick.</description>
+		
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<graphicData>
+			<!--<texPath>Plants/Background/Mushrooms</texPath>-->
+			<texPath>Plants/Carpet/GrazelandTallGrass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.3</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<topWindExposure>0.3</topWindExposure>
+			
+			<maxMeshCount>16</maxMeshCount>
+			<visualSizeRange>
+				<min>0.5</min>
+				<max>0.8</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Plants/Carpet/GrazelandTallGrass</leaflessGraphicPath>
+
+			<harvestWork>40</harvestWork>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>Mushrooms</defName>
+		<label>mushrooms</label>
+		<description>mushrooms.</description>
+		
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<graphicData>
+			<texPath>Plants/Background/Mushrooms</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.3</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<topWindExposure>0.3</topWindExposure>
+			
+			<maxMeshCount>9</maxMeshCount>
+			<visualSizeRange>
+				<min>0.4</min>
+				<max>0.6</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Plants/Background/Mushrooms</leaflessGraphicPath>
+
+			<harvestWork>40</harvestWork>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>Toadstools</defName>
+		<label>toadstools</label>
+		<description>toadstools.</description>
+		
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<graphicData>
+			<texPath>Plants/Background/Toadstools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.3</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<topWindExposure>0.4</topWindExposure>
+			
+			<maxMeshCount>9</maxMeshCount>
+			<visualSizeRange>
+				<min>0.4</min>
+				<max>0.6</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Plants/Background/Toadstools</leaflessGraphicPath>
+
+			<harvestWork>40</harvestWork>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>Lichen</defName>
+		<label>lichen</label>
+		<description>lichen.</description>
+		
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+		<graphicData>
+			<texPath>Plants/Background/Lichen</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.3</fertilitySensitivity>
+			<growDays>2.5</growDays>
+			<topWindExposure>0.4</topWindExposure>
+			
+			<maxMeshCount>9</maxMeshCount>
+			<visualSizeRange>
+				<min>0.4</min>
+				<max>0.6</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Plants/Background/Lichen</leaflessGraphicPath>
+
+			<harvestWork>40</harvestWork>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantDryGrass</defName>
+		<label>dry grass</label>
+		<description>A hardy grass that can survive harsh, dry, conditions.</description>
+
+		<graphicData>
+			<texPath>Things/Plant/Grass</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<hideAtSnowDepth>0.5</hideAtSnowDepth>
+
+		<statBases>
+			<MaxHitPoints>105</MaxHitPoints>
+			<Beauty>-1</Beauty>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.05</fertilityMin>
+			<fertilitySensitivity>0.3</fertilitySensitivity>
+			<growDays>2.8</growDays>
+			<topWindExposure>0.4</topWindExposure> <!-- should be lower? -->
+
+			<visualSizeRange>
+				<min>0.4</min>
+				<max>0.6</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Things/Plant/Grass_Leafless</leaflessGraphicPath>
+			<maxMeshCount>9</maxMeshCount>
+
+			<harvestWork>50</harvestWork>
+			<reproduceMtbDays>3</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>		
+	</ThingDef>
+
+	<ThingDef ParentName="BushBase">
+		<defName>PlantFossilBush</defName>
+		<label>fossil bush</label>
+		<description>It's hard to tell if it's alive or not.</description>
+
+		<graphicData>
+			<texPath>Things/Plant/Bush</texPath>
+			<drawSize>1.15</drawSize>
+<!--			<shadowData>
+				<volume>(0.55, 0.2, 0.2)</volume>
+			</shadowData>-->
+		</graphicData>
+
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Beauty>-3</Beauty>
+		</statBases>
+		
+		<plant>
+			<fertilityMin>0.25</fertilityMin>
+			<fertilitySensitivity>0.4</fertilitySensitivity>
+			<growDays>3.5</growDays>
+			<topWindExposure>0.2</topWindExposure> <!-- should be lower? -->
+
+			<wildClusterRadius>3</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>5</max>
+			</wildClusterSizeRange>
+			
+			<visualSizeRange>
+				<min>0.7</min>
+				<max>1.1</max>
+			</visualSizeRange>
+			<leaflessGraphicPath>Things/Plant/Bush_Leafless</leaflessGraphicPath>
+
+			<harvestWork>50</harvestWork>
+			<reproduceMtbDays>4</reproduceMtbDays>
+		</plant>
+		
+		<ingestible>
+			<nutrition>0.25</nutrition>
+		</ingestible>		
+	</ThingDef>
+	
+</Defs>

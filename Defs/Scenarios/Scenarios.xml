@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ScenarioDef>
+		<defName>HlaaluScenario</defName>
+		<label>Settle, Trade</label>
+		<description>This land is familiar and yet, somehow wrong.  There is still profit to be made.</description>
+		<scenario>
+			<summary>House Hlaalu has tasked you with extending its influence and wealth.</summary>
+			<playerFaction>
+				<def>PlayerFaction</def>
+				<factionDef>PlayerHouseHlaalu</factionDef>
+			</playerFaction>
+			<parts>
+			
+				<!-- Number of Pawns -->
+				<li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+					<def>ConfigPage_ConfigureStartingPawns</def>
+					<pawnCount>10</pawnCount>
+					<pawnChoiceCount>10</pawnChoiceCount>
+				</li>
+				
+				<!-- Method of Entry & Forced Resources-->
+				<li Class="ScenPart_PlayerPawnsArriveMethod">
+					<def>PlayerPawnsArriveMethod</def>
+					<method>Standing</method>
+				</li>
+				<li Class="ScenPart_ScatterThingsNearPlayerStart">
+					<def>ScatterThingsNearPlayerStart</def>
+					<thingDef>Steel</thingDef>
+					<count>500</count>
+				</li>
+				<li Class="ScenPart_ScatterThingsNearPlayerStart">
+					<def>ScatterThingsNearPlayerStart</def>
+					<thingDef>WoodLog</thingDef>
+					<count>200</count>
+				</li>
+				<li Class="ScenPart_ScatterThingsAnywhere">
+					<def>ScatterThingsAnywhere</def>
+					<thingDef>Steel</thingDef>
+					<count>640</count>
+				</li>
+				
+				<!-- Existing Pawn Effects and Needs -->
+				<li Class="ScenPart_ForcedHediff">
+					<def>ForcedHediff</def>
+					<visible>false</visible>
+					<context>PlayerStarter</context>
+					<chance>0.5</chance>
+					<hediff>Malnutrition</hediff> <!-- What kinds of hediifs are there? -->
+					<severityRange>
+						<min>0.2</min>
+						<max>0.4</max>
+					</severityRange>
+				</li>
+				<li Class="ScenPart_SetNeedLevel">
+					<def>SetNeedLevel</def>
+					<visible>false</visible>
+					<context>PlayerStarter</context>
+					<chance>1.0</chance>
+					<need>Food</need> <!-- What kinds of needs are there? -->
+					<levelRange>
+						<min>0</min>
+						<max>0.1</max>
+					</levelRange>
+				</li>
+				
+				<!-- Starting Equipment & Inventory -->
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
+					<thingDef>Silver</thingDef>
+					<count>1200</count>
+				</li>
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
+					<thingDef>Gold</thingDef>
+					<count>40</count>
+				</li>
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
+					<thingDef>MeleeWeapon_Knife</thingDef>
+					<stuff>Plasteel</stuff>
+				</li>
+				
+				<!-- Starting Animals -->
+				<li Class="ScenPart_StartingAnimal">
+					<def>StartingAnimal</def>
+					<count>3</count> <!-- Randomly determines each? -->
+					<bondToRandomPlayerPawnChance>1.0</bondToRandomPlayerPawnChance>
+				</li>
+
+				<!-- Scattered Resources Nearby -->
+				<li Class="ScenPart_ScatterThingsNearPlayerStart">
+					<def>ScatterThingsNearPlayerStart</def>
+					<thingDef>WoodLog</thingDef>
+					<count>500</count>
+				</li>
+				
+				<!-- Game Start Dialog -->
+				<li Class="ScenPart_GameStartDialog">
+					<def>GameStartDialog</def>
+					<text>You've finally arrived.  Now to start counting coins.</text>
+					<closeSound>GameStartSting</closeSound>
+				</li>
+
+			</parts>
+		</scenario>
+	</ScenarioDef>
+
+</Defs>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 
+		Arcane
+			Knowledge of arcane facts.
+			Increase own spell effects, decrease negative spell effects targeted at self.
+			Increase speed of alchemy, magical scroll writing and object creation, and spell casting.
+			Increase effect of alchemy, magical scrolls and objects, and spells.
+		
+		Alchemy
+			Prefers gathering alchemy ingredients.
+			Can perform Alchemy at an Alchemy Station.
+
+-->
+
+<Defs>
+
+	<SkillDef>
+		<defName>Alchemy</defName>
+		<description>Gathering alchemy ingredients and crafting alchemical concoctions.</description>
+		<skillLabel>alchemy</skillLabel>
+		<pawnCreatorSummaryVisible>true</pawnCreatorSummaryVisible>
+	</SkillDef>
+
+	<SkillDef>
+		<defName>Arcane</defName>
+		<description>Identifying, creating, and breaking down arcane objects.</description>
+		<skillLabel>arcane</skillLabel>
+		<pawnCreatorSummaryVisible>true</pawnCreatorSummaryVisible>
+	</SkillDef>
+
+</Defs>

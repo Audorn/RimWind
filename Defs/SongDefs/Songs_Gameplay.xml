@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<!-- Day -->
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Peaceful_Waters</clipPath>
+		<allowedTimeOfDay>Day</allowedTimeOfDay>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>The_Road_Most_Travelled</clipPath>
+		<allowedTimeOfDay>Day</allowedTimeOfDay>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Nerevar_Rising_Reprise</clipPath>
+		<allowedTimeOfDay>Day</allowedTimeOfDay>
+	</SongDef>
+
+
+	<!-- Night -->
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Shed_Your_Travails</clipPath>
+		<allowedTimeOfDay>Night</allowedTimeOfDay>
+	</SongDef>
+
+
+	<!-- Any time of day -->
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Over_the_Next_Hill</clipPath>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Blessing_of_Vivec</clipPath>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Silt_Sunrise</clipPath>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Caprice</clipPath>
+	</SongDef>
+
+	<SongDef>
+		<label>RimWind</label> <!-- Harmony Patcher will allow this song to stay. -->
+		<clipPath>Introduction</clipPath>
+	</SongDef>
+  
+</Defs>
