@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<MainButtonDef>
+		<defName>SoulGems</defName>
+		<label>Soul Gems</label>
+		<description>Soul gem allocation and usage policies.</description>
+		<tabWindowClass>RimTES.MainTabWindow_SoulGems</tabWindowClass>
+		<order>81</order>
+		<!--<defaultHotKey>F6</defaultHotKey>-->
+	</MainButtonDef>
+
+</Defs>

@@ -79,8 +79,18 @@
 				</li>
 				<li Class="ScenPart_StartingThing_Defined">
 					<def>StartingThing_Defined</def>
-					<thingDef>MeleeWeapon_Knife</thingDef>
-					<stuff>Plasteel</stuff>
+					<thingDef>EnchantableMeleeWeapon_Dagger</thingDef>
+					<stuff>Steel</stuff>
+				</li>
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
+					<thingDef>EnchantableMeleeWeapon_Dagger</thingDef>
+					<stuff>Silver</stuff>
+				</li>
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
+					<thingDef>EnchantableMeleeWeapon_Dagger</thingDef>
+					<stuff>Gold</stuff>
 				</li>
 				
 				<!-- Starting Animals -->

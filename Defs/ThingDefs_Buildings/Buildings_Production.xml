@@ -2,6 +2,7 @@
 
 <Defs>
 
+	<!-- Alchemy -->
 	<ThingDef ParentName="BenchBase">
 		<defName>AlchemyTable</defName>
 		<label>alchemy table</label>
@@ -223,5 +224,79 @@
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
 	</ThingDef>
+	
+	<!-- Enchantment -->
+	<ThingDef ParentName="BenchBase">
+		<defName>EnchantingTable</defName>
+		<label>enchanting table</label>
+		<description>A place for enchanting weapons and other items, for use as well as research.</description>
+		<thingClass>RimTES.Building_ProductionResearchBench</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Production/TableSculpting</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<costList>
+			<WoodLog>50</WoodLog>
+		</costList>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<WorkToBuild>2500</WorkToBuild>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<size>(3,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>RimTES.ITab_RBills_Enchanting</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<comps>
+			<li Class="RimTES.CompProperties_BuildingHasHiddenInventory">
+				<itemSettings>
+					<li Class="RimTES.InventoryItemSetting">
+						<thingDef>BaseEnchantable</thingDef>
+						<quantity>3</quantity>
+					</li>
+					<li Class="RimTES.InventoryItemSetting">
+						<thingDef>Steel</thingDef>
+						<quantity>10</quantity>
+					</li>
+				</itemSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>AlchemyShelves</li>
+					<li>AlchemyCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>BasicEnchanting</li>
+		</researchPrerequisites>
+		<designationHotKey>Misc2</designationHotKey>
+	</ThingDef>
+
 	
 </Defs>

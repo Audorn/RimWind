@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+	<PawnColumnDef>
+		<defName>CarriedEnchantedItems</defName>
+		<label>enchanted items</label>
+		<workerClass>RimTES.PawnColumnWorker_CarriedEnchantedItems</workerClass>
+		<headerTip>Enchanted items carried in inventory.</headerTip>
+	</PawnColumnDef>
+
+	<PawnColumnDef>
+		<defName>SoulReserveValue</defName>
+		<label>reserve</label>
+		<workerClass>RimTES.PawnColumnWorker_SoulReserveValue</workerClass>
+		<headerTip>Target minimum amount of soul energy to keep in inventory.</headerTip>
+	</PawnColumnDef>
+
+	<PawnColumnDef>
+		<defName>QualityMaxPolicy</defName>
+		<label>quality</label>
+		<workerClass>RimTES.PawnColumnWorker_QualityMaxPolicy</workerClass>
+		<headerTip>Maximum quality of filled soul gems to keep in inventory.</headerTip>
+	</PawnColumnDef>
+
+	<PawnColumnDef>
+		<defName>EmptyGems</defName>
+		<label>empty</label>
+		<workerClass>RimTES.PawnColumnWorker_EmptyGems</workerClass>
+		<headerTip>Target number of empty soul gems of each kind to keep in inventory.</headerTip>
+	</PawnColumnDef>
+
+	<PawnColumnDef>
+		<defName>CarriedGems</defName>
+		<label>soul gems</label>
+		<workerClass>RimTES.PawnColumnWorker_CarriedGems</workerClass>
+		<headerTip>Filled soul gems carried in inventory.  Click to store or mark as unusable.</headerTip>
+	</PawnColumnDef>
+
+</Defs>

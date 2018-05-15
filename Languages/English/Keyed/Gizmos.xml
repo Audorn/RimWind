@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LanguageData>
+
+	<!-- Enchanting -->
+	<TakeToBeEnchantedLabel>Store For Enchanting</TakeToBeEnchantedLabel>
+	<TakeToBeEnchantedDesc>This object will be stored in an enchanting workbench if available.  While there, it can be selected to enchant.</TakeToBeEnchantedDesc>
+	
+</LanguageData>

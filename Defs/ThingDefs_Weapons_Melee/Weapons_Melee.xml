@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef Name="BaseEnchantableMeleeWeapon" ParentName="BaseEnchantableWeapon" Abstract="True">
+		<techLevel>Medieval</techLevel>
+		<smeltable>true</smeltable>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+		<thingCategories>
+			<li>WeaponsMelee</li>
+		</thingCategories>
+
+		<recipeMaker>
+			<workSkill>Crafting</workSkill>
+			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>EnchantingTable</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef Name="BaseEnchantableMeleeWeapon_Sharp" ParentName="BaseEnchantableMeleeWeapon" Abstract="True">
+		<recipeMaker>
+			<defaultIngredientFilter>
+				<categories>
+					<li>Root</li>
+				</categories>
+				<exceptedThingDefs>
+					<li>Gold</li>
+					<li>WoodLog</li>
+				</exceptedThingDefs>
+			</defaultIngredientFilter>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef Name="BaseEnchantableMeleeWeapon_Blunt" ParentName="BaseEnchantableMeleeWeapon" Abstract="True">
+		<recipeMaker>
+			<defaultIngredientFilter>
+				<categories>
+					<li>Root</li>
+				</categories>
+			</defaultIngredientFilter>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef Name="BaseEnchantableMeleeWeapon_Sharp_Quality" ParentName="BaseEnchantableMeleeWeapon_Sharp" Abstract="True">
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_WeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Name="BaseEnchantableMeleeWeapon_Blunt_Quality" ParentName="BaseEnchantableMeleeWeapon_Sharp" Abstract="True">
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_WeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+
+
+	<!-- ============================================================== -->
+
+
+	<ThingDef ParentName="BaseEnchantableMeleeWeapon_Sharp">
+		<defName>EnchantableMeleeWeapon_Dagger</defName>
+		<label>dagger</label>
+		<description>A small, quick blade.</description>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponMelee/Shiv</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<weaponTags>
+			<li>NonNeolithicOnlyMelee</li>
+		</weaponTags>
+		<costStuffCount>40</costStuffCount>
+		<statBases>
+			<WorkToMake>4000</WorkToMake>
+			<Mass>0.5</Mass>
+			<Weapon_Bulk>0.2</Weapon_Bulk>
+		</statBases>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<recipeMaker>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+			<researchPrerequisite>Test0</researchPrerequisite>
+		</recipeMaker>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>blade</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>10.7</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+		</tools>
+		<comps>
+			<li Class="RimTES.CompProperties_Enchantable">
+				<enchantingLimit>100</enchantingLimit>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>

@@ -2,6 +2,12 @@
 
 <LanguageData>
 
+	<!-- Alchemy -->
 	<Reagent>Reagent</Reagent>
+	
+	<!-- Enchantment -->
+	<EnchantingLimit>Enchanting Value Limit</EnchantingLimit>
+	<CumulativeEnchantmentValue>Current Enchantment Value</CumulativeEnchantmentValue>
+	<CurrentSoulEnergy>Current Soul Energy</CurrentSoulEnergy>
 
 </LanguageData>

@@ -26,14 +26,6 @@
 		<techLevel>Neolithic</techLevel>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
-		<defName>Test2</defName>
-		<label>Medieval</label>
-		<description>Tier 2.</description>
-		<baseCost>200</baseCost>
-		<techLevel>Medieval</techLevel>
-	</ResearchProjectDef>
-
 	<!-- ========== BASICS ========== -->
 	<ResearchProjectDef>
 		<defName>BasicAlchemy</defName>
@@ -447,7 +439,7 @@
 		<baseCost>300</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
-			<li>Test2</li>
+			<li>Test1</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
