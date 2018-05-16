@@ -71,17 +71,27 @@ namespace RimTES
             foreach (Gizmo c in base.CompGetGizmosExtra())
                 yield return c;
 
-            yield return new Command_Action
+            Designation existingDesignation = Find.VisibleMap.designationManager.DesignationOn(parent, DefDatabase<DesignationDef>.GetNamed("TakeToEnchant"));
+
+            if (existingDesignation == null)
             {
-                action = delegate
+                yield return new Command_Action
                 {
-                    SoundDefOf.TickTiny.PlayOneShotOnCamera(null);
-                },
-                hotKey = KeyBindingDefOf.Misc1,
-                defaultDesc = "TakeToBeEnchantedDesc".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/TryReconnect", true),
-                defaultLabel = "TakeToBeEnchantedLabel".Translate()
-            };
+                    action = delegate
+                    {
+                        SoundDefOf.TickTiny.PlayOneShotOnCamera(null);
+                        Map map = Find.VisibleMap;
+
+                        DesignationDef designation = DefDatabase<DesignationDef>.GetNamed("TakeToEnchant");
+                        map.designationManager.RemoveAllDesignationsOn(parent, false);
+                        map.designationManager.AddDesignation(new Designation(parent, designation));
+                    },
+                    hotKey = KeyBindingDefOf.Misc1,
+                    defaultDesc = "TakeToBeEnchantedDesc".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/TryReconnect", true),
+                    defaultLabel = "TakeToBeEnchantedLabel".Translate()
+                };
+            }
         }
     }
 }

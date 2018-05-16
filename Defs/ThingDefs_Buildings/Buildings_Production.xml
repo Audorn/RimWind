@@ -230,7 +230,7 @@
 		<defName>EnchantingTable</defName>
 		<label>enchanting table</label>
 		<description>A place for enchanting weapons and other items, for use as well as research.</description>
-		<thingClass>RimTES.Building_ProductionResearchBench</thingClass>
+		<thingClass>RimTES.Building_ProductionResearchBench_InternalRecipes</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSculpting</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -254,7 +254,7 @@
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<WorkToBuild>2500</WorkToBuild>
+			<WorkToBuild>250</WorkToBuild><!--2500-->
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-5</Cleanliness>
@@ -266,24 +266,25 @@
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
+		<!--
 		<inspectorTabs>
 			<li>RimTES.ITab_RBills_Enchanting</li>
-		</inspectorTabs>
+		</inspectorTabs>-->
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
 		<comps>
-			<li Class="RimTES.CompProperties_BuildingHasHiddenInventory">
-				<itemSettings>
-					<li Class="RimTES.InventoryItemSetting">
-						<thingDef>BaseEnchantable</thingDef>
-						<quantity>3</quantity>
+			<li Class="RimTES.CompProperties_InnerContainerItemFilter">
+				<itemFilterSettings>
+					<li>
+						<thingCategoryDef>Enchantables</thingCategoryDef>
+						<capacity>3</capacity>
 					</li>
-					<li Class="RimTES.InventoryItemSetting">
+					<li>
 						<thingDef>Steel</thingDef>
-						<quantity>10</quantity>
+						<capacity>10</capacity>
 					</li>
-				</itemSettings>
+				</itemFilterSettings>
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>

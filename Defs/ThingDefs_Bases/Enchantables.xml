@@ -4,6 +4,9 @@
 	<ThingDef Name="BaseEnchantable" Abstract="True">
 		<thingClass>ThingWithComps</thingClass>
 		<category>Item</category>
+		<thingCategories>
+			<li>Enchantables</li>
+		</thingCategories>
 		<selectable>true</selectable>
 		<useHitPoints>true</useHitPoints>
 		<graphicData>

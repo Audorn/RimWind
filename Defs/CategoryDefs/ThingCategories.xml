@@ -2,6 +2,7 @@
 
 <Defs>
 
+	<!-- Alchemy -->
 	<ThingCategoryDef>
 		<defName>Alchemy</defName>
 		<label>Alchemy</label>
@@ -38,6 +39,23 @@
 		<defName>AlchemyDaedra</defName>
 		<label>Daedra</label>
 		<parent>Alchemy</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- Enchanting -->
+	<ThingCategoryDef>
+		<defName>Enchantables</defName>
+		<label>Enchantables</label>
+		<parent>Root</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>Enchanted</defName>
+		<label>Enchanted</label>
+		<parent>Root</parent>
 		<resourceReadoutRoot></resourceReadoutRoot>
 		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
 	</ThingCategoryDef>

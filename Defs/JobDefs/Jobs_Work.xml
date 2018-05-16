@@ -8,4 +8,10 @@
 		<reportString>harvesting reagents from TargetA.</reportString>
 	</JobDef>
   
+	<JobDef>
+		<defName>CarryToEnchantingBuilding</defName>
+		<driverClass>RimTES.JobDriver_CarryToEnchantingBuilding</driverClass>
+		<reportString>storing an item in TargetA.</reportString>
+	</JobDef>
+
 </Defs>

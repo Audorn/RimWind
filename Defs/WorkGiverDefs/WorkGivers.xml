@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<!--
-		ReagentHarvest
-		DoBillsAlchemy
--->
-
 <Defs>
+
+	<WorkGiverDef>
+		<defName>CarryToEnchantBuilding</defName>
+		<label>store item for enchanting</label>
+		<giverClass>RimTES.WorkGiver_CarryToEnchantBuilding</giverClass>
+		<workType>Hauling</workType>
+		<verb>store item for enchanting at</verb>
+		<gerund>storing item for enchanting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 
 	<WorkGiverDef>
 		<defName>ReagentHarvest</defName>
