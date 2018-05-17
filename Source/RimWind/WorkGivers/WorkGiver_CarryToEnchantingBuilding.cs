@@ -39,7 +39,9 @@ namespace RimTES
         public override Job JobOnThing(Pawn pawn, Thing thing, bool forced = false)
         {
             if (!HaulAIUtility.PawnCanAutomaticallyHaul(pawn, thing, forced)
-                || !pawn.CanReserve(thing, 1, -1, null, forced || thing.IsForbidden(pawn) || thing.IsBurning()))
+                || !pawn.CanReserve(thing, 1, -1, null, forced) 
+                || thing.IsForbidden(pawn) 
+                || thing.IsBurning())
                 return null;
 
             if (pawn.Map.designationManager.DesignationOn(thing, DefDatabase<DesignationDef>.GetNamed("HaulToEnchant")) == null)
@@ -59,7 +61,7 @@ namespace RimTES
                         continue;
                 }
 
-                if (!pawn.CanReserveAndReach(building.Position, PathEndMode.Touch, pawn.NormalMaxDanger(), 1, -1, null, false))
+                if (!pawn.CanReserveAndReach(building, PathEndMode.Touch, pawn.NormalMaxDanger(), 1, -1, null, false))
                     return null;
 
                 Job job = HaulAIUtility_Helper.HaulToBuildingJob(pawn, thing, building, quantity);
