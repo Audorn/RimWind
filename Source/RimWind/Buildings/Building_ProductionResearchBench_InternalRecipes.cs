@@ -103,7 +103,7 @@ namespace RimTES
             if (!text.NullOrEmpty())
                 text += "\n";
 
-            return text + "BuildingContains".Translate() + ": " + str;
+            return text + "EnchantingBuildingContains".Translate() + ": " + str;
         }
 
         public override void ExposeData()

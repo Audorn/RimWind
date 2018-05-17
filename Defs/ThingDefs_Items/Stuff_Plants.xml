@@ -132,6 +132,15 @@
 				<cooldownTime>2.2</cooldownTime>
 			</li>
 		</tools>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="RimTES.CompProperties_StorableByDesignation">
+				<designationDef>HaulToEnchant</designationDef>
+				<defaultLabelKey>TakeToBeEnchantedLabel</defaultLabelKey>
+				<defaultDescriptionKey>TakeToBeEnchantedDesc</defaultDescriptionKey>
+				<iconPath>UI/Commands/TryReconnect</iconPath>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ResourceVerbBase">

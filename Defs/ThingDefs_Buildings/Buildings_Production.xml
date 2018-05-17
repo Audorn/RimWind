@@ -281,7 +281,7 @@
 						<capacity>2</capacity>
 					</li>
 					<li>
-						<thingDef>Steel</thingDef>
+						<thingDef>WoodLog</thingDef>
 						<capacity>10</capacity>
 					</li>
 				</itemFilterSettings>

@@ -65,33 +65,5 @@ namespace RimTES
 
             return enchantmentInfo;
         }
-
-        public override IEnumerable<Gizmo> CompGetGizmosExtra()
-        {
-            foreach (Gizmo c in base.CompGetGizmosExtra())
-                yield return c;
-
-            Designation existingDesignation = Find.VisibleMap.designationManager.DesignationOn(parent, DefDatabase<DesignationDef>.GetNamed("HaulToEnchant"));
-
-            if (existingDesignation == null)
-            {
-                yield return new Command_Action
-                {
-                    action = delegate
-                    {
-                        SoundDefOf.TickTiny.PlayOneShotOnCamera(null);
-                        Map map = Find.VisibleMap;
-
-                        DesignationDef designation = DefDatabase<DesignationDef>.GetNamed("HaulToEnchant");
-                        map.designationManager.RemoveAllDesignationsOn(parent, false);
-                        map.designationManager.AddDesignation(new Designation(parent, designation));
-                    },
-                    hotKey = KeyBindingDefOf.Misc1,
-                    defaultDesc = "TakeToBeEnchantedDesc".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("UI/Commands/TryReconnect", true),
-                    defaultLabel = "TakeToBeEnchantedLabel".Translate()
-                };
-            }
-        }
     }
 }

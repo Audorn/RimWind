@@ -74,6 +74,8 @@
     <Compile Include="Comps\CompProperties_Enchantment.cs" />
     <Compile Include="Comps\CompProperties_HarvestableReagent.cs" />
     <Compile Include="Comps\CompProperties_InnerContainerItemFilter.cs" />
+    <Compile Include="Comps\CompProperties_StorableByDesignation.cs" />
+    <Compile Include="Comps\CompStorableByDesignation.cs" />
     <Compile Include="Designators\Designator_HarvestReagent.cs" />
     <Compile Include="JobDrivers\JobDriver_HaulToBuilding.cs" />
     <Compile Include="UI\ITab_RBills.cs" />

@@ -9,5 +9,6 @@
 	<EnchantingLimit>Enchanting Value Limit</EnchantingLimit>
 	<CumulativeEnchantmentValue>Current Enchantment Value</CumulativeEnchantmentValue>
 	<CurrentSoulEnergy>Current Soul Energy</CurrentSoulEnergy>
+	<EnchantingBuildingContains>Available For Enchanting</EnchantingBuildingContains>
 
 </LanguageData>
