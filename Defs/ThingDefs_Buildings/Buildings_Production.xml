@@ -278,7 +278,7 @@
 				<itemFilterSettings>
 					<li>
 						<thingCategoryDef>Enchantables</thingCategoryDef>
-						<capacity>3</capacity>
+						<capacity>2</capacity>
 					</li>
 					<li>
 						<thingDef>Steel</thingDef>

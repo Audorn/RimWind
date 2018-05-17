@@ -9,10 +9,21 @@ using UnityEngine;
 
 namespace RimTES
 {
-    public class WorkGiver_CarryToEnchantBuilding : WorkGiver_Scanner
+    public class WorkGiver_HaulToEnchantBuilding : WorkGiver_Scanner
     {
+        private static string NoEnchantingBuildingsWithSufficientStorageFoundTrans;
+        private static string NoEnchantableItemsAreDesignatedForStorageTrans;
+
         public override PathEndMode PathEndMode { get { return PathEndMode.Touch; } }
         public override Danger MaxPathDanger(Pawn pawn) { return Danger.Deadly; }
+
+        public WorkGiver_HaulToEnchantBuilding()
+        {
+            if (NoEnchantableItemsAreDesignatedForStorageTrans == null)
+                NoEnchantableItemsAreDesignatedForStorageTrans = "NoEnchantableItemsAreDesignatedForStorage".Translate();
+            if (NoEnchantingBuildingsWithSufficientStorageFoundTrans == null)
+                NoEnchantingBuildingsWithSufficientStorageFoundTrans = "NoEnchantingBuildingsWithSufficientStorageFound".Translate();
+        }
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
@@ -20,66 +31,43 @@ namespace RimTES
             for (int i = 0; i < desList.Count; i++)
             {
                 Designation des = desList[i];
-                if (des.def == DefDatabase<DesignationDef>.GetNamed("TakeToEnchant"))
+                if (des.def == DefDatabase<DesignationDef>.GetNamed("HaulToEnchant"))
                     yield return des.target.Thing;
             }
         }
 
-        public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+        public override Job JobOnThing(Pawn pawn, Thing thing, bool forced = false)
         {
-            if (pawn.Map.designationManager.DesignationOn(t, DefDatabase<DesignationDef>.GetNamed("TakeToEnchant")) == null)
-                return false;
-
-            List<Building> buildings = pawn.Map.listerBuildings.allBuildingsColonist;
-            foreach (Building building in buildings)
-            {
-                if (building.GetComp<CompInnerContainerItemFilter>() != null)
-                {
-                    Building_ProductionResearchBench_InternalRecipes b = (Building_ProductionResearchBench_InternalRecipes)building;
-                    CompInnerContainerItemFilter filter = b.GetComp<CompInnerContainerItemFilter>();
-                    if (filter != null)
-                    {
-                        int quantity = filter.AcceptsHowMany(t);
-                        if (quantity <= 0)
-                            break;
-
-                        LocalTargetInfo target = t;
-                        return pawn.CanReserve(target, 1, -1, null, forced);
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
-        {
-            if (!HaulAIUtility.PawnCanAutomaticallyHaul(pawn, t, forced))
+            if (!HaulAIUtility.PawnCanAutomaticallyHaul(pawn, thing, forced)
+                || !pawn.CanReserve(thing, 1, -1, null, forced || thing.IsForbidden(pawn) || thing.IsBurning()))
                 return null;
 
-            List<Building> buildings = pawn.Map.listerBuildings.allBuildingsColonist;
-            foreach (Building building in buildings)
-            {
-                if (building.GetComp<CompInnerContainerItemFilter>() != null)
-                {
-                    Building_ProductionResearchBench_InternalRecipes b = (Building_ProductionResearchBench_InternalRecipes)building;
-                    CompInnerContainerItemFilter filter = b.GetComp<CompInnerContainerItemFilter>();
-                    if (filter != null)
-                    {
-                        int quantity = filter.AcceptsHowMany(t);
-                        if (quantity <= 0)
-                            break;
+            if (pawn.Map.designationManager.DesignationOn(thing, DefDatabase<DesignationDef>.GetNamed("HaulToEnchant")) == null)
+                return null;
 
-                        Job job = new Job(DefDatabase<JobDef>.GetNamed("CarryToEnchantingBuilding"), t, b);
-                        job.count = quantity;
-                        job.haulOpportunisticDuplicates = true;
-                        job.haulMode = HaulMode.ToContainer;
-                        return job;
-                    }
+            foreach (Building building in pawn.Map.listerBuildings.allBuildingsColonist)
+            {
+                if (!(building is Building_ProductionResearchBench_InternalRecipes))
+                    continue;
+
+                CompInnerContainerItemFilter filter = building.GetComp<CompInnerContainerItemFilter>();
+                int quantity = -1;
+                if (filter != null)
+                {
+                    quantity = filter.AcceptsHowMany(thing);
+                    if (quantity <= 0)
+                        continue;
                 }
+
+                if (!pawn.CanReserveAndReach(building.Position, PathEndMode.Touch, pawn.NormalMaxDanger(), 1, -1, null, false))
+                    return null;
+
+                Job job = HaulAIUtility_Helper.HaulToBuildingJob(pawn, thing, building, quantity);
+                if (job != null)
+                    return job;
             }
 
-            JobFailReason.Is("NoEnchantingBuildingsWithSufficientStorageFound".Translate());
+            JobFailReason.Is(NoEnchantingBuildingsWithSufficientStorageFoundTrans);
             return null;
         }
     }

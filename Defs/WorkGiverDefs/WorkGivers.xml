@@ -3,9 +3,9 @@
 <Defs>
 
 	<WorkGiverDef>
-		<defName>CarryToEnchantBuilding</defName>
+		<defName>HaulToEnchantBuilding</defName>
 		<label>store item for enchanting</label>
-		<giverClass>RimTES.WorkGiver_CarryToEnchantBuilding</giverClass>
+		<giverClass>RimTES.WorkGiver_HaulToEnchantBuilding</giverClass>
 		<workType>Hauling</workType>
 		<verb>store item for enchanting at</verb>
 		<gerund>storing item for enchanting at</gerund>

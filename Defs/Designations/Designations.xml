@@ -9,7 +9,7 @@
 	</DesignationDef>
 	
 	<DesignationDef>
-		<defName>TakeToEnchant</defName>
+		<defName>HaulToEnchant</defName>
 		<texturePath>Designations/HarvestPlant</texturePath>
 		<targetType>Thing</targetType>
 	</DesignationDef>

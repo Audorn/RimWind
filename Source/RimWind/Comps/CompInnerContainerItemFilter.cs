@@ -32,5 +32,27 @@ namespace RimTES
             }
             return 0;
         }
+
+        public void RecordAccepted(Thing thing, int quantity)
+        {
+            foreach (ItemFilterSetting filterSetting in ItemFilterSettings)
+            {
+                if (filterSetting.thingDef != null && filterSetting.thingDef == thing.def)
+                    filterSetting.stored += quantity;
+                else if (filterSetting.thingCategoryDef != null)
+                {
+                    foreach (ThingCategoryDef thingCategoryDef in thing.def.thingCategories)
+                    {
+                        if (filterSetting.thingCategoryDef == thingCategoryDef)
+                            filterSetting.stored += quantity;
+                    }
+                }
+            }
+        }
+
+        public void RecordRemoved(Thing thing, int quantity)
+        {
+
+        }
     }
 }

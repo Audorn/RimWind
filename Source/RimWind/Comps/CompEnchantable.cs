@@ -71,7 +71,7 @@ namespace RimTES
             foreach (Gizmo c in base.CompGetGizmosExtra())
                 yield return c;
 
-            Designation existingDesignation = Find.VisibleMap.designationManager.DesignationOn(parent, DefDatabase<DesignationDef>.GetNamed("TakeToEnchant"));
+            Designation existingDesignation = Find.VisibleMap.designationManager.DesignationOn(parent, DefDatabase<DesignationDef>.GetNamed("HaulToEnchant"));
 
             if (existingDesignation == null)
             {
@@ -82,7 +82,7 @@ namespace RimTES
                         SoundDefOf.TickTiny.PlayOneShotOnCamera(null);
                         Map map = Find.VisibleMap;
 
-                        DesignationDef designation = DefDatabase<DesignationDef>.GetNamed("TakeToEnchant");
+                        DesignationDef designation = DefDatabase<DesignationDef>.GetNamed("HaulToEnchant");
                         map.designationManager.RemoveAllDesignationsOn(parent, false);
                         map.designationManager.AddDesignation(new Designation(parent, designation));
                     },

@@ -47,16 +47,22 @@ namespace RimTES
             if (!Accepts(thing))
                 return false;
 
+            int quantity = 0;
+            if (itemFilterComp == null || itemFilterComp.NotSet)
+                quantity = thing.stackCount;
+            else
+                quantity = Mathf.Min(itemFilterComp.AcceptsHowMany(thing), thing.stackCount);
+
             int wasAdded;
             if (thing.holdingOwner != null)
-            {
-                wasAdded = thing.holdingOwner.TryTransferToContainer(thing, innerContainer, Mathf.Min(thing.stackCount, itemFilterComp.AcceptsHowMany(thing)), true);
-            }
+                wasAdded = thing.holdingOwner.TryTransferToContainer(thing, innerContainer, quantity, true);
             else
-                wasAdded = innerContainer.TryAdd(thing, Mathf.Min(thing.stackCount, itemFilterComp.AcceptsHowMany(thing)), true);
+                wasAdded = innerContainer.TryAdd(thing, quantity, true);
 
             if (wasAdded > 0)
             {
+                itemFilterComp.RecordAccepted(thing, quantity);
+
                 if (thing.Faction != null && thing.Faction.IsPlayer)
                     contentsKnown = true;
                 return true;
@@ -116,6 +122,7 @@ namespace RimTES
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
+            itemFilterComp = GetComp<CompInnerContainerItemFilter>();
             if (Faction != null && Faction.IsPlayer)
                 contentsKnown = true;
         }

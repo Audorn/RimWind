@@ -75,7 +75,7 @@
     <Compile Include="Comps\CompProperties_HarvestableReagent.cs" />
     <Compile Include="Comps\CompProperties_InnerContainerItemFilter.cs" />
     <Compile Include="Designators\Designator_HarvestReagent.cs" />
-    <Compile Include="JobDrivers\JobDriver_CarryToEnchantingBuilding.cs" />
+    <Compile Include="JobDrivers\JobDriver_HaulToBuilding.cs" />
     <Compile Include="UI\ITab_RBills.cs" />
     <Compile Include="JobDrivers\JobDriver_HarvestReagent.cs" />
     <Compile Include="UI\MainTabWindow_SoulGems.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="PawnCapacities\PawnCapacityWorker_Arcane.cs" />
     <Compile Include="PawnCapacities\PawnCapacityWorker_Mana.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\HaulAIUtility_Helper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
