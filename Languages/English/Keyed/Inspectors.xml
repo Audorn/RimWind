@@ -6,9 +6,11 @@
 	<Reagent>Reagent</Reagent>
 	
 	<!-- Enchantment -->
+	<TabBillsEnchant>Enchant</TabBillsEnchant>
 	<EnchantingLimit>Enchanting Value Limit</EnchantingLimit>
 	<CumulativeEnchantmentValue>Current Enchantment Value</CumulativeEnchantmentValue>
 	<CurrentSoulEnergy>Current Soul Energy</CurrentSoulEnergy>
 	<EnchantingBuildingContains>Available For Enchanting</EnchantingBuildingContains>
+	<EnchantableInstructionsTrans>Enchantable objects such as weapons, clothing and armor, and jewellery, can be designated for enchanting and hauled by a pawn capable of hauling.</EnchantableInstructionsTrans>
 
 </LanguageData>

@@ -7,6 +7,8 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
+// Error: Only the first building ever built is seen as viable.
+
 namespace RimTES
 {
     public class WorkGiver_HaulToEnchantBuilding : WorkGiver_Scanner

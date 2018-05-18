@@ -19,12 +19,7 @@ namespace RimTES
         private static readonly Vector2 WinSize = new Vector2(420f, 480f);
 
         protected Building_ProductionResearchBench SelTable
-        {
-            get
-            {
-                return (Building_ProductionResearchBench)SelThing;
-            }
-        }
+        { get { return (Building_ProductionResearchBench)SelThing; } }
 
         public ITab_RBills()
         {

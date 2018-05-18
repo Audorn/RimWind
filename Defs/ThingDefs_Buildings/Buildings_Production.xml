@@ -242,9 +242,9 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<costList>
+		<!--<costList>
 			<WoodLog>50</WoodLog>
-		</costList>
+		</costList>-->
 		<stuffCategories>
 			<li>Metallic</li>
 			<li>Woody</li>
@@ -254,7 +254,7 @@
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<WorkToBuild>250</WorkToBuild><!--2500-->
+			<WorkToBuild>0</WorkToBuild><!--2500-->
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-5</Cleanliness>
@@ -266,10 +266,9 @@
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
-		<!--
 		<inspectorTabs>
-			<li>RimTES.ITab_RBills_Enchanting</li>
-		</inspectorTabs>-->
+			<li>RimTES.ITab_Bills_Enchant</li>
+		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
@@ -278,7 +277,7 @@
 				<itemFilterSettings>
 					<li>
 						<thingCategoryDef>Enchantables</thingCategoryDef>
-						<capacity>2</capacity>
+						<capacity>3</capacity>
 					</li>
 					<li>
 						<thingDef>WoodLog</thingDef>

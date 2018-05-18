@@ -20,7 +20,7 @@ namespace RimTES
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef", null, false);
+            Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultDescriptionKey, "defaultDescriptionKey", "", false);
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);

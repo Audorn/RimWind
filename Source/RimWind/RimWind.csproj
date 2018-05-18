@@ -53,6 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bills\Bill_Production_Enchant.cs" />
+    <Compile Include="Bills\Enchantment.cs" />
+    <Compile Include="Bills\EnchantmentTask.cs" />
+    <Compile Include="Bills\IBillGiverWithTickAction_Enchant.cs" />
     <Compile Include="BiomeWorkers\BiomeWorker_AscadianForest.cs" />
     <Compile Include="BiomeWorkers\BiomeWorker_AscadianSwamp.cs" />
     <Compile Include="BiomeWorkers\BiomeWorker_Ashlands.cs" />
@@ -64,6 +68,9 @@
     <Compile Include="BiomeWorkers\BiomeWorker_SolstheimTundra.cs" />
     <Compile Include="BiomeWorkers\BiomeWorker_Sheogorad.cs" />
     <Compile Include="BiomeWorkers\BiomeWorker_SolstheimForest.cs" />
+    <Compile Include="Bills\IBillGiver_Enchant.cs" />
+    <Compile Include="Bills\BillStack_Enchant.cs" />
+    <Compile Include="Bills\Bill_Enchant.cs" />
     <Compile Include="Buildings\Building_ProductionResearchBench_InternalRecipes.cs" />
     <Compile Include="Buildings\Building_ProductionResearchBench.cs" />
     <Compile Include="Comps\CompEnchantment.cs" />
@@ -77,7 +84,11 @@
     <Compile Include="Comps\CompProperties_StorableByDesignation.cs" />
     <Compile Include="Comps\CompStorableByDesignation.cs" />
     <Compile Include="Designators\Designator_HarvestReagent.cs" />
+    <Compile Include="Extensions\Dialog_BillConfig_RimWind.cs" />
+    <Compile Include="Extensions\Dialog_InfoCard_RimWind.cs" />
+    <Compile Include="Extensions\Widgets_Extensions.cs" />
     <Compile Include="JobDrivers\JobDriver_HaulToBuilding.cs" />
+    <Compile Include="UI\ITab_Bills_Enchant.cs" />
     <Compile Include="UI\ITab_RBills.cs" />
     <Compile Include="JobDrivers\JobDriver_HarvestReagent.cs" />
     <Compile Include="UI\MainTabWindow_SoulGems.cs" />
@@ -86,6 +97,7 @@
     <Compile Include="UI\PawnColumnWorker_EmptyGems.cs" />
     <Compile Include="UI\PawnColumnWorker_QualityMaxPolicy.cs" />
     <Compile Include="UI\PawnColumnWorker_SoulReserveValue.cs" />
+    <Compile Include="Workers_Counters\EnchantWorker.cs" />
     <Compile Include="WorkGivers\WorkGiver_CarryToEnchantingBuilding.cs" />
     <Compile Include="WorkGivers\WorkGiver_HarvestReagents.cs" />
     <Compile Include="HarmonyPatches\Bootstrap.cs" />

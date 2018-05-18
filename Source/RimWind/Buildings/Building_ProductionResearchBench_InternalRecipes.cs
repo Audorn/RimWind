@@ -8,9 +8,12 @@ using RimWorld;
 
 namespace RimTES
 {
-    public class Building_ProductionResearchBench_InternalRecipes : Building_ResearchBench, IThingHolder
+    public class Building_ProductionResearchBench_InternalRecipes : Building_ResearchBench, IThingHolder, IBillGiver_Enchant, IBillGiverWithTickAction_Enchant
     {
         private CompInnerContainerItemFilter itemFilterComp;
+        private CompRefuelable refuelableComp;
+        private CompBreakdownable breakdownableComp;
+        private CompPowerTrader powerComp;
 
         protected ThingOwner innerContainer;
         protected bool contentsKnown;
@@ -19,9 +22,14 @@ namespace RimTES
         public Thing ContainedThing { get { return (innerContainer.Count != 0) ? innerContainer[0] : null; } }
         public void GetChildHolders(List<IThingHolder> outChildren) { ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings()); }
 
+        public BillStack_Enchant billStack;
+        public BillStack_Enchant BillStack { get { return billStack; } }
+        public IntVec3 BillInteractionCell { get { return InteractionCell; } }
+
         public Building_ProductionResearchBench_InternalRecipes()
         {
             innerContainer = new ThingOwner<Thing>(this, false, LookMode.Deep);
+            billStack = new BillStack_Enchant(this);
         }
 
         public override void Tick()
@@ -33,6 +41,21 @@ namespace RimTES
         {
             base.TickRare();
             innerContainer.ThingOwnerTickRare(true);
+        }
+
+        public bool CanWorkWithoutPower
+        {
+            get
+            {
+                return powerComp == null || def.building.unpoweredWorkTableWorkSpeedFactor > 0f;
+            }
+        }
+        public virtual bool UsableNow { get { return CanWorkWithoutPower || (powerComp != null && powerComp.PowerOn) || (refuelableComp == null || refuelableComp.HasFuel) && (breakdownableComp == null || !breakdownableComp.BrokenDown); } }
+        public bool CurrentlyUsableForBills() { Log.Error("testing"); return UsableNow; }
+        public virtual void UsedThisTick()
+        {
+            if (refuelableComp != null)
+                refuelableComp.Notify_UsedThisTick();
         }
 
         public virtual bool Accepts(Thing thing)
@@ -114,7 +137,8 @@ namespace RimTES
                 if (itemFilterComp == null)
                     itemFilterComp = GetComp<CompInnerContainerItemFilter>();
             }
-            Scribe_Deep.Look(ref itemFilterComp, "itemFilterComp", new object[] { this });
+            Scribe_Values.Look(ref itemFilterComp, "itemFilterComp", null, false);
+            Scribe_Deep.Look(ref billStack, "billStack", new object[] { this });
             Scribe_Deep.Look(ref innerContainer, "innerContainer", new object[] { this });
             Scribe_Values.Look(ref contentsKnown, "contentsKnown", false, false);
         }
@@ -123,6 +147,9 @@ namespace RimTES
         {
             base.SpawnSetup(map, respawningAfterLoad);
             itemFilterComp = GetComp<CompInnerContainerItemFilter>();
+            refuelableComp = GetComp<CompRefuelable>();
+            breakdownableComp = GetComp<CompBreakdownable>();
+            powerComp = GetComp<CompPowerTrader>();
             if (Faction != null && Faction.IsPlayer)
                 contentsKnown = true;
         }
