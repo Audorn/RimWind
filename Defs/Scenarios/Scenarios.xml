@@ -79,6 +79,16 @@
 				</li>
 				<li Class="ScenPart_StartingThing_Defined">
 					<def>StartingThing_Defined</def>
+					<thingDef>PettySoulGem</thingDef>
+					<count>11</count>
+				</li>
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
+					<thingDef>LesserSoulGem</thingDef>
+					<count>11</count>
+				</li>
+				<li Class="ScenPart_StartingThing_Defined">
+					<def>StartingThing_Defined</def>
 					<thingDef>EnchantableMeleeWeapon_Dagger</thingDef>
 					<stuff>Steel</stuff>
 				</li>

@@ -12,5 +12,9 @@
 	<CurrentSoulEnergy>Current Soul Energy</CurrentSoulEnergy>
 	<EnchantingBuildingContains>Available For Enchanting</EnchantingBuildingContains>
 	<EnchantableInstructionsTrans>Enchantable objects such as weapons, clothing and armor, and jewellery, can be designated for enchanting and hauled by a pawn capable of hauling.</EnchantableInstructionsTrans>
-
+	<MarkToEnchant>Enchant</MarkToEnchant>
+	<MagicalCapacity>Capacity</MagicalCapacity>
+	<EnchantableItemsLabel>Enchantable Items</EnchantableItemsLabel>
+	<SoulGemsInstructionsTrans>Soul gems are required to perform enchantments.  They can be designated for enchanting and hauled by a pawn capable of hauling.</SoulGemsInstructionsTrans>
+	<SoulGemsLabel>Soul Gems</SoulGemsLabel>
 </LanguageData>

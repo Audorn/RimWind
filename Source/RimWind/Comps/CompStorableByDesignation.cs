@@ -17,13 +17,66 @@ namespace RimTES
         public string DefaultDescriptionKey { get { return Props.defaultDescriptionKey; } }
         public string IconPath { get { return Props.iconPath; } }
 
-        public override void PostExposeData()
+        public bool inUseByBill = false;
+
+        private float iconSize = 32f;
+        private float enchantableLabelHeightMod = 5f;
+        private float soulGemLabelHeightMod = 5f;
+        private float soulGemWidth = 50f;
+
+        public Thing DoEnchantableInterface(Rect enchantableRect, Building_ProductionResearchBench_InternalRecipes building)
         {
-            base.PostExposeData();
-            Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultDescriptionKey, "defaultDescriptionKey", "", false);
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);
+            GUI.BeginGroup(enchantableRect);
+            Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.UpperLeft;
+            GUI.color = Color.white;
+
+            Widgets.Label(new Rect(0f, 0f, enchantableRect.width - 48f - 20f, enchantableRect.height + enchantableLabelHeightMod), parent.LabelCap);
+
+            Rect deleteRect = new Rect(enchantableRect.width - 24f, 0f, 24f, 24f);
+            if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, Color.white))
+                building.RemoveThing(parent);
+
+            Rect iconRect = new Rect(0f, 20f, iconSize, iconSize);
+            Widgets.ThingIcon(iconRect, parent);
+
+            CompEnchantable enchantableComp = parent.GetComp<CompEnchantable>();
+            Rect enchantMaxRect = new Rect(enchantableRect.x + 38f, 29f, 200f, 22f);
+            Widgets.Label(enchantMaxRect, "MagicalCapacity".Translate() + ": " + enchantableComp.EnchantingLimit.ToString());
+
+            Rect enchantRect = new Rect(enchantableRect.width - 100f, 29f, 100f, 22f);
+            if (Widgets.ButtonText(enchantRect, "MarkToEnchant".Translate(), true, true, true))
+                inUseByBill = true;
+
+            GUI.EndGroup();
+
+            if (Mouse.IsOver(iconRect))
+                return parent;
+
+            return null;
+        }
+
+        public Thing DoSoulGemInterface(Rect soulGemRect, Building_ProductionResearchBench_InternalRecipes building)
+        {
+            GUI.BeginGroup(soulGemRect);
+            Rect iconRect = new Rect(0f, 4f, iconSize, iconSize);
+            Widgets.ThingIcon(iconRect, parent);
+
+            Rect deleteRect = new Rect(soulGemRect.width - 24f, 0f, 24f, 24f);
+            if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, Color.white))
+                building.RemoveThing(parent);
+
+            Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.LowerCenter;
+            GUI.color = Color.white;
+            Widgets.Label(new Rect(0f, 0f, soulGemWidth, soulGemRect.height + soulGemLabelHeightMod), String.Format("{0:n0}", 80000));
+
+            GUI.EndGroup();
+
+            if (Mouse.IsOver(iconRect))
+                return parent;
+
+            return null;
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -51,6 +104,16 @@ namespace RimTES
                     defaultLabel = DefaultLabelKey.Translate()
                 };
             }
+        }
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
+            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);
+            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultDescriptionKey, "defaultDescriptionKey", "", false);
+            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);
+            Scribe_Values.Look(ref inUseByBill, "inUseByBill", false, false);
         }
     }
 }

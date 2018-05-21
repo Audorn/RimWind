@@ -60,4 +60,12 @@
 		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
 	</ThingCategoryDef>
 	
+	<ThingCategoryDef>
+		<defName>SoulGems</defName>
+		<label>Soul Gems</label>
+		<parent>Items</parent>
+		<resourceReadoutRoot></resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+	</ThingCategoryDef>
+	
 </Defs>

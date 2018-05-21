@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThingDef Name="BaseSoulGem" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<thingCategories>
+			<li>SoulGems</li>
+		</thingCategories>
+		<tradeTags>
+			<li>SoulGems</li>
+		</tradeTags>
+		<techLevel>Medieval</techLevel>
+		<category>Item</category>
+		<selectable>true</selectable>
+		<useHitPoints>true</useHitPoints>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>true</alwaysHaulable>
+		<tickerType>Never</tickerType>
+
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="RimTES.CompProperties_StorableByDesignation">
+				<designationDef>HaulToEnchant</designationDef>
+				<defaultLabelKey>TakeToBeEnchantedLabel</defaultLabelKey>
+				<defaultDescriptionKey>TakeToBeEnchantedDesc</defaultDescriptionKey>
+				<iconPath>UI/Commands/TryReconnect</iconPath>
+			</li>
+			<li Class="CompProperties_Usable">
+				<useJob>UseArtifact</useJob>
+				<useLabel>Activate</useLabel>
+			</li>
+			<li Class="CompProperties_UseEffect">
+				<compClass>CompUseEffect_Artifact</compClass>
+			</li>
+			<li Class="CompProperties_UseEffect">
+				<compClass>CompUseEffect_DestroySelf</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseSoulGem">
+		<defName>PettySoulGem</defName>
+		<label>Petty Soul Gem</label>
+		<description>Crystal that can house a soul.</description>
+		<graphicData>
+			<texPath>Things/Item/Artifact/PsychicInsanityLance</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<useHitPoints>true</useHitPoints>
+		
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Mass>0.8</Mass>
+			<MarketValue>100</MarketValue>
+		</statBases>
+		
+		<comps>
+			<li Class="CompProperties_Targetable">
+				<compClass>CompTargetable_SinglePawn</compClass>
+				<psychicSensitiveTargetsOnly>true</psychicSensitiveTargetsOnly>
+			</li>
+			<li>
+				<compClass>CompTargetEffect_Berserk</compClass>
+			</li>
+			<li>
+				<compClass>CompTargetEffect_GoodwillImpact</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseSoulGem">
+		<defName>LesserSoulGem</defName>
+		<label>Lesser Soul Gem</label>
+		<description>Crystal that can house a soul.</description>
+		<graphicData>
+			<texPath>Things/Item/Artifact/PsychicShockLance</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<useHitPoints>true</useHitPoints>
+		
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Mass>0.9</Mass>
+			<MarketValue>150</MarketValue>
+		</statBases>
+		
+		<comps>
+			<li Class="CompProperties_Targetable">
+				<compClass>CompTargetable_SinglePawn</compClass>
+				<psychicSensitiveTargetsOnly>true</psychicSensitiveTargetsOnly>
+			</li>
+			<li>
+				<compClass>CompTargetEffect_Berserk</compClass>
+			</li>
+			<li>
+				<compClass>CompTargetEffect_GoodwillImpact</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	
+</Defs>

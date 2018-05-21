@@ -280,7 +280,7 @@
 						<capacity>3</capacity>
 					</li>
 					<li>
-						<thingDef>WoodLog</thingDef>
+						<thingCategoryDef>SoulGems</thingCategoryDef>
 						<capacity>10</capacity>
 					</li>
 				</itemFilterSettings>

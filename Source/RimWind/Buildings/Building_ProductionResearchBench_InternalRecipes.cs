@@ -82,16 +82,24 @@ namespace RimTES
             else
                 wasAdded = innerContainer.TryAdd(thing, quantity, true);
 
-            if (wasAdded > 0)
+            if (wasAdded >= 0)
             {
-                itemFilterComp.RecordAccepted(thing, quantity);
-
                 if (thing.Faction != null && thing.Faction.IsPlayer)
                     contentsKnown = true;
                 return true;
             }
 
             return false;
+        }
+
+        public virtual void RemoveThing(Thing thing)
+        {
+            innerContainer.TryDrop(thing, ThingPlaceMode.Near, 1, out thing, null);
+        }
+        public virtual void BeginEnchantingThing(Thing thing)
+        {
+            int index = innerContainer.IndexOf(thing);
+            innerContainer.ElementAt(index).TryGetComp<CompStorableByDesignation>().inUseByBill = true;
         }
 
         public virtual void EjectContents()

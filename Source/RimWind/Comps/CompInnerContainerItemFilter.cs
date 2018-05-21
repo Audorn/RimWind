@@ -19,40 +19,57 @@ namespace RimTES
             foreach (ItemFilterSetting filterSetting in ItemFilterSettings)
             {
                 if (filterSetting.thingDef != null && filterSetting.thingDef == thing.def)
-                    return filterSetting.capacity - filterSetting.stored;
+                    return filterSetting.capacity - HasHowMany(thing.def);
 
                 if (filterSetting.thingCategoryDef != null)
                 {
                     foreach (ThingCategoryDef thingCategoryDef in thing.def.thingCategories)
                     {
                         if (filterSetting.thingCategoryDef == thingCategoryDef)
-                            return filterSetting.capacity - filterSetting.stored;
+                            return filterSetting.capacity - HasHowMany(thingCategoryDef);
                     }
                 }
             }
             return 0;
         }
 
-        public void RecordAccepted(Thing thing, int quantity)
+        public int HasHowMany(ThingDef thingDef)
         {
-            foreach (ItemFilterSetting filterSetting in ItemFilterSettings)
-            {
-                if (filterSetting.thingDef != null && filterSetting.thingDef == thing.def)
-                    filterSetting.stored += quantity;
-                else if (filterSetting.thingCategoryDef != null)
-                {
-                    foreach (ThingCategoryDef thingCategoryDef in thing.def.thingCategories)
-                    {
-                        if (filterSetting.thingCategoryDef == thingCategoryDef)
-                            filterSetting.stored += quantity;
-                    }
-                }
-            }
+            ThingOwner innerContainer = parent.TryGetInnerInteractableThingOwner();
+            if (innerContainer == null)
+                return 0;
+
+            int quantity = 0;
+            foreach (Thing t in innerContainer)
+                quantity += (t.def == thingDef) ? t.stackCount : 0;
+
+            return quantity;
+        }
+
+        public int HasHowMany(ThingCategoryDef thingCategoryDef)
+        {
+            ThingOwner innerContainer = parent.TryGetInnerInteractableThingOwner();
+            if (innerContainer == null)
+                return 0;
+
+            int quantity = 0;
+            foreach (Thing t in innerContainer)
+                foreach (ThingCategoryDef tCategoryDef in t.def.thingCategories)
+                        quantity += (thingCategoryDef == tCategoryDef) ? t.stackCount : 0;
+
+            return quantity;
         }
 
         public void RecordRemoved(Thing thing, int quantity)
         {
 
         }
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            Scribe_Collections.Look(ref ((CompProperties_InnerContainerItemFilter)props).itemFilterSettings, "itemFilterSettings", LookMode.Deep, false);
+        }
+
     }
 }

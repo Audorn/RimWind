@@ -21,14 +21,12 @@ namespace RimTES
         public ThingDef thingDef = null;
         public ThingCategoryDef thingCategoryDef = null;
         public int capacity = 1;
-        public int stored = 0;
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref thingDef, "thingDef", null, false);
-            Scribe_Values.Look(ref thingCategoryDef, "thingCategoryDef", null, false);
+            Scribe_Defs.Look(ref thingDef, "thingDef");
+            Scribe_Defs.Look(ref thingCategoryDef, "thingCategoryDef");
             Scribe_Values.Look(ref capacity, "capacity", 1, false);
-            Scribe_Values.Look(ref stored, "stored", 0, false);
         }
     }
 }

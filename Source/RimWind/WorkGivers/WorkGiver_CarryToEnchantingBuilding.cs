@@ -56,15 +56,15 @@ namespace RimTES
 
                 CompInnerContainerItemFilter filter = building.GetComp<CompInnerContainerItemFilter>();
                 int quantity = -1;
-                if (filter != null)
-                {
-                    quantity = filter.AcceptsHowMany(thing);
-                    if (quantity <= 0)
-                        continue;
-                }
+                if (filter == null)
+                    continue;
+
+                quantity = filter.AcceptsHowMany(thing);
+                if (quantity <= 0)
+                    continue;
 
                 if (!pawn.CanReserveAndReach(building, PathEndMode.Touch, pawn.NormalMaxDanger(), 1, -1, null, false))
-                    return null;
+                    continue;
 
                 Job job = HaulAIUtility_Helper.HaulToBuildingJob(pawn, thing, building, quantity);
                 if (job != null)
