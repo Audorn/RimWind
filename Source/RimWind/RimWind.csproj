@@ -35,8 +35,76 @@
     <Reference Include="0Harmony">
       <HintPath>C:\Users\Jeremy\Desktop\Harmony-master\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="0JecsTools">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\0JecsTools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AbilityUser">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUser.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AbilityUserAI">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUserAI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AlienRace">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\839005762\Assemblies\AlienRace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompActivatableEffect">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompActivatableEffect.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompAnimated">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompAnimated.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompDeflector">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompDeflector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompDelayedSpawner">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompDelayedSpawner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompExtraSounds">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompExtraSounds.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompInstalledPart">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompInstalledPart.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompLumbering">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompLumbering.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompOverlays">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompOverlays.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompOversizedWeapon">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompOversizedWeapon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompSlotLoadable">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompSlotLoadable.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompToggleDef">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompToggleDef.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CompVehicle">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompVehicle.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PawnShields">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\PawnShields.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,6 +121,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abilities\Ability.cs" />
+    <Compile Include="Abilities\AbilityCategory.cs" />
+    <Compile Include="Abilities\AbilityCategoryDef.cs" />
+    <Compile Include="Abilities\AbilityData.cs" />
+    <Compile Include="Abilities\AbilityDef.cs" />
+    <Compile Include="Abilities\CompProperties_AbilityHolder.cs" />
+    <Compile Include="Abilities\CompAbilityHolder.cs" />
+    <Compile Include="Abilities\AbilityMaker.cs" />
     <Compile Include="Bills\Bill_Production_Enchant.cs" />
     <Compile Include="Bills\Enchantment.cs" />
     <Compile Include="Bills\EnchantmentTask.cs" />
@@ -88,6 +164,7 @@
     <Compile Include="Extensions\Dialog_InfoCard_RimWind.cs" />
     <Compile Include="Extensions\Widgets_Extensions.cs" />
     <Compile Include="JobDrivers\JobDriver_HaulToBuilding.cs" />
+    <Compile Include="RimTESDefOf.cs" />
     <Compile Include="UI\ITab_Bills_Enchant.cs" />
     <Compile Include="UI\ITab_RBills.cs" />
     <Compile Include="JobDrivers\JobDriver_HarvestReagent.cs" />
@@ -113,5 +190,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\HaulAIUtility_Helper.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

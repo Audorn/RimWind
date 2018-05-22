@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<RimTES.AbilityCategoryDef>
+		<defName>Magicka_Destruction</defName>
+		<label>destruction</label>
+		<description>Magical school of destruction.</description>
+	</RimTES.AbilityCategoryDef>
+
+	<RimTES.AbilityDef>
+		<defName>FlameTouch</defName>
+		<label>flame touch</label>
+		<description>Hot fingers.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+	
+</Defs>
