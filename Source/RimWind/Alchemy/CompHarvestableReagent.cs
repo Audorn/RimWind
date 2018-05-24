@@ -13,13 +13,8 @@ namespace RimTES
     {
 
         private float growth = Rand.Range(0f, 0.8f);
-        public CompProperties_HarvestableReagent Props
-        {
-            get
-            {
-                return (CompProperties_HarvestableReagent)props;
-            }
-        }
+        public CompProperties_HarvestableReagent Props { get { return (CompProperties_HarvestableReagent)props; } }
+
         public bool HarvestableNow { get { return Growth > HarvestMinGrowth; } }
         public int HarvestYield { get { return Props.harvestYield; } }
         public bool HarvestDestroys { get { return Props.harvestDestroys; } }

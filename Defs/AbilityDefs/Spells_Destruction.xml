@@ -9,12 +9,174 @@
 	</RimTES.AbilityCategoryDef>
 
 	<RimTES.AbilityDef>
-		<defName>FlameTouch</defName>
+		<defName>BurningTouch</defName>
 		<label>flame touch</label>
 		<description>Hot fingers.</description>
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
 	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>ColdTouch</defName>
+		<label>cold touch</label>
+		<description>Cold fingers.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>CorrodeArmor</defName>
+		<label>corrode armor</label>
+		<description>Corrosive fingers.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>CurseOfWeakness</defName>
+		<label>curse of weakness</label>
+		<description>Curse of weakness.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DamageAgility</defName>
+		<label>damage agility</label>
+		<description>Damage agility.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DamageEndurance</defName>
+		<label>damage endurance</label>
+		<description>Damage Endurance.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DamageLuck</defName>
+		<label>damage luck</label>
+		<description>Damage luck.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DrainAgility</defName>
+		<label>drain agility</label>
+		<description>Drain agility.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DrainEndurance</defName>
+		<label>drain endurance</label>
+		<description>Drain endurance.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DrainLuck</defName>
+		<label>drain luck</label>
+		<description>Drain luck.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>DrainSkillLightArmor</defName>
+		<label>drain skill: light armor</label>
+		<description>Drain skill: light armor.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>EntropicTouch</defName>
+		<label>entropic touch</label>
+		<description>Entropic touch.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>Flare</defName>
+		<label>flare</label>
+		<description>Flare.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>MinorEnervation</defName>
+		<label>minor enervation</label>
+		<description>Minor enervation.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
 	
+	<RimTES.AbilityDef>
+		<defName>MinorWound</defName>
+		<label>minor wound</label>
+		<description>Minor wound.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>ShockingTouch</defName>
+		<label>shocking touch</label>
+		<description>Shocking touch.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>Snowball</defName>
+		<label>snowball</label>
+		<description>Snowball.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>Spark</defName>
+		<label>spark</label>
+		<description>Spark.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
+	<RimTES.AbilityDef>
+		<defName>WeakFireball</defName>
+		<label>weak fireball</label>
+		<description>Weak fireball.</description>
+		<abilityCategoryDefs>
+			<li>Magicka_Destruction</li>
+		</abilityCategoryDefs>
+	</RimTES.AbilityDef>
+
 </Defs>

@@ -11,7 +11,7 @@ namespace RimTES
     [DefOf]
     public static class RimTESDefOf
     {
-        public static AbilityDef FlameTouch;
+        public static AbilityDef BurningTouch;
         
     }
 }

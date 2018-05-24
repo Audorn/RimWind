@@ -6,10 +6,90 @@
         <defName>DunmerRace</defName>
         <label>dunmer</label>
         <description>Dark elf of Morrowind.</description>
+		
         <comps>
+			<li Class="RimTES.CompProperties_CharacterClass">
+				<factions>
+					<li>
+						<factionDefs>
+							<li>HouseHlaalu</li>
+							<li>PlayerHouseHlaalu</li>
+						</factionDefs>
+						<characterClasses>
+							<li>
+								<characterClassDef>Acrobat</characterClassDef>
+								<chance>30</chance>
+							</li>
+							<li>
+								<characterClassDef>Agent</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Archer</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Assassin</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Barbarian</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Bard</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Battlemage</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Crusader</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Healer</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Knight</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Mage</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Monk</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Nightblade</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Pilgrim</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Rogue</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Scout</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Sorcerer</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Spellsword</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Thief</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Warrior</characterClassDef>
+							</li>
+							<li>
+								<characterClassDef>Witchhunter</characterClassDef>
+							</li>
+						</characterClasses>
+					</li>
+				</factions>
+			</li>
             <li Class="RimTES.CompProperties_AbilityHolder">
+				<!-- Ability chance per class per faction -->
+				<!-- Subcategory chance per class per faction -->
+				<!-- Category chance per class per faction -->
 				<types>
-					<li Class="RimTES.AbilityHolderTypeChance">
+					<li>
 						<abilityCategoryDef>Magicka_Destruction</abilityCategoryDef>
 					</li>
 				</types>
@@ -18,7 +98,12 @@
 				<defaultDescriptionKey>TakeToBeEnchantedDesc</defaultDescriptionKey>
 				<iconPath>UI/Commands/TryReconnect</iconPath>
 			</li>
+			<li Class="RimTES.CompProperties_Vampirism">
+			</li>
+			<li Class="RimTES.CompProperties_Therianthropy">
+			</li>
         </comps>
+		
 		<alienRace>
 			<generalSettings>
 				<maleGenderProbability>0.4</maleGenderProbability>

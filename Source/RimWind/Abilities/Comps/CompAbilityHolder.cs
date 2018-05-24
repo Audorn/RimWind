@@ -22,9 +22,9 @@ namespace RimTES
         {
             base.PostSpawnSetup(respawningAfterLoad);
 
-            Ability ability = AbilityMaker.MakeAbility(RimTESDefOf.FlameTouch);
-            if (TryAddAbility(ability))
-                Log.Warning("added " + ability.ToString() + " to " + parent.LabelCap);
+            //Ability ability = AbilityMaker.MakeAbility(RimTESDefOf.FlameTouch);
+            //if (TryAddAbility(ability))
+            //    Log.Warning("added " + ability.ToString() + " to " + parent.LabelCap);
         }
 
         public Ability MakeAbility(AbilityData abilityData)
@@ -34,13 +34,20 @@ namespace RimTES
 
         public bool TryAddAbility(Ability ability)
         {
-            if (abilities.NullOrEmpty() || !abilities.Contains(ability))
+            if (abilities.NullOrEmpty())
             {
                 abilities.Add(ability);
                 return true;
             }
 
-            return false;
+            foreach (Ability heldAbility in abilities)
+            {
+                if (heldAbility.def == ability.def)
+                    return false;
+            }
+
+            abilities.Add(ability);
+            return true;
         }
 
         public bool TryRemoveAbility(Ability ability)
@@ -83,10 +90,11 @@ namespace RimTES
                     Log.Error(string.Concat(new object[]
                     {
                         parent.LabelCap,
+                        "is an ",
+                        (parent.GetComp<CompCharacterClass>() != null) ? parent.GetComp<CompCharacterClass>().classRecord.def.defName : "CompCharacterClass was NULL",
                         " has ",
                         abilities.Count,
-                        " abilities.  They are: ",
-                        abilities
+                        " abilities."
                     }));
                     
                 },
