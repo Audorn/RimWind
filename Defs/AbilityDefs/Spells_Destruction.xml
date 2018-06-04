@@ -15,6 +15,9 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<tags>
+			<li>Touch</li>
+		</tags>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -24,6 +27,9 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<tags>
+			<li>Touch</li>
+		</tags>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -150,6 +156,9 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<tags>
+			<li>Touch</li>
+		</tags>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>

@@ -9,6 +9,12 @@
 		
         <comps>
 			<li Class="RimTES.CompProperties_CharacterClass">
+				<defaults>
+					<li>
+						<characterClassDef>Acrobat</characterClassDef>
+						<chance>30</chance>
+					</li>
+				</defaults>
 				<factions>
 					<li>
 						<factionDefs>
@@ -16,10 +22,6 @@
 							<li>PlayerHouseHlaalu</li>
 						</factionDefs>
 						<characterClasses>
-							<li>
-								<characterClassDef>Acrobat</characterClassDef>
-								<chance>30</chance>
-							</li>
 							<li>
 								<characterClassDef>Agent</characterClassDef>
 							</li>

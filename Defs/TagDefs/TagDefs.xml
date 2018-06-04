@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<RimTES.TagDef>
+		<defName>Touch</defName>
+		<label>touch</label>
+		<description>Requires physical contact.</description>
+	</RimTES.TagDef>
+
+</Defs>

@@ -8,8 +8,13 @@ using Verse;
 
 namespace RimTES
 {
+    // This component is assigned to an <AlienRace.ThingDef_AlienRace>.
     public class CompProperties_CharacterClass : CompProperties
     {
+        // All factions default to these chances.
+        public List<CharacterClassChance> defaults = new List<CharacterClassChance>();
+
+        // Overrides defaults for specific factions.
         public List<FactionBasedCharacterClassChance> factions = new List<FactionBasedCharacterClassChance>();
 
         public CompProperties_CharacterClass() { compClass = typeof(CompCharacterClass); }

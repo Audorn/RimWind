@@ -10,7 +10,8 @@ namespace RimTES
 {
     public class AbilityDef : ThingDef
     {
-        public List<string> abilityCategoryDefs = new List<string>();
+        public List<AbilityCategoryDef> abilityCategoryDefs = new List<AbilityCategoryDef>();
+        public List<TagDef> tags = new List<TagDef>();
 
         public AbilityDef() { thingClass = typeof(Ability); }
         public AbilityDef(Type thingClass) { this.thingClass = thingClass; }
@@ -22,7 +23,39 @@ namespace RimTES
 
 
 
+        public bool HasTag(TagDef tag) { return tags.Contains(tag); }
+        public bool HasAnyTag(List<TagDef> tags)
+        {
+            foreach (TagDef tag in tags)
+            {
+                if (HasTag(tag))
+                    return true;
+            }
 
+            return false;
+        }
+        public bool HasAllTags(List<TagDef> tags)
+        {
+            foreach (TagDef tag in tags)
+            {
+                if (!HasTag(tag))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public bool InAbilityCategory(AbilityCategoryDef abilityCategoryDef) { return abilityCategoryDefs.Contains(abilityCategoryDef); }
+        public bool InAnyOfAbilityCategories(List<AbilityCategoryDef> abilityCategoryDefs)
+        {
+            foreach (AbilityCategoryDef abilityCategoryDef in abilityCategoryDefs)
+            {
+                if (InAbilityCategory(abilityCategoryDef))
+                    return true;
+            }
+
+            return false;
+        }
 
         public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
         {

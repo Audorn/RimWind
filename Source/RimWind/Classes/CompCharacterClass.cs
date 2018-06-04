@@ -12,6 +12,7 @@ namespace RimTES
     public class CompCharacterClass : ThingComp
     {
         public CompProperties_CharacterClass Props { get { return (CompProperties_CharacterClass)props; } }
+        public List<CharacterClassChance> Defaults { get { return Props.defaults; } }
         public List<FactionBasedCharacterClassChance> Factions { get { return Props.factions; } }
 
         public Faction Faction { get { return parent.Faction; } }
@@ -23,11 +24,14 @@ namespace RimTES
             if (classRecord != null)
                 return;
 
-            classRecord = GenerateClass();
+            classRecord = SelectClass();
         }
 
-        private CharacterClassRecord GenerateClass()
+        private CharacterClassRecord SelectClass()
         {
+            List<CharacterClassChance> classChances = new List<CharacterClassChance>();
+            classChances = Defaults.ToList();
+
             foreach (FactionBasedCharacterClassChance factionChance in Factions)
             {
                 foreach (FactionDef factionDef in factionChance.factionDefs)
@@ -35,23 +39,49 @@ namespace RimTES
                     if (Faction.def != factionDef)
                         continue;
 
-                    float cumulativeChances = SumChancesWithinFaction(factionChance);
-                    float selectionNum = UnityEngine.Random.Range(0f, cumulativeChances);
+                    // Modify the defaults and note any additional classes
+                    List<CharacterClassChance> additionalClasseChances = new List<CharacterClassChance>();
+                    foreach (CharacterClassChance otherClassChance in factionChance.characterClasses)
+                    {
+                        bool classFound = false;
+                        foreach (CharacterClassChance classChance in classChances)
+                        {
+                            if (classChance.characterClassDef == otherClassChance.characterClassDef)
+                            {
+                                classChance.chance = otherClassChance.chance;
+                                classFound = true;
+                                break;
+                            }
 
-                    CharacterClassDef selectedClassDef = SelectCharacterClassDefWithinFaction(factionChance, selectionNum);
-                    ConfigureCharacterClass(selectedClassDef);
-                    return new CharacterClassRecord((Pawn)parent, selectedClassDef);
+                        }
+                        
+                        // Add the character class to a list for later.
+                        if (!classFound)
+                            additionalClasseChances.Add(otherClassChance);
+                    }
+
+                    // Add any character classes that weren't included in 'defaults'
+                    foreach (CharacterClassChance classChance in additionalClasseChances)
+                        classChances.Add(classChance);
                 }
             }
 
-            Log.Error("No character class selected.");
-            return null;
+            float cumulativeChances = SumChances(classChances);
+            float selectionNum = UnityEngine.Random.Range(0f, cumulativeChances);
+
+            CharacterClassDef selectedClassDef = SelectCharacterClassDef(classChances, selectionNum);
+            ConfigureCharacterClass(selectedClassDef);
+
+            return new CharacterClassRecord((Pawn)parent, selectedClassDef);
         }
 
         private void ConfigureCharacterClass(CharacterClassDef selectedClassDef)
         {
+            // Configure from defaults.
+
+            // Override defaults where necessary.
             bool factionFound = false;
-            foreach (CharacterClassFactionModifiers factionModifiers in selectedClassDef.factions)
+            foreach (CharacterClassModifier factionModifiers in selectedClassDef.factions)
             {
                 if (factionFound)
                     break;
@@ -62,18 +92,98 @@ namespace RimTES
                         continue;
 
                     factionFound = true;
-                    AddAbilities(factionModifiers.abilities);
+
+                    List<AbilityDef> abilities = SelectAbilities(selectedClassDef);
+                    AddAbilities(abilities);
                     // Modify Stats.
                     // Modify Skills.
                 }
             }
+        }
+        private List<AbilityDef> SelectAbilities(CharacterClassDef characterClassDef)
+        {
+            List<AbilityDef> abilities = new List<AbilityDef>();
+
+            // Get defaults.
+            if (characterClassDef.defaultSettings != null)
+                abilities = SelectAbilities(characterClassDef.defaultSettings);
+
+            // Get additional faction specific abilities.
+            foreach (CharacterClassModifier factionSettings in characterClassDef.factions)
+                abilities = SelectAbilities(factionSettings, abilities);
+
+            return abilities;
+        }
+
+        private List<AbilityDef> SelectAbilities(CharacterClassModifier classSettings, List<AbilityDef> existingAbilities = null)
+        {
+            List<AbilityDef> abilities = existingAbilities;
+            if (abilities.NullOrEmpty())
+                abilities = new List<AbilityDef>();
+
+            // Insert the guaranteed abilities.
+            abilities.InsertRange(0, classSettings.abilities);
+
+            // Get the abilities with tags.
+            foreach (AbilitySelector abilitySelector in classSettings.numberOfAbilitiesWithTags)
+            {
+                List<AbilityDef> abilitiesWithTags = new List<AbilityDef>();
+                foreach (AbilityDef ability in DefDatabase<AbilityDef>.AllDefs)
+                {
+                    if ((abilitySelector.requireAllTags && ability.HasAllTags(abilitySelector.tags))
+                     || (!abilitySelector.requireAllTags && ability.HasAnyTag(abilitySelector.tags)))
+                        abilitiesWithTags.Add(ability);
+                }
+
+                for (int i = 0; !abilitiesWithTags.NullOrEmpty() && i < abilitySelector.targetNumber; i++)
+                {
+                    AbilityDef ability = abilitiesWithTags.RandomElement();
+                    abilities.Add(ability);
+                    abilitiesWithTags.Remove(ability);
+                }
+            }
+
+            // Get the abilities in categories.
+            foreach (AbilitySelector abilitySelector in classSettings.numberOfAbilitiesInCategories)
+            {
+                List<AbilityDef> abilitiesInCategories = new List<AbilityDef>();
+                foreach (AbilityDef ability in DefDatabase<AbilityDef>.AllDefs)
+                {
+                    if (ability.InAnyOfAbilityCategories(abilitySelector.abilityCategoryDefs))
+                        abilitiesInCategories.Add(ability);
+                }
+
+                for (int i = 0; !abilitiesInCategories.NullOrEmpty() && i < abilitySelector.targetNumber; i++)
+                {
+                    AbilityDef ability = abilitiesInCategories.RandomElement();
+                    abilities.Add(ability);
+                    abilitiesInCategories.Remove(ability);
+                }
+            }
+
+            // Eliminate duplicates and only allow the maximum number.
+            abilities.RemoveDuplicates();
+            if (classSettings.maximumNumberOfAbilities < 0) // infinite.
+                return abilities;
+
+            int n = abilities.Count - classSettings.maximumNumberOfAbilities;
+            while (!abilities.NullOrEmpty() && n > 0) // limited.
+            {
+                abilities.RemoveLast();
+                n--;
+            }
+
+            return abilities;
         }
 
         private void AddAbilities(List<AbilityDef> abilities)
         {
             CompAbilityHolder abilityHolder = parent.GetComp<CompAbilityHolder>();
             if (abilityHolder == null)
-                return; 
+            {
+                Log.Error("AbilityHolder component not found on " + (Pawn)parent + ".");
+                return;
+            }
 
             foreach (AbilityDef abilityDef in abilities)
             {
@@ -83,19 +193,19 @@ namespace RimTES
             }
         }
 
-        private float SumChancesWithinFaction(FactionBasedCharacterClassChance factionChance)
+        private float SumChances(List<CharacterClassChance> classChances)
         {
             float sum = 0f;
-            foreach (CharacterClassChance characterClass in factionChance.characterClasses)
+            foreach (CharacterClassChance characterClass in classChances)
                 sum += characterClass.chance;
 
             return sum;
         }
 
-        private CharacterClassDef SelectCharacterClassDefWithinFaction(FactionBasedCharacterClassChance factionChance, float num)
+        private CharacterClassDef SelectCharacterClassDef(List<CharacterClassChance> classChances, float num)
         {
             float currentMax = 0f;
-            foreach (CharacterClassChance characterClass in factionChance.characterClasses)
+            foreach (CharacterClassChance characterClass in classChances)
             {
                 currentMax += characterClass.chance;
                 if (num < currentMax)

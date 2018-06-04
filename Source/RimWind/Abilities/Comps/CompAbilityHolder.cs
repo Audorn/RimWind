@@ -90,13 +90,31 @@ namespace RimTES
                     Log.Error(string.Concat(new object[]
                     {
                         parent.LabelCap,
-                        "is an ",
+                        " is an ",
                         (parent.GetComp<CompCharacterClass>() != null) ? parent.GetComp<CompCharacterClass>().classRecord.def.defName : "CompCharacterClass was NULL",
                         " has ",
                         abilities.Count,
                         " abilities."
                     }));
-                    
+                    foreach (Ability ability in abilities)
+                    {
+                        string tags = "";
+                        foreach (TagDef tagDef in ((AbilityDef)ability.def).tags)
+                            tags += tagDef.defName + ", ";
+
+                        string categories = "";
+                        foreach (AbilityCategoryDef abilityCategoryDef in ((AbilityDef)ability.def).abilityCategoryDefs)
+                            categories += abilityCategoryDef.defName + ", ";
+
+                        Log.Warning(string.Concat(new object[]
+                        {
+                            ability.LabelCap,
+                            ", Tags: ",
+                            tags,
+                            " Categories: ",
+                            categories
+                        }));
+                    }
                 },
                 hotKey = KeyBindingDefOf.Misc1,
                 defaultDesc = DefaultDescriptionKey.Translate(),
