@@ -9,7 +9,7 @@ using Verse;
 
 namespace RimTES
 {
-    public class CharacterClassRecord : IExposable, ILoadReferenceable
+    public class CharacterClassRecord : IExposable
     {
         private Pawn pawn;
         public CharacterClassDef def;
@@ -31,7 +31,6 @@ namespace RimTES
             get { return (def.HasThingIDNumber) ? def.defName + thingIDNumber.ToString() : def.defName; }
             set { thingIDNumber = Thing.IDNumberFromThingID(value); }
         }
-        public string GetUniqueLoadID() { return "CharacterClass_" + ThingID; }
 
         private static readonly SimpleCurve XpForLevelUpCurve = new SimpleCurve
         {

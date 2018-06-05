@@ -14,9 +14,9 @@ namespace RimTES
         public CompProperties_AbilityHolder Props { get { return (CompProperties_AbilityHolder)props; } }
         public List<AbilityHolderTypeChance> TypeChances { get { return Props.types; } }
 
-        public List<Ability> EmptyAbilitiesList = new List<Ability>();
-        public List<Ability> abilities = new List<Ability>();
-        public List<Ability> Abilities { get { return abilities.NullOrEmpty() ? EmptyAbilitiesList : abilities; } }
+        public List<AbilityData> EmptyAbilitiesList = new List<AbilityData>();
+        public List<AbilityData> abilities = new List<AbilityData>();
+        public List<AbilityData> Abilities { get { return abilities.NullOrEmpty() ? EmptyAbilitiesList : abilities; } }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
@@ -27,12 +27,7 @@ namespace RimTES
             //    Log.Warning("added " + ability.ToString() + " to " + parent.LabelCap);
         }
 
-        public Ability MakeAbility(AbilityData abilityData)
-        {
-            return new Ability(abilityData);
-        }
-
-        public bool TryAddAbility(Ability ability)
+        public bool TryAddAbility(AbilityData ability)
         {
             if (abilities.NullOrEmpty())
             {
@@ -40,9 +35,9 @@ namespace RimTES
                 return true;
             }
 
-            foreach (Ability heldAbility in abilities)
+            foreach (AbilityData heldAbility in abilities)
             {
-                if (heldAbility.def == ability.def)
+                if (ability.def != null && heldAbility.def == ability.def)
                     return false;
             }
 
@@ -50,7 +45,7 @@ namespace RimTES
             return true;
         }
 
-        public bool TryRemoveAbility(Ability ability)
+        public bool TryRemoveAbility(AbilityData ability)
         {
             if (!abilities.NullOrEmpty() && abilities.Contains(ability))
             {
@@ -61,16 +56,15 @@ namespace RimTES
             return false;
         }
 
-        public override void PostExposeData()
+        public void ExposeData()
         {
-            base.PostExposeData();
             /*
             Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultDescriptionKey, "defaultDescriptionKey", "", false);
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);
             */
-            Scribe_Collections.Look(ref abilities, "abilities", LookMode.Deep, false);
+            Scribe_Collections.Look(ref abilities, "abilities", LookMode.Deep);
         }
         // ==========
         public string DefaultLabelKey { get { return Props.defaultLabelKey; } }
@@ -96,24 +90,28 @@ namespace RimTES
                         abilities.Count,
                         " abilities."
                     }));
-                    foreach (Ability ability in abilities)
+                    foreach (AbilityData ability in abilities)
                     {
                         string tags = "";
-                        foreach (TagDef tagDef in ((AbilityDef)ability.def).tags)
-                            tags += tagDef.defName + ", ";
-
                         string categories = "";
-                        foreach (AbilityCategoryDef abilityCategoryDef in ((AbilityDef)ability.def).abilityCategoryDefs)
-                            categories += abilityCategoryDef.defName + ", ";
 
-                        Log.Warning(string.Concat(new object[]
+                        if (ability.def != null)
                         {
-                            ability.LabelCap,
+                            foreach (TagDef tagDef in ability.def.tags)
+                                tags += tagDef.defName + ", ";
+
+                            foreach (AbilityCategoryDef abilityCategoryDef in ability.def.abilityCategoryDefs)
+                                categories += abilityCategoryDef.defName + ", ";
+
+                            Log.Warning(string.Concat(new object[]
+                            {
+                            ability.def.LabelCap,
                             ", Tags: ",
                             tags,
                             " Categories: ",
                             categories
-                        }));
+                            }));
+                        }
                     }
                 },
                 hotKey = KeyBindingDefOf.Misc1,

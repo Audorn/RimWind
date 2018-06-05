@@ -9,9 +9,9 @@ using Verse;
 
 namespace RimTES
 {
-    public class Ability : Thing
+    public class Ability_OLD : Thing
     {
-        public Ability() { }
-        public Ability(AbilityData abilityData) { }
+        public Ability_OLD() { }
+        public Ability_OLD(AbilityData abilityData) { }
     }
 }

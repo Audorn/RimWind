@@ -187,9 +187,14 @@ namespace RimTES
 
             foreach (AbilityDef abilityDef in abilities)
             {
-                Ability ability = AbilityMaker.MakeAbility(abilityDef);
+                AbilityData ability = AbilityMaker.MakeAbility(abilityDef);
                 if (!abilityHolder.TryAddAbility(ability))
-                    Log.Warning("Failed to add ability (" + ability.def.defName + ") to " + (Pawn)parent + ".");
+                {
+                    if (ability.def != null)
+                        Log.Warning("Failed to add ability (" + ability.def.defName + ") to " + (parent as Pawn) + ".");
+                    else
+                        Log.Warning("Failed to add ability (" + ability.label + ") to " + (parent as Pawn) + ".");
+                }
             }
         }
 
@@ -216,9 +221,8 @@ namespace RimTES
             return null;
         }
 
-        public override void PostExposeData()
+        public void ExposeData()
         {
-            base.PostExposeData();
             /*
             Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);
@@ -226,7 +230,7 @@ namespace RimTES
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);
             */
             
-            Scribe_Deep.Look(ref classRecord, "classRecord", false);
+            Scribe_Deep.Look(ref classRecord, "classRecord");
         }
 
     }

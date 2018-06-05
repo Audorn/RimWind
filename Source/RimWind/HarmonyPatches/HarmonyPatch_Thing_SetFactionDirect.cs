@@ -14,7 +14,7 @@ namespace RimTES
     {
         public static void Postfix(Thing __instance)
         {
-            Pawn pawn = (Pawn)__instance;
+            Pawn pawn = __instance as Pawn;
             if (pawn != null && pawn.def.CanHaveFaction)
             {
                 CompCharacterClass characterClassComp = pawn.GetComp<CompCharacterClass>();

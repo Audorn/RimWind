@@ -122,7 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities\Tag.cs" />
-    <Compile Include="Abilities\Ability.cs" />
+    <Compile Include="Abilities\Ability_OLD.cs" />
     <Compile Include="Abilities\AbilityCategory.cs" />
     <Compile Include="Abilities\AbilityCategoryDef.cs" />
     <Compile Include="Abilities\AbilityData.cs" />

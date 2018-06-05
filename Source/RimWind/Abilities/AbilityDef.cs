@@ -13,7 +13,7 @@ namespace RimTES
         public List<AbilityCategoryDef> abilityCategoryDefs = new List<AbilityCategoryDef>();
         public List<TagDef> tags = new List<TagDef>();
 
-        public AbilityDef() { thingClass = typeof(Ability); }
+        public AbilityDef() { thingClass = typeof(AbilityData); }
         public AbilityDef(Type thingClass) { this.thingClass = thingClass; }
 
 

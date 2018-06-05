@@ -10,17 +10,10 @@ namespace RimTES
 {
     public static class AbilityMaker
     {
-        public static Ability MakeAbility(AbilityDef abilityDef)
+        public static AbilityData MakeAbility(AbilityDef abilityDef)
         {
-            Ability ability = (Ability)Activator.CreateInstance(abilityDef.thingClass);
+            AbilityData ability = (AbilityData)Activator.CreateInstance(abilityDef.thingClass);
             ability.def = abilityDef;
-            ability.PostMake();
-            return ability;
-        }
-
-        public static Ability MakeAbility(AbilityData abilityData)
-        {
-            Ability ability = new Ability(abilityData) { def = null };
             ability.PostMake();
             return ability;
         }
