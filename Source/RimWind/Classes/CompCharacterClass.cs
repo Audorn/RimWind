@@ -103,26 +103,46 @@ namespace RimTES
         private List<AbilityDef> SelectAbilities(CharacterClassDef characterClassDef)
         {
             List<AbilityDef> abilities = new List<AbilityDef>();
+            List<AbilityDef> excludedAbilities = new List<AbilityDef>();
 
             // Get defaults.
             if (characterClassDef.defaultSettings != null)
-                abilities = SelectAbilities(characterClassDef.defaultSettings);
+                abilities = SelectAbilities(characterClassDef.defaultSettings, ref excludedAbilities);
 
             // Get additional faction specific abilities.
             foreach (CharacterClassModifier factionSettings in characterClassDef.factions)
-                abilities = SelectAbilities(factionSettings, abilities);
+                abilities = SelectAbilities(factionSettings, ref excludedAbilities, abilities);
+
+            // Only allow the maximum number of abilities.
+            if (characterClassDef.MaximumNumberOfAbilities(Faction.def) < 0) // infinite.
+                return abilities;
+
+            int n = abilities.Count - characterClassDef.MaximumNumberOfAbilities(Faction.def);
+            while (!abilities.NullOrEmpty() && n > 0) // limited.
+            {
+                abilities.RemoveLast();
+                n--;
+            }
 
             return abilities;
         }
 
-        private List<AbilityDef> SelectAbilities(CharacterClassModifier classSettings, List<AbilityDef> existingAbilities = null)
+        private List<AbilityDef> SelectAbilities(CharacterClassModifier classSettings, ref List<AbilityDef> excludedAbilities, List<AbilityDef> existingAbilities = null)
         {
             List<AbilityDef> abilities = existingAbilities;
             if (abilities.NullOrEmpty())
                 abilities = new List<AbilityDef>();
 
+            // Get excluded abilities.
+            if (classSettings.excludedAbilities != null)
+                excludedAbilities = classSettings.excludedAbilities;
+
             // Insert the guaranteed abilities.
-            abilities.InsertRange(0, classSettings.abilities);
+            foreach (AbilityDef ability in classSettings.abilities)
+            {
+                if (excludedAbilities.NullOrEmpty() || !excludedAbilities.Contains(ability))
+                    abilities.Insert(0, ability);
+            }
 
             // Get the abilities with tags.
             foreach (AbilitySelector abilitySelector in classSettings.numberOfAbilitiesWithTags)
@@ -130,6 +150,9 @@ namespace RimTES
                 List<AbilityDef> abilitiesWithTags = new List<AbilityDef>();
                 foreach (AbilityDef ability in DefDatabase<AbilityDef>.AllDefs)
                 {
+                    if (!excludedAbilities.NullOrEmpty() && excludedAbilities.Contains(ability))
+                        continue;
+
                     if ((abilitySelector.requireAllTags && ability.HasAllTags(abilitySelector.tags))
                      || (!abilitySelector.requireAllTags && ability.HasAnyTag(abilitySelector.tags)))
                         abilitiesWithTags.Add(ability);
@@ -149,6 +172,9 @@ namespace RimTES
                 List<AbilityDef> abilitiesInCategories = new List<AbilityDef>();
                 foreach (AbilityDef ability in DefDatabase<AbilityDef>.AllDefs)
                 {
+                    if (!excludedAbilities.NullOrEmpty() && excludedAbilities.Contains(ability))
+                        continue;
+
                     if (ability.InAnyOfAbilityCategories(abilitySelector.abilityCategoryDefs))
                         abilitiesInCategories.Add(ability);
                 }
@@ -161,17 +187,8 @@ namespace RimTES
                 }
             }
 
-            // Eliminate duplicates and only allow the maximum number.
+            // Eliminate duplicates.
             abilities.RemoveDuplicates();
-            if (classSettings.maximumNumberOfAbilities < 0) // infinite.
-                return abilities;
-
-            int n = abilities.Count - classSettings.maximumNumberOfAbilities;
-            while (!abilities.NullOrEmpty() && n > 0) // limited.
-            {
-                abilities.RemoveLast();
-                n--;
-            }
 
             return abilities;
         }
@@ -221,8 +238,9 @@ namespace RimTES
             return null;
         }
 
-        public void ExposeData()
+        public override void PostExposeData()
         {
+            base.PostExposeData();
             /*
             Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);

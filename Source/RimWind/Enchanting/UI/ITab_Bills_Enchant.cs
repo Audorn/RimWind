@@ -151,7 +151,7 @@ namespace RimTES
                 soulGemsOuterRect.x,
                 0f,
                 soulGemsOuterRect.width - 16f,
-                soulGems.NullOrEmpty() ? soulGemsOuterRect.height : (soulGems.Count / maxPerRow) * SoulGemHeight + (soulGems.Count - 1) * SoulGemVerticalGap);
+                soulGems.NullOrEmpty() ? soulGemsOuterRect.height : Mathf.Ceil((soulGems.Count / maxPerRow) + 1) * SoulGemHeight + Mathf.Ceil((soulGems.Count / maxPerRow)) * SoulGemVerticalGap);
 
             Rect soulGemsLabelRect = new Rect(soulGemsOuterRect.x, soulGemsOuterRect.y - 30f, soulGemsOuterRect.width, 30f);
             Text.Font = GameFont.Medium;

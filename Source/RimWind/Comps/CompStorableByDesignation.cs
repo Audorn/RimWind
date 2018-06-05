@@ -44,6 +44,10 @@ namespace RimTES
             Rect enchantMaxRect = new Rect(enchantableRect.x + 38f, 29f, 200f, 22f);
             Widgets.Label(enchantMaxRect, "MagicalCapacity".Translate() + ": " + enchantableComp.EnchantingLimit.ToString());
 
+            Rect studyRect = new Rect(enchantableRect.width - 155f, 29f, 50f, 22f);
+            if (Widgets.ButtonText(studyRect, "MarkToStudyEnchantment".Translate(), true, true))
+                inUseByBill = true;
+
             Rect enchantRect = new Rect(enchantableRect.width - 100f, 29f, 100f, 22f);
             if (Widgets.ButtonText(enchantRect, "MarkToEnchant".Translate(), true, true, true))
                 inUseByBill = true;

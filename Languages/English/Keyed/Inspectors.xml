@@ -12,6 +12,7 @@
 	<CurrentSoulEnergy>Current Soul Energy</CurrentSoulEnergy>
 	<EnchantingBuildingContains>Available For Enchanting</EnchantingBuildingContains>
 	<EnchantableInstructionsTrans>Enchantable objects such as weapons, clothing and armor, and jewellery, can be designated for enchanting and hauled by a pawn capable of hauling.</EnchantableInstructionsTrans>
+	<MarkToStudyEnchantment>Study</MarkToStudyEnchantment>
 	<MarkToEnchant>Enchant</MarkToEnchant>
 	<MagicalCapacity>Capacity</MagicalCapacity>
 	<EnchantableItemsLabel>Enchantable Items</EnchantableItemsLabel>

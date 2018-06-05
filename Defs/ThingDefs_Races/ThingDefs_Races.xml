@@ -11,6 +11,14 @@
 			<li Class="RimTES.CompProperties_CharacterClass">
 				<defaults>
 					<li>
+						<characterClassDef>Unteachable</characterClassDef>
+						<chance>15</chance>
+					</li>
+					<li>
+						<characterClassDef>Teachable</characterClassDef>
+						<chance>15</chance>
+					</li>
+					<li>
 						<characterClassDef>Acrobat</characterClassDef>
 						<chance>30</chance>
 					</li>

@@ -4,6 +4,22 @@
 
 	<RimTES.CharacterClassDef>
 		<thingClass>RimTES.CharacterClassRecord</thingClass>
+		<defName>Unteachable</defName>
+		<label>none</label>
+		<description>This character cannot become a member of any class.</description>
+		<iconPath>UI/Commands/TryReconnect</iconPath>
+	</RimTES.CharacterClassDef>
+
+	<RimTES.CharacterClassDef>
+		<thingClass>RimTES.CharacterClassRecord</thingClass>
+		<defName>Teachable</defName>
+		<label>none</label>
+		<description>This character can become a member of any class.</description>
+		<iconPath>UI/Commands/TryReconnect</iconPath>
+	</RimTES.CharacterClassDef>
+
+	<RimTES.CharacterClassDef>
+		<thingClass>RimTES.CharacterClassRecord</thingClass>
 		<defName>Acrobat</defName>
 		<label>acrobat</label>
 		<description>Acrobat is a polite euphemism for agile burglars and second-story men. These thieves avoid detection by stealth, and rely on mobility and cunning to avoid capture.</description>
@@ -24,8 +40,11 @@
 					</li>
 			</skillMods>
 			<maximumNumberOfAbilities>6</maximumNumberOfAbilities>
-			<abilities>
+			<excludedAbilities>
 				<li>BurningTouch</li>
+			</excludedAbilities>
+			<abilities>
+				<li>DamageAgility</li>
 			</abilities>
 			<numberOfAbilitiesWithTags>
 				<li>
@@ -65,6 +84,8 @@
 						<max>5</max>
 					</li>
 				</skillMods>
+				<excludedAbilities>
+				</excludedAbilities>
 				<abilities>
 					<li>BurningTouch</li>
 					<li>ColdTouch</li>
@@ -96,7 +117,7 @@
 					</li>
 			</skillMods>
 			<abilities>
-					<li>BurningTouch</li>
+				<li>BurningTouch</li>
 			</abilities>
 		</defaultSettings>
 		<factions>

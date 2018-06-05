@@ -20,13 +20,13 @@ namespace RimTES
 
         public int MaximumNumberOfAbilities (FactionDef factionDef)
         {
-            foreach (CharacterClassModifier factionSettings in factions)
+            foreach (CharacterClassModifier factionSetting in factions)
             {
-                foreach (FactionDef faction in factionSettings.factionDefs)
+                foreach (FactionDef faction in factionSetting.factionDefs)
                 {
-                    if (faction == factionDef && factionSettings.maximumNumberOfAbilities >= 0)
+                    if (faction == factionDef && factionSetting.maximumNumberOfAbilities >= 0)
                     {
-                        return factionSettings.maximumNumberOfAbilities;
+                        return factionSetting.maximumNumberOfAbilities;
                     }
                 }
             }
@@ -69,6 +69,7 @@ namespace RimTES
         public List<StatModRange> statMods = new List<StatModRange>();
         public List<SkillModRange> skillMods = new List<SkillModRange>();
         public int maximumNumberOfAbilities = -1;
+        public List<AbilityDef> excludedAbilities = null;
         public List<AbilityDef> abilities = new List<AbilityDef>();
         public List<AbilitySelector> numberOfAbilitiesWithTags = new List<AbilitySelector>();
         public List<AbilitySelector> numberOfAbilitiesInCategories = new List<AbilitySelector>();
