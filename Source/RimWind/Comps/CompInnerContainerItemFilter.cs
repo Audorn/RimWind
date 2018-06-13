@@ -68,7 +68,7 @@ namespace RimTES
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Collections.Look(ref ((CompProperties_InnerContainerItemFilter)props).itemFilterSettings, "itemFilterSettings", LookMode.Deep, false);
+            Scribe_Collections.Look(ref ((CompProperties_InnerContainerItemFilter)props).itemFilterSettings, "itemFilterSettings", LookMode.Deep);
         }
 
     }

@@ -122,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities\Tag.cs" />
-    <Compile Include="Abilities\Ability_OLD.cs" />
     <Compile Include="Abilities\AbilityCategory.cs" />
     <Compile Include="Abilities\AbilityCategoryDef.cs" />
     <Compile Include="Abilities\AbilityData.cs" />
@@ -130,6 +129,7 @@
     <Compile Include="Abilities\AbilityDef.cs" />
     <Compile Include="Abilities\Comps\CompProperties_AbilityHolder.cs" />
     <Compile Include="Abilities\Comps\CompAbilityHolder.cs" />
+    <Compile Include="Abilities\UI\ITab_Pawn_AbilityManager.cs" />
     <Compile Include="Abilities\Utilities\AbilityMaker.cs" />
     <Compile Include="Classes\CharacterClassRecord.cs" />
     <Compile Include="Classes\CharacterClassDef.cs" />
@@ -170,7 +170,7 @@
     <Compile Include="Extensions\Dialog_InfoCard_RimWind.cs" />
     <Compile Include="Extensions\Widgets_Extensions.cs" />
     <Compile Include="Enchanting\JobDrivers\JobDriver_HaulToBuilding.cs" />
-    <Compile Include="HarmonyPatches\HarmonyPatch_Designator_PlantsHarvest_CanDesignateThing - Copy.cs" />
+    <Compile Include="Alchemy\HarmonyPatches\HarmonyPatch_Designator_PlantsHarvest_CanDesignateThing - Copy.cs" />
     <Compile Include="RimTESDefOf.cs" />
     <Compile Include="Therianthropy\CompTherianthropy.cs" />
     <Compile Include="Therianthropy\CompProperties_Therianthropy.cs" />
@@ -190,9 +190,9 @@
     <Compile Include="Alchemy\WorkGivers\WorkGiver_HarvestReagents.cs" />
     <Compile Include="HarmonyPatches\Bootstrap.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatch_DefGenerator_GenerateImpliedDefs_PreResolve.cs" />
-    <Compile Include="HarmonyPatches\HarmonyPatch_Thing_SetFactionDirect.cs" />
-    <Compile Include="HarmonyPatches\HarmonyPatch_Plant_GetInspectString.cs" />
-    <Compile Include="HarmonyPatches\HarmonyPatch_Plant_TickLong.cs" />
+    <Compile Include="Classes\HarmonyPatches\HarmonyPatch_Thing_SetFactionDirect.cs" />
+    <Compile Include="Alchemy\HarmonyPatches\HarmonyPatch_Plant_GetInspectString.cs" />
+    <Compile Include="Alchemy\HarmonyPatches\HarmonyPatch_Plant_TickLong.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatch_UI_BackgroundMain_BackgroundOnGUI.cs" />
     <Compile Include="HarmonyPatch_CharacterCardUtility.cs" />
     <Compile Include="Logger.cs" />

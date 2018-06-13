@@ -2,6 +2,10 @@
 
 <LanguageData>
 
+	<!-- Abilities -->
+	<UseAbilityLabel>Use Ability</UseAbilityLabel>
+	<UseAbilityDesc>Use Ability Description</UseAbilityDesc>
+
 	<!-- Enchanting -->
 	<TakeToBeEnchantedLabel>Store For Enchanting</TakeToBeEnchantedLabel>
 	<TakeToBeEnchantedDesc>This object will be stored in an enchanting workbench if available.  While there, it can be selected to enchant.</TakeToBeEnchantedDesc>

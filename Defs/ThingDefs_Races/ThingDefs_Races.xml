@@ -6,7 +6,9 @@
         <defName>DunmerRace</defName>
         <label>dunmer</label>
         <description>Dark elf of Morrowind.</description>
-		
+		<inspectorTabs>
+			<li>RimTES.ITab_Pawn_AbilityManager</li>
+		</inspectorTabs>
         <comps>
 			<li Class="RimTES.CompProperties_CharacterClass">
 				<defaults>
@@ -95,17 +97,8 @@
 				</factions>
 			</li>
             <li Class="RimTES.CompProperties_AbilityHolder">
-				<!-- Ability chance per class per faction -->
-				<!-- Subcategory chance per class per faction -->
-				<!-- Category chance per class per faction -->
-				<types>
-					<li>
-						<abilityCategoryDef>Magicka_Destruction</abilityCategoryDef>
-					</li>
-				</types>
-			
-				<defaultLabelKey>TakeToBeEnchantedLabel</defaultLabelKey>
-				<defaultDescriptionKey>TakeToBeEnchantedDesc</defaultDescriptionKey>
+				<defaultLabelKey>UseAbilityLabel</defaultLabelKey>
+				<defaultDescriptionKey>UseAbilityDesc</defaultDescriptionKey>
 				<iconPath>UI/Commands/TryReconnect</iconPath>
 			</li>
 			<li Class="RimTES.CompProperties_Vampirism">

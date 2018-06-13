@@ -13,6 +13,10 @@ namespace RimTES
         public AbilityDef def;
         public string label = "custom";
 
+
+
+
+
         public AbilityData() { }
         public AbilityData(AbilityDef abilityDef) { def = abilityDef; }
 
