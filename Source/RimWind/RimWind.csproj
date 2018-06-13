@@ -121,10 +121,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abilities\CommandBuilder.cs" />
+    <Compile Include="Abilities\CustomAbility.cs" />
     <Compile Include="Abilities\Tag.cs" />
     <Compile Include="Abilities\AbilityCategory.cs" />
     <Compile Include="Abilities\AbilityCategoryDef.cs" />
-    <Compile Include="Abilities\AbilityData.cs" />
+    <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Abilities\TagDef.cs" />
     <Compile Include="Abilities\AbilityDef.cs" />
     <Compile Include="Abilities\Comps\CompProperties_AbilityHolder.cs" />

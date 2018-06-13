@@ -5,27 +5,25 @@ using System.Text;
 using UnityEngine;
 using RimWorld;
 using Verse;
+using Verse.Sound;
 
 namespace RimTES
 {
-    public class AbilityData : IExposable
+    public class Ability : IExposable
     {
         public AbilityDef def;
-        public string label = "custom";
 
+        public CommandBuilder command = null;
 
-
-
-
-        public AbilityData() { }
-        public AbilityData(AbilityDef abilityDef) { def = abilityDef; }
+        public Ability() { }
+        public Ability(AbilityDef abilityDef) { def = abilityDef; }
 
         public virtual void PostMake() { }
 
-        public void ExposeData()
+        public virtual void ExposeData()
         {
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref label, "label", "custom", false);
+            Scribe_Values.Look(ref command, "command", null, false);
         }
     }
 }

@@ -10,7 +10,7 @@
 
 	<RimTES.AbilityDef>
 		<defName>BurningTouch</defName>
-		<label>flame touch</label>
+		<label>burning touch</label>
 		<description>Hot fingers.</description>
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
@@ -18,6 +18,13 @@
 		<tags>
 			<li>Touch</li>
 		</tags>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -30,6 +37,13 @@
 		<tags>
 			<li>Touch</li>
 		</tags>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -39,6 +53,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -48,6 +69,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -57,6 +85,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -66,6 +101,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -75,6 +117,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -84,6 +133,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -93,6 +149,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -102,6 +165,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -111,6 +181,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -120,6 +197,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -129,6 +213,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -138,6 +229,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 	
 	<RimTES.AbilityDef>
@@ -147,6 +245,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -159,6 +264,13 @@
 		<tags>
 			<li>Touch</li>
 		</tags>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -168,6 +280,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -177,6 +296,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -186,6 +312,13 @@
 		<abilityCategoryDefs>
 			<li>Magicka_Destruction</li>
 		</abilityCategoryDefs>
+		<command>
+			<soundDef>TickLow</soundDef>
+			<keyBindingDef>Misc1</keyBindingDef>
+			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
+			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
+			<iconPath></iconPath>
+		</command>
 	</RimTES.AbilityDef>
 
 </Defs>

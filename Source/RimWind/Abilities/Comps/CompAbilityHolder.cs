@@ -14,9 +14,13 @@ namespace RimTES
         public CompProperties_AbilityHolder Props { get { return (CompProperties_AbilityHolder)props; } }
         public List<AbilityHolderTypeChance> TypeChances { get { return Props.types; } }
 
-        public List<AbilityData> EmptyAbilitiesList = new List<AbilityData>();
-        public List<AbilityData> abilities = new List<AbilityData>();
-        public List<AbilityData> Abilities { get { return abilities.NullOrEmpty() ? EmptyAbilitiesList : abilities; } }
+        public List<Ability> EmptyAbilitiesList = new List<Ability>();
+        public List<Ability> abilities = new List<Ability>();
+        public List<Ability> Abilities { get { return abilities.NullOrEmpty() ? EmptyAbilitiesList : abilities; } }
+
+        public List<Ability> EmptyClickableAbilitiesList = new List<Ability>();
+        public List<Ability> clickableAbilities = new List<Ability>();
+        public List<Ability> ClickableAbilities { get { return clickableAbilities.NullOrEmpty() ? EmptyClickableAbilitiesList : clickableAbilities; } }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
@@ -27,7 +31,7 @@ namespace RimTES
             //    Log.Warning("added " + ability.ToString() + " to " + parent.LabelCap);
         }
 
-        public bool TryAddAbility(AbilityData ability)
+        public bool TryAddAbility(Ability ability)
         {
             if (abilities.NullOrEmpty())
             {
@@ -35,7 +39,7 @@ namespace RimTES
                 return true;
             }
 
-            foreach (AbilityData heldAbility in abilities)
+            foreach (Ability heldAbility in abilities)
             {
                 if (ability.def != null && heldAbility.def == ability.def)
                     return false;
@@ -45,11 +49,40 @@ namespace RimTES
             return true;
         }
 
-        public bool TryRemoveAbility(AbilityData ability)
+        public bool TryRemoveAbility(Ability ability)
         {
             if (!abilities.NullOrEmpty() && abilities.Contains(ability))
             {
                 abilities.Remove(ability);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool TryAddClickable(Ability ability)
+        {
+            if (clickableAbilities.NullOrEmpty())
+            {
+                clickableAbilities.Add(ability);
+                return true;
+            }
+
+            foreach (Ability clickableAbility in clickableAbilities)
+            {
+                if (clickableAbility.def != null && clickableAbility.def == ability.def)
+                    return false;
+            }
+
+            clickableAbilities.Add(ability);
+            return true;
+        }
+        
+        public bool TryRemoveClickable(Ability ability)
+        {
+            if (!clickableAbilities.NullOrEmpty() && clickableAbilities.Contains(ability))
+            {
+                clickableAbilities.Remove(ability);
                 return true;
             }
 
@@ -66,61 +99,20 @@ namespace RimTES
             Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);
             */
             Scribe_Collections.Look(ref abilities, "abilities", LookMode.Deep);
+            Scribe_Collections.Look(ref clickableAbilities, "clickableAbilities", LookMode.Deep);
         }
-        // ==========
-        public string DefaultLabelKey { get { return Props.defaultLabelKey; } }
-        public string DefaultDescriptionKey { get { return Props.defaultDescriptionKey; } }
-        public string IconPath { get { return Props.iconPath; } }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             foreach (Gizmo c in base.CompGetGizmosExtra())
                 yield return c;
 
-            yield return new Command_Action
+            foreach (Ability ability in clickableAbilities)
             {
-                action = delegate
-                {
-                    SoundDefOf.TickTiny.PlayOneShotOnCamera(null);
-                    Log.Error(string.Concat(new object[]
-                    {
-                        parent.LabelCap,
-                        " is an ",
-                        (parent.GetComp<CompCharacterClass>() != null) ? parent.GetComp<CompCharacterClass>().classRecord.def.defName : "CompCharacterClass was NULL",
-                        " has ",
-                        abilities.Count,
-                        " abilities."
-                    }));
-                    foreach (AbilityData ability in abilities)
-                    {
-                        string tags = "";
-                        string categories = "";
-
-                        if (ability.def != null)
-                        {
-                            foreach (TagDef tagDef in ability.def.tags)
-                                tags += tagDef.defName + ", ";
-
-                            foreach (AbilityCategoryDef abilityCategoryDef in ability.def.abilityCategoryDefs)
-                                categories += abilityCategoryDef.defName + ", ";
-
-                            Log.Warning(string.Concat(new object[]
-                            {
-                            ability.def.LabelCap,
-                            ", Tags: ",
-                            tags,
-                            " Categories: ",
-                            categories
-                            }));
-                        }
-                    }
-                },
-                hotKey = KeyBindingDefOf.Misc1,
-                defaultDesc = DefaultDescriptionKey.Translate(),
-                icon = ContentFinder<Texture2D>.Get(IconPath, true),
-                defaultLabel = DefaultLabelKey.Translate()
-            };
+                Log.Warning("looking at ability: " + ability.def.LabelCap);
+                if (ability.command != null)
+                    yield return ability.command.Click(ability, this) as Gizmo;
+            }
         }
-        // ==========
     }
 }

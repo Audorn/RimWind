@@ -3,8 +3,11 @@
 <LanguageData>
 
 	<!-- Abilities -->
-	<UseAbilityLabel>Use Ability</UseAbilityLabel>
-	<UseAbilityDesc>Use Ability Description</UseAbilityDesc>
+	<DefaultLabelKeyNotSetForCommand>Use Ability</DefaultLabelKeyNotSetForCommand>
+	<DefaultDescriptionKeyNotSetForCommand>Use Ability Description.</DefaultDescriptionKeyNotSetForCommand>
+	
+	<BurningTouchLabel>Burning Touch</BurningTouchLabel>
+	<BurningTouchDescription>Burning Touch Description</BurningTouchDescription>
 
 	<!-- Enchanting -->
 	<TakeToBeEnchantedLabel>Store For Enchanting</TakeToBeEnchantedLabel>

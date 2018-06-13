@@ -204,13 +204,11 @@ namespace RimTES
 
             foreach (AbilityDef abilityDef in abilities)
             {
-                AbilityData ability = AbilityMaker.MakeAbility(abilityDef);
+                Ability ability = AbilityMaker.MakeAbility(abilityDef);
                 if (!abilityHolder.TryAddAbility(ability))
                 {
                     if (ability.def != null)
                         Log.Warning("Failed to add ability (" + ability.def.defName + ") to " + (parent as Pawn) + ".");
-                    else
-                        Log.Warning("Failed to add ability (" + ability.label + ") to " + (parent as Pawn) + ".");
                 }
             }
         }
