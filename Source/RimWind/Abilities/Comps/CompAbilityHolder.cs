@@ -80,13 +80,34 @@ namespace RimTES
         
         public bool TryRemoveClickable(Ability ability)
         {
+            Log.Warning("checking for: " + ability.def.LabelCap);
+            foreach (Ability a in clickableAbilities)
+            {
+                Log.Warning("Checking " + a.def.LabelCap + "... " + (a == ability).ToString());
+            }
+            if (clickableAbilities.NullOrEmpty())
+                Log.Warning("No Clickable Abilities");
+
             if (!clickableAbilities.NullOrEmpty() && clickableAbilities.Contains(ability))
             {
-                clickableAbilities.Remove(ability);
+                int i = clickableAbilities.IndexOf(ability);
+                Log.Warning("clickable ability found at: " + i.ToString() + " (" + clickableAbilities[i].def.LabelCap + ")");
+                clickableAbilities.RemoveAt(i);
                 return true;
             }
 
             return false;
+        }
+
+        public void ReorderClickable(Ability ability, int offset)
+        {
+            int num = clickableAbilities.IndexOf(ability);
+            num += offset;
+            if (num >= 0)
+            {
+                clickableAbilities.Remove(ability);
+                clickableAbilities.Insert(num, ability);
+            }
         }
 
         public override void PostExposeData()
@@ -109,7 +130,7 @@ namespace RimTES
 
             foreach (Ability ability in clickableAbilities)
             {
-                Log.Warning("looking at ability: " + ability.def.LabelCap);
+                //Log.Warning("looking at ability: " + ability.def.LabelCap);
                 if (ability.command != null)
                     yield return ability.command.Click(ability, this) as Gizmo;
             }

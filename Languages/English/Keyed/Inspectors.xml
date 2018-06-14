@@ -7,6 +7,11 @@
 	<BirthSignTab>Birth Sign</BirthSignTab>
 	<ClassSummaryTab>Class Effects</ClassSummaryTab>
 	<AbilitiesTab>Abilities</AbilitiesTab>
+	<AcquiredAbilities>Acquired Abilities</AcquiredAbilities>
+	<ActiveAbilities>Active Abilities</ActiveAbilities>
+	<PawnHasNoAbilities>This pawn has acquired no abilities.</PawnHasNoAbilities>
+	<PawnHasNoActiveAbilities>Mark an ability above, by clicking the '+' button, to enable its control gizmo.</PawnHasNoActiveAbilities>
+	<SchoolOfMagickaKey>Magicka</SchoolOfMagickaKey>
 
 	<!-- Alchemy -->
 	<Reagent>Reagent</Reagent>

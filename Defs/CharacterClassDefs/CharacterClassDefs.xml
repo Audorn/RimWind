@@ -59,7 +59,7 @@
 				<li>
 					<targetNumber>5</targetNumber>
 					<abilityCategoryDefs>
-						<li>Magicka_Destruction</li>
+						<li>SchoolOfMagicka</li>
 					</abilityCategoryDefs>
 				</li>
 			</numberOfAbilitiesInCategories>

@@ -16,6 +16,10 @@ namespace RimTES
         public static readonly Texture2D reorderDownTex = ContentFinder<Texture2D>.Get("UI/Buttons/ReorderDown", true);
         public static readonly Texture2D deleteXTex = ContentFinder<Texture2D>.Get("UI/Buttons/Delete", true);
         public static readonly Texture2D suspendTex = ContentFinder<Texture2D>.Get("UI/Buttons/Suspend", true);
+        public static readonly Texture2D plusTex = ContentFinder<Texture2D>.Get("UI/Buttons/Plus", true);
+        public static readonly Texture2D minusTex = ContentFinder<Texture2D>.Get("UI/Buttons/Minus", true);
+        public static readonly Texture2D addTex = ContentFinder<Texture2D>.Get("UI/Buttons/Dev/Add", true);
+        public static readonly Texture2D revealTex = ContentFinder<Texture2D>.Get("UI/Buttons/Dev/Reveal", true);
 
         private static bool InfoCardButtonWorker(float x, float y)
         {
@@ -46,6 +50,28 @@ namespace RimTES
             }
 
             return false;
+        }
+
+        public static void AbilityIcon(Rect rect, Ability ability, float alpha = 1f)
+        {
+            Texture resolvedIcon = null;
+            if (alpha != 1f)
+            {
+                Color color = GUI.color;
+                color.a *= alpha;
+                GUI.color = color;
+            }
+
+            if (ability is CustomAbility customAbility)
+            {
+                if (!customAbility.texPath.NullOrEmpty())
+                    resolvedIcon = BaseContent.BadTex;
+            }
+            else if (ability.def != null)
+               resolvedIcon = ability.def.uiIcon;
+
+            if (resolvedIcon != null)
+                Widgets.DrawTextureRotated(rect, resolvedIcon, 0f);
         }
 
     }

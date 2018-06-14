@@ -12,15 +12,16 @@ namespace RimTES
     public static class CharacterClassCardUtility
     {
         public const float TopPadding = 20f;
-        private const float IconSize = 20f;
-        private static float AbilityHeight = 20f;
+        private const float IconSize = 24f; //20f
+        private static float AbilityHeight = 32f;
         private static float AbilityVerticalGap = 4f;
 
+        private static List<AbilityCategoryDef> AbilityCategoryDefs = new List<AbilityCategoryDef>();
+        private static List<bool> onAbilityCategories = new List<bool>();
         private static Vector2 AbilitiesScrollPosition = default(Vector2);
         private static Vector2 ActiveAbilitiesScrollPosition = default(Vector2);
 
         private static float iconSize = 32f;
-        private static float abilityLabelHeightMod = 5f;
 
         private static readonly Color HighlightColor = new Color(0.5f, 0.5f, 0.5f, 1f);
         private static readonly Color StaticHighlightColor = new Color(0.75f, 0.75f, 0.85f, 1f);
@@ -127,7 +128,7 @@ namespace RimTES
             GUI.EndGroup();
         }
 
-        public static float DrawClassSummaryTab(Rect leftRect, Pawn pawn, float curY)
+        public static float DrawClassSummaryTab(Rect rect, Pawn pawn, float curY)
         {
             CompCharacterClass characterClassComp = pawn.GetComp<CompCharacterClass>();
 
@@ -136,7 +137,7 @@ namespace RimTES
             Text.Anchor = TextAnchor.UpperLeft;
             GUI.color = new Color(0.9f, 0.9f, 0.9f);
 
-            Rect classNameRect = new Rect(0f, curY, leftRect.width, 34f);
+            Rect classNameRect = new Rect(0f, curY, rect.width, 34f);
             Widgets.Label(classNameRect, characterClassComp.classRecord.def.LabelCap);
             /*
             TooltipHandler.TipRegion(classNameRect, () => characterClassComp.classRecord.def.description, 73412);
@@ -150,7 +151,7 @@ namespace RimTES
             return curY;
         }
 
-        public static float DrawBirthSignTab(Rect leftRect, Pawn pawn, float curY)
+        public static float DrawBirthSignTab(Rect rect, Pawn pawn, float curY)
         {
             CompCharacterClass characterClassComp = pawn.GetComp<CompCharacterClass>();
             // BirthSignComp
@@ -160,7 +161,7 @@ namespace RimTES
             Text.Anchor = TextAnchor.UpperLeft;
             GUI.color = new Color(0.9f, 0.9f, 0.9f);
 
-            Rect birthSignNameRect = new Rect(0f, curY, leftRect.width, 34f);
+            Rect birthSignNameRect = new Rect(0f, curY, rect.width, 34f);
             Widgets.Label(birthSignNameRect, "BirthSignNameHere");
 
             Text.Font = GameFont.Small;
@@ -170,51 +171,74 @@ namespace RimTES
             return curY;
         }
 
-        public static float DrawAbilitiesTab(Rect leftRect, Pawn pawn, float curY)
+        public static float DrawAbilitiesTab(Rect rect, Pawn pawn, float curY)
         {
             CompAbilityHolder abilityHolderComp = pawn.GetComp<CompAbilityHolder>();
             List<Ability> abilities = abilityHolderComp.abilities;
             List<Ability> activeAbilities = abilityHolderComp.clickableAbilities;
 
-            curY += 4f;
-            Text.Font = GameFont.Medium;
-            Text.Anchor = TextAnchor.UpperLeft;
-            GUI.color = new Color(0.9f, 0.9f, 0.9f);
+            // ========== All Abilities ==========
+            PrepareAbilityCategoryDefs(abilities);
+            onAbilityCategories.Clear();
+            foreach (AbilityCategoryDef catDef in AbilityCategoryDefs)
+                onAbilityCategories.Add(false);
+            if (!onAbilityCategories.NullOrEmpty())
+                onAbilityCategories[0] = true;
 
-            Rect abilityNameRect = new Rect(0f, curY, leftRect.width, 34f);
-            Widgets.Label(abilityNameRect, "AbilitiesTab".Translate());
+            Rect allAbilitiesByCategoryRect = new Rect(0f, 40f, rect.width, 148f);
+            Widgets.DrawMenuSection(allAbilitiesByCategoryRect);
+            List<TabRecord> abilityTabs = new List<TabRecord>();
 
-            curY += 34f;
-
-            Rect abilitiesOuterRect = new Rect(0f, curY, leftRect.width, 116f);
-            Rect abilitiesViewRect = new Rect(
-                    abilitiesOuterRect.x,
-                    0f,
-                    abilitiesOuterRect.width - 16f,
-                    abilities.NullOrEmpty() ? abilitiesOuterRect.height : abilities.Count * AbilityHeight + (abilities.Count - 1) * AbilityVerticalGap);
-
-//            GUI.color = Color.gray;
-
-            Widgets.BeginScrollView(abilitiesOuterRect, ref AbilitiesScrollPosition, abilitiesViewRect, true);
-            GUI.BeginGroup(abilitiesViewRect);
-            if (abilities.NullOrEmpty())
+            for (int i = 0; i < AbilityCategoryDefs.Count; i++)
             {
+                abilityTabs.Add(new TabRecord((AbilityCategoryDefs[i].defName + "Key").Translate(), delegate
+                {
+                    for (int t = 0; t < onAbilityCategories.Count; t++)
+                        onAbilityCategories[t] = false;
+
+                    onAbilityCategories[i] = true;
+                }, onAbilityCategories[i]));
+            }
+
+            if (!abilityTabs.NullOrEmpty())
+            {
+                TabDrawer.DrawTabs(allAbilitiesByCategoryRect, abilityTabs);
+
+                rect = rect.ContractedBy(9f);
+                GUI.BeginGroup(allAbilitiesByCategoryRect);
                 Text.Font = GameFont.Small;
-                Text.Anchor = TextAnchor.UpperCenter;
                 GUI.color = Color.white;
-                Widgets.Label(abilitiesViewRect, "ThisPawnHasNoAbilities".Translate());
-                curY += 100f;
+                Text.Anchor = TextAnchor.UpperCenter;
+
+                DoAbilityCategories(allAbilitiesByCategoryRect, abilities, pawn);
+
+                GUI.EndGroup();
             }
             else
             {
-                curY += DoAbilities(abilityHolderComp, abilitiesViewRect, abilities);
-                curY += 20f;
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Widgets.Label(allAbilitiesByCategoryRect, "PawnHasNoAbilities".Translate());
             }
 
-            GUI.EndGroup(); // enchantablesViewRect
-            Widgets.EndScrollView();
+            Text.Font = GameFont.Small;
+            GUI.color = Color.white;
+            Text.Anchor = TextAnchor.UpperLeft;
 
-            Rect activeAbilitiesOuterRect = new Rect(0f, curY, leftRect.width, 116f);
+            Rect abilityCapacity = new Rect(rect.xMax - 180f, 190f, 180f, 30f);
+            GUI.BeginGroup(abilityCapacity);
+
+            Rect labelRect = new Rect(0f, 0f, 130f, 30f);
+            Widgets.Label(labelRect, "AcquiredAbilities".Translate() + ": ");
+
+            Rect currentMaxRect = new Rect(120f, 0f, 50f, 30f);
+            Widgets.Label(currentMaxRect, "99/99");
+
+            GUI.EndGroup();
+
+            // ========== Active Abilities ==========
+
+            Rect activeAbilitiesOuterRect = new Rect(4f, 230f, rect.width + 10f, 140f);
             Rect activeAbilitiesViewRect = new Rect(
                 activeAbilitiesOuterRect.x,
                 0f,
@@ -223,27 +247,62 @@ namespace RimTES
 
             Widgets.BeginScrollView(activeAbilitiesOuterRect, ref ActiveAbilitiesScrollPosition, activeAbilitiesViewRect, true);
             GUI.BeginGroup(activeAbilitiesViewRect);
-            if (activeAbilities.NullOrEmpty())
+            Text.Font = GameFont.Small;
+            GUI.color = Color.white;
+            Text.Anchor = TextAnchor.UpperCenter;
+            if (!activeAbilities.NullOrEmpty())
             {
-                Text.Font = GameFont.Small;
-                Text.Anchor = TextAnchor.UpperCenter;
-                GUI.color = Color.white;
-                Widgets.Label(activeAbilitiesViewRect, "ThisPawnHasNoActiveAbilities".Translate());
-                curY += 100f;
+                DoActiveAbilities(abilityHolderComp, activeAbilitiesViewRect, activeAbilities);
             }
             else
             {
-                curY += DoActiveAbilities(abilityHolderComp, activeAbilitiesViewRect, abilities);
-                curY += 20f;
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Widgets.Label(activeAbilitiesOuterRect, "PawnHasNoActiveAbilities".Translate());
             }
 
             GUI.EndGroup();
             Widgets.EndScrollView();
 
-            Text.Font = GameFont.Tiny;
+            Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.UpperLeft;
-            GUI.color = new Color(0.9f, 0.9f, 0.9f);
-            return curY;
+
+            return curY; // obsolete
+        }
+
+        private static void DoAbilityCategories(Rect rect, List<Ability> abilities, Pawn pawn)
+        {
+            Rect abilitiesOuterRect = new Rect(4f, 4f, rect.width - 8f, rect.height - 8f);
+            Rect abilitiesViewRect = new Rect(
+                    abilitiesOuterRect.x,
+                    0f,
+                    abilitiesOuterRect.width - 16f,
+                    abilities.NullOrEmpty() ? abilitiesOuterRect.height : abilities.Count * AbilityHeight + (abilities.Count - 1) * AbilityVerticalGap);
+
+            for (int i = 0; i < AbilityCategoryDefs.Count; i++)
+            {
+                if (onAbilityCategories[i])
+                {
+                    List<Ability> abilitiesInCategory = new List<Ability>();
+                    foreach (Ability ability in abilities)
+                        if (ability.def.abilityCategoryDefs.Contains(AbilityCategoryDefs[i]))
+                            abilitiesInCategory.Add(ability);
+
+                    DoAbilitiesInCategory(abilitiesOuterRect, abilitiesViewRect, abilitiesInCategory, pawn);
+                }
+            }
+        }
+
+        private static void DoAbilitiesInCategory(Rect outerRect, Rect viewRect, List<Ability> abilities, Pawn pawn)
+        {
+            Widgets.BeginScrollView(outerRect, ref AbilitiesScrollPosition, viewRect, true);
+            GUI.BeginGroup(viewRect);
+
+            if (!abilities.NullOrEmpty())
+                DoAbilities(pawn.GetComp<CompAbilityHolder>(), viewRect, abilities);
+
+            GUI.EndGroup();
+            Widgets.EndScrollView();
         }
 
         private static float DoAbilities(CompAbilityHolder abilityHolderComp, Rect rect, List<Ability> abilities)
@@ -265,28 +324,34 @@ namespace RimTES
 
         private static Ability DoAbilityInterface(Rect abilityRect, Ability ability, Pawn pawn)
         {
+            CompAbilityHolder abilityHolderComp = pawn.GetComp<CompAbilityHolder>();
+
             GUI.BeginGroup(abilityRect);
             Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.UpperLeft;
+            Text.Anchor = TextAnchor.MiddleLeft;
             GUI.color = Color.white;
 
-            // Disable for passive abilities.
-            Rect addRect = new Rect(0f, 0f, 24f, 24f);
-            if (Widgets.ButtonImage(addRect, Widgets_Extensions.deleteXTex, Color.white))
-                Log.Warning("clicked add");
+            Rect iconRect = new Rect(0f, 0f, iconSize, iconSize);
+            Widgets_Extensions.AbilityIcon(iconRect, ability);
 
-            Rect iconRect = new Rect(26f, 0f, iconSize, iconSize);
-            //Widgets.ThingIcon(iconRect, pawn); // Extend the widgets class.
-
-            Rect labelRect = new Rect(iconRect.x + iconRect.width + 2f, 0f, 100f, 30f);
+            Rect labelRect = new Rect(iconRect.width + 4f, 0f, 120f, 32f);
             Widgets.Label(labelRect, ability.def.LabelCap);
 
-            Rect effectsRect = new Rect(labelRect.x + labelRect.width + 2f, 0f, 200f, 30f);
-            Widgets.Label(effectsRect, ability.def.description);
+            Rect infoRect = new Rect(abilityRect.xMax - 24f - 24f - 34f, 0f, 24f, 24f);
+            if (Widgets.ButtonImage(infoRect, Widgets_Extensions.infoTex, Color.white))
+                Log.Warning("clicked info");
 
-            Rect deleteRect = new Rect(effectsRect.x + effectsRect.width, 0f, 24f, 24f);
+            Rect addRect = new Rect(abilityRect.xMax - 24f - 34f, 0f, 24f, 24f);
+            if (Widgets.ButtonImage(addRect, Widgets_Extensions.plusTex, Color.white))
+                abilityHolderComp.TryAddClickable(ability);
+
+            Rect deleteRect = new Rect(abilityRect.xMax - 34f, 0f, 24f, 24f); // 24f + 10f (scrollbar) = 34f
             if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, Color.white))
                 Log.Warning("clicked delete");
+
+            float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - infoRect.width - addRect.width - deleteRect.width - 8f; // 8f sum of gaps.
+            Rect effectsRect = new Rect(labelRect.x + labelRect.width + 4f, 0f, effectsWidth, 32f);
+            Widgets.Label(effectsRect, ability.def.description);
 
             GUI.EndGroup();
 
@@ -294,6 +359,36 @@ namespace RimTES
                 return ability;
 
             return null;
+        }
+
+        public static void PrepareAbilityCategoryDefs(List<Ability> abilities)
+        {
+            AbilityCategoryDefs.Clear();
+            List<AbilityCategoryDef> allAbilityCategories = DefDatabase<AbilityCategoryDef>.AllDefsListForReading;
+            foreach (AbilityCategoryDef abilityCategoryDef in allAbilityCategories)
+            {
+                foreach (Ability ability in abilities)
+                {
+                    if (ability.def.abilityCategoryDefs.Contains(abilityCategoryDef))
+                        if (!AbilityCategoryDefs.Contains(abilityCategoryDef))
+                            AbilityCategoryDefs.Add(abilityCategoryDef);
+                }
+            }
+            List<AbilityCategoryDef> abilityCategoryDefsToRemove = new List<AbilityCategoryDef>();
+            foreach (AbilityCategoryDef abilityCategoryDef in AbilityCategoryDefs)
+            {
+                foreach (Ability ability in abilities)
+                {
+                    if (!abilityCategoryDefsToRemove.Contains(abilityCategoryDef) && !ability.def.abilityCategoryDefs.Contains(abilityCategoryDef))
+                        abilityCategoryDefsToRemove.Add(abilityCategoryDef);
+                }
+            }
+
+            foreach (AbilityCategoryDef abilityCategoryDef in abilityCategoryDefsToRemove)
+            {
+                if (AbilityCategoryDefs.Contains(abilityCategoryDef))
+                    AbilityCategoryDefs.Remove(abilityCategoryDef);
+            }
         }
 
         private static float DoActiveAbilities(CompAbilityHolder abilityHolderComp, Rect rect, List<Ability> abilities)
@@ -315,32 +410,46 @@ namespace RimTES
 
         private static Ability DoActiveAbilityInterface(Rect abilityRect, Ability ability, Pawn pawn)
         {
+            CompAbilityHolder abilityHolderComp = pawn.GetComp<CompAbilityHolder>();
+            int abilityIndex = abilityHolderComp.clickableAbilities.IndexOf(ability);
+            int lastAbilityIndex = abilityHolderComp.clickableAbilities.Count - 1;
+
             GUI.BeginGroup(abilityRect);
             Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.UpperLeft;
+            Text.Anchor = TextAnchor.MiddleLeft;
             GUI.color = Color.white;
 
-            // Disable for passive abilities.
-            Rect upRect = new Rect(0f, 0f, 24f, 24f);
-            if (Widgets.ButtonImage(upRect, Widgets_Extensions.deleteXTex, Color.white))
-                Log.Warning("clicked up");
+            Rect iconRect = new Rect(0f, 0f, iconSize, iconSize);
+            Widgets_Extensions.AbilityIcon(iconRect, ability);
 
-            Rect downRect = new Rect(26f, 0f, 24f, 24f);
-            if (Widgets.ButtonImage(downRect, Widgets_Extensions.deleteXTex, Color.white))
-                Log.Warning("clicked down");
-
-            Rect iconRect = new Rect(downRect.x + downRect.width + 2f, 0f, iconSize, iconSize);
-            //Widgets.ThingIcon(iconRect, pawn); // Extend the widgets class.
-
-            Rect labelRect = new Rect(iconRect.x + iconRect.width + 2f, 0f, 100f, 30f);
+            Rect labelRect = new Rect(iconRect.width + 2f, 0f, 120f, 32f);
             Widgets.Label(labelRect, ability.def.LabelCap);
 
-            Rect effectsRect = new Rect(labelRect.x + labelRect.width + 2f, 0f, 200f, 30f);
-            Widgets.Label(effectsRect, ability.def.description);
+            Rect infoRect = new Rect(abilityRect.xMax - 24f - 24f - 24f - 34f, 0f, 24f, 24f);
+            if (Widgets.ButtonImage(infoRect, Widgets_Extensions.infoTex, Color.white))
+                Log.Warning("clicked info");
 
-            Rect deleteRect = new Rect(effectsRect.x + effectsRect.width, 0f, 24f, 24f);
+            Rect upRect = new Rect(abilityRect.xMax - 24f - 24f - 34f, 0f, 24f, 24f);
+            if (abilityIndex != 0)
+            {
+                if (Widgets.ButtonImage(upRect, Widgets_Extensions.reorderUpTex, Color.white))
+                    abilityHolderComp.ReorderClickable(ability, -1);
+            }
+
+            Rect downRect = new Rect(abilityRect.xMax - 24f - 34f, 0f, 24f, 24f);
+            if (abilityIndex != lastAbilityIndex)
+            {
+                if (Widgets.ButtonImage(downRect, Widgets_Extensions.reorderDownTex, Color.white))
+                    abilityHolderComp.ReorderClickable(ability, 1);
+            }
+
+            Rect deleteRect = new Rect(abilityRect.xMax - 34f, 0f, 24f, 24f); // 24f + 10f (scrollbar) = 34f
             if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, Color.white))
-                Log.Warning("clicked delete");
+                abilityHolderComp.TryRemoveClickable(ability);
+
+            float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - infoRect.width - upRect.width - downRect.width - deleteRect.width;
+            Rect effectsRect = new Rect(labelRect.x + labelRect.width + 2f, 0f, effectsWidth, 32f);
+            Widgets.Label(effectsRect, ability.def.description);
 
             GUI.EndGroup();
 

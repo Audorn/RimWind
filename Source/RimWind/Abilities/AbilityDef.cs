@@ -12,12 +12,13 @@ namespace RimTES
     {
         public List<AbilityCategoryDef> abilityCategoryDefs = new List<AbilityCategoryDef>();
         public List<TagDef> tags = new List<TagDef>();
+        public string texPath = "";
+        public new Texture2D uiIcon = BaseContent.BadTex; // When remove inheriting from ThingDef remove 'new'
 
         public AbilityDef() { thingClass = typeof(Ability); }
         public AbilityDef(Type thingClass) { this.thingClass = thingClass; }
 
         public CommandBuilder command = null;
-
 
 
 
@@ -73,6 +74,15 @@ namespace RimTES
         public override string ToString() { return base.ToString(); }
         public override int GetHashCode() { return base.GetHashCode(); }
         public override void ResolveReferences() { base.ResolveReferences(); }
-        public override void PostLoad() { base.PostLoad(); }
+
+        public override void PostLoad()
+        {
+            base.PostLoad();
+            LongEventHandler.ExecuteWhenFinished(delegate
+            {
+                if (!texPath.NullOrEmpty())
+                    uiIcon = ContentFinder<Texture2D>.Get(texPath, true);
+            });
+        }
     }
 }

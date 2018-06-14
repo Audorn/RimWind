@@ -10,7 +10,9 @@ namespace RimTES
 {
     public class CustomAbility : Ability
     {
-
+        public Color IconDrawColor;
+        public string texPath;
+        public Texture uiIcon;
 
 
 
