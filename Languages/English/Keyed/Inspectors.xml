@@ -2,8 +2,11 @@
 
 <LanguageData>
 
-	<!-- Abilities -->
-	<TabAbilityManager>Abilities</TabAbilityManager>
+	<!-- CharacterClass -->
+	<TabClassManager>Class</TabClassManager>
+	<BirthSignTab>Birth Sign</BirthSignTab>
+	<ClassSummaryTab>Class Effects</ClassSummaryTab>
+	<AbilitiesTab>Abilities</AbilitiesTab>
 
 	<!-- Alchemy -->
 	<Reagent>Reagent</Reagent>

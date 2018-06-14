@@ -8,7 +8,7 @@ using RimWorld;
 
 namespace RimTES
 { 
-    public class ITab_Pawn_AbilityManager : ITab
+    public class ITab_Pawn_ClassManager : ITab
     {
         private Pawn PawnToShowInfoAbout
         {
@@ -26,7 +26,7 @@ namespace RimTES
 
                 if (pawn == null)
                 {
-                    Log.Error("Ability Manager tab found no selected pawn to display.");
+                    Log.Error("Class Manager tab found no selected pawn to display.");
                     return null;
                 }
 
@@ -45,18 +45,21 @@ namespace RimTES
             }
         }
 
-        public ITab_Pawn_AbilityManager()
+        public ITab_Pawn_ClassManager()
         {
             size = CharacterCardUtility.PawnCardSize + new Vector2(17f, 17f) * 2f;
-            labelKey = "TabAbilityManager";
-            tutorTag = "AbilityManager";
+            labelKey = "TabClassManager";
+            tutorTag = "ClassManager";
         }
 
+        public bool birthSignVisible = false;
+        public bool abilityManagerVisible = false;
         protected override void FillTab()
         {
-            Rect rect = new Rect(17f, 17f, CharacterCardUtility.PawnCardSize.x, CharacterCardUtility.PawnCardSize.y);
-            if (Widgets.ButtonText(rect, "MarkToStudyEnchantment".Translate(), true, true))
-                Log.Error("clicked");
+            Rect classCardRect = new Rect(17f, 17f, CharacterCardUtility.PawnCardSize.x, CharacterCardUtility.PawnCardSize.y);
+
+            Rect outRect = new Rect(0f, 31f, size.x, size.y - 31f);
+            CharacterClassCardUtility.DrawClassSummary(outRect, PawnToShowInfoAbout);
         }
     }
 }

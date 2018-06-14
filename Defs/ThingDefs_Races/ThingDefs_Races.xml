@@ -7,7 +7,7 @@
         <label>dunmer</label>
         <description>Dark elf of Morrowind.</description>
 		<inspectorTabs>
-			<li>RimTES.ITab_Pawn_AbilityManager</li>
+			<li>RimTES.ITab_Pawn_ClassManager</li>
 		</inspectorTabs>
         <comps>
 			<li Class="RimTES.CompProperties_CharacterClass">

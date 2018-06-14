@@ -131,7 +131,8 @@
     <Compile Include="Abilities\AbilityDef.cs" />
     <Compile Include="Abilities\Comps\CompProperties_AbilityHolder.cs" />
     <Compile Include="Abilities\Comps\CompAbilityHolder.cs" />
-    <Compile Include="Abilities\UI\ITab_Pawn_AbilityManager.cs" />
+    <Compile Include="Classes\UI\ITab_Pawn_ClassManager.cs" />
+    <Compile Include="Classes\UI\CharacterClassCardUtility.cs" />
     <Compile Include="Abilities\Utilities\AbilityMaker.cs" />
     <Compile Include="Classes\CharacterClassRecord.cs" />
     <Compile Include="Classes\CharacterClassDef.cs" />
