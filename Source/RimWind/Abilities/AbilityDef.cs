@@ -19,7 +19,7 @@ namespace RimTES
         public AbilityDef(Type thingClass) { this.thingClass = thingClass; }
 
         public CommandBuilder command = null;
-
+        public int ticksToForget = 0;
 
 
 

@@ -11,6 +11,8 @@
 	<ActiveAbilities>Active Abilities</ActiveAbilities>
 	<PawnHasNoAbilities>This pawn has acquired no abilities.</PawnHasNoAbilities>
 	<PawnHasNoActiveAbilities>Mark an ability above, by clicking the '+' button, to enable its control gizmo.</PawnHasNoActiveAbilities>
+	<PawnIsNotForgettingAbilities>This pawn is not forgetting any abilities.</PawnIsNotForgettingAbilities>
+	<ForgettingAbility>Forgetting</ForgettingAbility>
 	<SchoolOfMagickaKey>Magicka</SchoolOfMagickaKey>
 
 	<!-- Alchemy -->

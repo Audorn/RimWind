@@ -12,6 +12,7 @@ namespace RimTES
     public class Ability : IExposable
     {
         public AbilityDef def;
+        public int lastAttemptedForget = 0;
 
         public CommandBuilder command = null;
 
@@ -24,6 +25,7 @@ namespace RimTES
         {
             Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref command, "command", null, false);
+            Scribe_Values.Look(ref lastAttemptedForget, "lastAttemptedForget", 0, false);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace RimTES
         public Color IconDrawColor;
         public string texPath;
         public Texture uiIcon;
+        public int ticksToForget = 0;
 
 
 

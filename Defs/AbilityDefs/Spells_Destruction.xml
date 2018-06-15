@@ -13,6 +13,7 @@
 		<texPath>Things/Item/Artifact/PsychicInsanityLance</texPath>
 		<label>burning touch</label>
 		<description>Hot fingers.</description>
+		<ticksToForget>1000</ticksToForget>
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>

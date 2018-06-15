@@ -22,6 +22,11 @@ namespace RimTES
         public List<Ability> clickableAbilities = new List<Ability>();
         public List<Ability> ClickableAbilities { get { return clickableAbilities.NullOrEmpty() ? EmptyClickableAbilitiesList : clickableAbilities; } }
 
+        public List<ForgettingAbility> EmptyForgettingAbilitiesList = new List<ForgettingAbility>();
+        public List<ForgettingAbility> forgettingAbilities = new List<ForgettingAbility>();
+        public List<ForgettingAbility> ForgettingAbilities { get { return forgettingAbilities.NullOrEmpty() ? EmptyForgettingAbilitiesList : forgettingAbilities; } }
+        public readonly int maxForgettable = 2;
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
@@ -48,7 +53,6 @@ namespace RimTES
             abilities.Add(ability);
             return true;
         }
-
         public bool TryRemoveAbility(Ability ability)
         {
             if (!abilities.NullOrEmpty() && abilities.Contains(ability))
@@ -59,7 +63,6 @@ namespace RimTES
 
             return false;
         }
-
         public bool TryAddClickable(Ability ability)
         {
             if (clickableAbilities.NullOrEmpty())
@@ -77,23 +80,52 @@ namespace RimTES
             clickableAbilities.Add(ability);
             return true;
         }
-        
         public bool TryRemoveClickable(Ability ability)
         {
-            Log.Warning("checking for: " + ability.def.LabelCap);
-            foreach (Ability a in clickableAbilities)
-            {
-                Log.Warning("Checking " + a.def.LabelCap + "... " + (a == ability).ToString());
-            }
-            if (clickableAbilities.NullOrEmpty())
-                Log.Warning("No Clickable Abilities");
-
             if (!clickableAbilities.NullOrEmpty() && clickableAbilities.Contains(ability))
             {
-                int i = clickableAbilities.IndexOf(ability);
-                Log.Warning("clickable ability found at: " + i.ToString() + " (" + clickableAbilities[i].def.LabelCap + ")");
-                clickableAbilities.RemoveAt(i);
+                clickableAbilities.Remove(ability);
                 return true;
+            }
+
+            return false;
+        }
+        public bool TryAddForgettable(Ability ability)
+        {
+            if (forgettingAbilities.Count >= maxForgettable)
+                return false;
+
+            if (abilities.Find(a => a == ability).lastAttemptedForget > 0)
+                return false;
+
+            if (forgettingAbilities.NullOrEmpty())
+            {
+                forgettingAbilities.Add(new ForgettingAbility(ability));
+                return true;
+            }
+
+            foreach (ForgettingAbility forgettingAbility in forgettingAbilities)
+            {
+                if (forgettingAbility.ability.def != null && forgettingAbility.ability.def == ability.def)
+                    return false;
+            }
+
+            forgettingAbilities.Add(new ForgettingAbility(ability));
+            return true;
+        }
+        public bool TryRemoveForgettable(Ability ability)
+        {
+            if (!forgettingAbilities.NullOrEmpty())
+            {
+                ForgettingAbility forgettingAbility = forgettingAbilities.Find(fA => fA.ability == ability);
+                if (forgettingAbility != null)
+                {
+                    forgettingAbilities.Remove(forgettingAbility);
+                    Ability abilityToDisableForgettingOn = abilities.Find(a => a == ability);
+                    if (abilityToDisableForgettingOn != null)
+                        abilityToDisableForgettingOn.lastAttemptedForget = ability.def.ticksToForget;
+                    return true;
+                }
             }
 
             return false;
@@ -110,17 +142,39 @@ namespace RimTES
             }
         }
 
+        public override void CompTick()
+        {
+            base.CompTick();
+
+            foreach (Ability ability in abilities)
+            {
+                if (ability.lastAttemptedForget > 0)
+                    ability.lastAttemptedForget--;
+            }
+
+            List<ForgettingAbility> forgottenAbilities = new List<ForgettingAbility>();
+            foreach (ForgettingAbility forgettingAbility in forgettingAbilities)
+            {
+                if (forgettingAbility.ticks <= 0)
+                    forgottenAbilities.Add(forgettingAbility);
+                else
+                    forgettingAbility.ticks--;
+            }
+
+            foreach (ForgettingAbility forgottenAbility in forgottenAbilities)
+            {
+                TryRemoveForgettable(forgottenAbility.ability);
+                TryRemoveAbility(forgottenAbility.ability);
+                TryRemoveClickable(forgottenAbility.ability);
+            }
+        }
+
         public override void PostExposeData()
         {
             base.PostExposeData();
-            /*
-            Scribe_Defs.Look(ref ((CompProperties_StorableByDesignation)props).designationDef, "designationDef");
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultLabelKey, "defaultLabelKey", "", false);
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).defaultDescriptionKey, "defaultDescriptionKey", "", false);
-            Scribe_Values.Look(ref ((CompProperties_StorableByDesignation)props).iconPath, "iconPath", "", false);
-            */
             Scribe_Collections.Look(ref abilities, "abilities", LookMode.Deep);
             Scribe_Collections.Look(ref clickableAbilities, "clickableAbilities", LookMode.Deep);
+            Scribe_Collections.Look(ref forgettingAbilities, "forgettingAbilities", LookMode.Deep);
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -134,6 +188,25 @@ namespace RimTES
                 if (ability.command != null)
                     yield return ability.command.Click(ability, this) as Gizmo;
             }
+        }
+    }
+
+    public class ForgettingAbility : IExposable
+    {
+        public Ability ability;
+        public int ticks;
+
+        public ForgettingAbility() { }
+        public ForgettingAbility(Ability ability)
+        {
+            this.ability = ability;
+            ticks = ability is CustomAbility customAbility ? (ability as CustomAbility).ticksToForget : ability.def.ticksToForget;
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Deep.Look(ref ability, "ability");
+            Scribe_Values.Look(ref ticks, "ticks");
         }
     }
 }
