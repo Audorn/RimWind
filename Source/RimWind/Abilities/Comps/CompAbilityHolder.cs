@@ -17,14 +17,9 @@ namespace RimTES
         public List<Ability> EmptyAbilitiesList = new List<Ability>();
         public List<Ability> abilities = new List<Ability>();
         public List<Ability> Abilities { get { return abilities.NullOrEmpty() ? EmptyAbilitiesList : abilities; } }
+        public List<Ability> ClickableAbilities { get { return abilities.FindAll(a => a.clickable == true); } }
+        public List<Ability> ForgettingAbilities { get { return abilities.FindAll(a => a.forgetting == true); } }
 
-        public List<Ability> EmptyClickableAbilitiesList = new List<Ability>();
-        public List<Ability> clickableAbilities = new List<Ability>();
-        public List<Ability> ClickableAbilities { get { return clickableAbilities.NullOrEmpty() ? EmptyClickableAbilitiesList : clickableAbilities; } }
-
-        public List<ForgettingAbility> EmptyForgettingAbilitiesList = new List<ForgettingAbility>();
-        public List<ForgettingAbility> forgettingAbilities = new List<ForgettingAbility>();
-        public List<ForgettingAbility> ForgettingAbilities { get { return forgettingAbilities.NullOrEmpty() ? EmptyForgettingAbilitiesList : forgettingAbilities; } }
         public readonly int maxForgettable = 2;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -63,118 +58,100 @@ namespace RimTES
 
             return false;
         }
-        public bool TryAddClickable(Ability ability)
+        public void ToggleClickable(Ability ability)
         {
-            if (clickableAbilities.NullOrEmpty())
-            {
-                clickableAbilities.Add(ability);
-                return true;
-            }
+            Ability toggledAbility = abilities.Find(a => a == ability);
+            toggledAbility.clickable = !toggledAbility.clickable;
 
-            foreach (Ability clickableAbility in clickableAbilities)
-            {
-                if (clickableAbility.def != null && clickableAbility.def == ability.def)
-                    return false;
-            }
+            if (toggledAbility.clickable)
+                toggledAbility.gizmoOrder = NextGizmoNumber;
 
-            clickableAbilities.Add(ability);
-            return true;
+            toggledAbility.gizmoOrder = -1;
         }
-        public bool TryRemoveClickable(Ability ability)
+        public int NextGizmoNumber
         {
-            if (!clickableAbilities.NullOrEmpty() && clickableAbilities.Contains(ability))
+            get
             {
-                clickableAbilities.Remove(ability);
-                return true;
-            }
-
-            return false;
-        }
-        public bool TryAddForgettable(Ability ability)
-        {
-            if (forgettingAbilities.Count >= maxForgettable)
-                return false;
-
-            if (abilities.Find(a => a == ability).lastAttemptedForget > 0)
-                return false;
-
-            if (forgettingAbilities.NullOrEmpty())
-            {
-                forgettingAbilities.Add(new ForgettingAbility(ability));
-                return true;
-            }
-
-            foreach (ForgettingAbility forgettingAbility in forgettingAbilities)
-            {
-                if (forgettingAbility.ability.def != null && forgettingAbility.ability.def == ability.def)
-                    return false;
-            }
-
-            forgettingAbilities.Add(new ForgettingAbility(ability));
-            return true;
-        }
-        public bool TryRemoveForgettable(Ability ability)
-        {
-            if (!forgettingAbilities.NullOrEmpty())
-            {
-                ForgettingAbility forgettingAbility = forgettingAbilities.Find(fA => fA.ability == ability);
-                if (forgettingAbility != null)
+                int lastGizmo = -1;
+                foreach (Ability ability in abilities)
                 {
-                    forgettingAbilities.Remove(forgettingAbility);
-                    Ability abilityToDisableForgettingOn = abilities.Find(a => a == ability);
-                    if (abilityToDisableForgettingOn != null)
-                        abilityToDisableForgettingOn.lastAttemptedForget = ability.def.ticksToForget;
-                    return true;
+                    if (ability.gizmoOrder > lastGizmo)
+                        lastGizmo = ability.gizmoOrder;
                 }
+
+                return ++lastGizmo;
+            }
+        }
+        public void ToggleForgettable(Ability ability)
+        {
+            Ability toggledAbility = abilities.Find(a => a == ability);
+
+            if (!toggledAbility.forgetting)
+            {
+                if (TotalAbilitiesBeingForgotten > maxForgettable || toggledAbility.lastAttemptedForget > 0)
+                    return;
+
+                toggledAbility.remainingTicksToForget = toggledAbility.def.ticksToForget;
+            }
+            else
+            {
+                toggledAbility.remainingTicksToForget = -1;
+                toggledAbility.lastAttemptedForget = toggledAbility.def.ticksToForget;
             }
 
-            return false;
+            toggledAbility.forgetting = !toggledAbility.forgetting;
         }
-
+        public void ForgetAbility(Ability ability)
+        {
+            abilities.Remove(ability);
+        }
+        public int TotalAbilitiesBeingForgotten
+        {
+            get
+            {
+                List<Ability> abilitiesBeingForgotten = abilities.FindAll(a => a.forgetting == true);
+                return abilitiesBeingForgotten.Count;
+            }
+        }
         public void ReorderClickable(Ability ability, int offset)
         {
-            int num = clickableAbilities.IndexOf(ability);
-            num += offset;
-            if (num >= 0)
+            Ability reorderedAbility = abilities.Find(a => a == ability);
+            int num = reorderedAbility.gizmoOrder + offset;
+            foreach (Ability abilityToMove in ClickableAbilities)
             {
-                clickableAbilities.Remove(ability);
-                clickableAbilities.Insert(num, ability);
+                if (abilityToMove.gizmoOrder >= num)
+                    abilityToMove.gizmoOrder++;
             }
+            reorderedAbility.gizmoOrder = num;
         }
 
         public override void CompTick()
         {
             base.CompTick();
 
+            List<Ability> abilitiesToForget = new List<Ability>();
             foreach (Ability ability in abilities)
             {
                 if (ability.lastAttemptedForget > 0)
                     ability.lastAttemptedForget--;
+
+                if (ability.forgetting)
+                {
+                    if (ability.remainingTicksToForget > 0)
+                        ability.remainingTicksToForget--;
+                    else
+                        abilitiesToForget.Add(ability);
+                }
             }
 
-            List<ForgettingAbility> forgottenAbilities = new List<ForgettingAbility>();
-            foreach (ForgettingAbility forgettingAbility in forgettingAbilities)
-            {
-                if (forgettingAbility.ticks <= 0)
-                    forgottenAbilities.Add(forgettingAbility);
-                else
-                    forgettingAbility.ticks--;
-            }
-
-            foreach (ForgettingAbility forgottenAbility in forgottenAbilities)
-            {
-                TryRemoveForgettable(forgottenAbility.ability);
-                TryRemoveAbility(forgottenAbility.ability);
-                TryRemoveClickable(forgottenAbility.ability);
-            }
+            foreach (Ability ability in abilitiesToForget)
+                ForgetAbility(ability);
         }
 
         public override void PostExposeData()
         {
             base.PostExposeData();
             Scribe_Collections.Look(ref abilities, "abilities", LookMode.Deep);
-            Scribe_Collections.Look(ref clickableAbilities, "clickableAbilities", LookMode.Deep);
-            Scribe_Collections.Look(ref forgettingAbilities, "forgettingAbilities", LookMode.Deep);
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -182,31 +159,13 @@ namespace RimTES
             foreach (Gizmo c in base.CompGetGizmosExtra())
                 yield return c;
 
+            List<Ability> clickableAbilities = abilities.FindAll(a => a.clickable == true);
             foreach (Ability ability in clickableAbilities)
             {
                 //Log.Warning("looking at ability: " + ability.def.LabelCap);
                 if (ability.command != null)
                     yield return ability.command.Click(ability, this) as Gizmo;
             }
-        }
-    }
-
-    public class ForgettingAbility : IExposable
-    {
-        public Ability ability;
-        public int ticks;
-
-        public ForgettingAbility() { }
-        public ForgettingAbility(Ability ability)
-        {
-            this.ability = ability;
-            ticks = ability is CustomAbility customAbility ? (ability as CustomAbility).ticksToForget : ability.def.ticksToForget;
-        }
-
-        public void ExposeData()
-        {
-            Scribe_Deep.Look(ref ability, "ability");
-            Scribe_Values.Look(ref ticks, "ticks");
         }
     }
 }

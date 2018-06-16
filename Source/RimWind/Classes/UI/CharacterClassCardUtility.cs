@@ -175,8 +175,8 @@ namespace RimTES
         {
             CompAbilityHolder abilityHolderComp = pawn.GetComp<CompAbilityHolder>();
             List<Ability> abilities = abilityHolderComp.abilities;
-            List<Ability> activeAbilities = abilityHolderComp.clickableAbilities;
-            List<ForgettingAbility> forgettingAbilities = abilityHolderComp.forgettingAbilities;
+            List<Ability> activeAbilities = abilityHolderComp.ClickableAbilities;
+            List<Ability> forgettingAbilities = abilityHolderComp.ForgettingAbilities;
 
             // ========== All Abilities ==========
             PrepareAbilityCategoryDefs(abilities);
@@ -354,7 +354,7 @@ namespace RimTES
             Rect iconRect = new Rect(0f, 0f, iconSize, iconSize);
             Widgets_Extensions.AbilityIcon(iconRect, ability);
 
-            GUI.color = abilityHolderComp.clickableAbilities.Contains(ability) ? Color.green : Color.white;
+            GUI.color = abilityHolderComp.ClickableAbilities.Contains(ability) ? Color.green : Color.white;
             Rect labelRect = new Rect(iconRect.width + 4f, 0f, 120f, 32f);
             Widgets.Label(labelRect, ability.def.LabelCap);
             GUI.color = Color.white;
@@ -365,24 +365,20 @@ namespace RimTES
 
             Rect addRect = new Rect(abilityRect.xMax - 24f - 34f, 0f, 24f, 24f);
             if (Widgets.ButtonImage(addRect, Widgets_Extensions.plusTex, Color.white))
-                abilityHolderComp.TryAddClickable(ability);
+                abilityHolderComp.ToggleClickable(ability);
 
-            bool forgettingAbility = (ability.lastAttemptedForget > 0 || abilityHolderComp.forgettingAbilities.Find(fA => fA.ability == ability) != null) ? true : false;
             Rect deleteRect = new Rect(abilityRect.xMax - 34f, 0f, 24f, 24f); // 24f + 10f (scrollbar) = 34f
-            if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, forgettingAbility ? new Color(0.2f, 0.2f, 0.2f) : Color.white))
-            {
-                if (!forgettingAbility)
-                    abilityHolderComp.TryAddForgettable(ability);
-            }
+            if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, ability.forgetting ? new Color(0.2f, 0.2f, 0.2f) : Color.white))
+                abilityHolderComp.ToggleForgettable(ability);
 
-            GUI.color = abilityHolderComp.clickableAbilities.Contains(ability) ? Color.green : Color.white;
+            GUI.color = abilityHolderComp.ClickableAbilities.Contains(ability) ? Color.green : Color.white;
             float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - infoRect.width - addRect.width - deleteRect.width - 8f; // 8f sum of gaps.
             Rect effectsRect = new Rect(labelRect.x + labelRect.width + 4f, 0f, effectsWidth, 32f);
             Widgets.Label(effectsRect, ability.def.description);
             GUI.color = Color.white;
             GUI.EndGroup();
 
-            if (abilityHolderComp.forgettingAbilities.Find(fA => fA.ability == ability) != null)
+            if (ability.forgetting)
             {
                 Text.Font = GameFont.Medium;
                 Text.Anchor = TextAnchor.MiddleCenter;
@@ -449,8 +445,6 @@ namespace RimTES
         private static Ability DoActiveAbilityInterface(Rect abilityRect, Ability ability, Pawn pawn)
         {
             CompAbilityHolder abilityHolderComp = pawn.GetComp<CompAbilityHolder>();
-            int abilityIndex = abilityHolderComp.clickableAbilities.IndexOf(ability);
-            int lastAbilityIndex = abilityHolderComp.clickableAbilities.Count - 1;
 
             GUI.BeginGroup(abilityRect);
             Text.Font = GameFont.Small;
@@ -463,29 +457,28 @@ namespace RimTES
             Rect labelRect = new Rect(iconRect.width + 2f, 0f, 120f, 32f);
             Widgets.Label(labelRect, ability.def.LabelCap);
 
-            Rect infoRect = new Rect(abilityRect.xMax - 24f - 24f - 24f - 34f, 0f, 24f, 24f);
-            if (Widgets.ButtonImage(infoRect, Widgets_Extensions.infoTex, Color.white))
-                Log.Warning("clicked info");
 
+            // *-*-*-*-*-*-* Not Working *-*-*-*-*-*-*
             Rect upRect = new Rect(abilityRect.xMax - 24f - 24f - 34f, 0f, 24f, 24f);
-            if (abilityIndex != 0)
+            if (ability.gizmoOrder > 0)
             {
                 if (Widgets.ButtonImage(upRect, Widgets_Extensions.reorderUpTex, Color.white))
                     abilityHolderComp.ReorderClickable(ability, -1);
             }
 
             Rect downRect = new Rect(abilityRect.xMax - 24f - 34f, 0f, 24f, 24f);
-            if (abilityIndex != lastAbilityIndex)
+            if (ability.gizmoOrder != abilityHolderComp.NextGizmoNumber - 1)
             {
                 if (Widgets.ButtonImage(downRect, Widgets_Extensions.reorderDownTex, Color.white))
                     abilityHolderComp.ReorderClickable(ability, 1);
             }
+            // *-*-*-*-*-*-* Not Working *-*-*-*-*-*-*
 
             Rect deleteRect = new Rect(abilityRect.xMax - 34f, 0f, 24f, 24f); // 24f + 10f (scrollbar) = 34f
             if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, Color.white))
-                abilityHolderComp.TryRemoveClickable(ability);
+                abilityHolderComp.ToggleClickable(ability);
 
-            float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - infoRect.width - upRect.width - downRect.width - deleteRect.width;
+            float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - upRect.width - downRect.width - deleteRect.width;
             Rect effectsRect = new Rect(labelRect.x + labelRect.width + 2f, 0f, effectsWidth, 32f);
             Widgets.Label(effectsRect, ability.def.description);
 
@@ -497,7 +490,7 @@ namespace RimTES
             return null;
         }
 
-        private static float DoForgettingAbilities(CompAbilityHolder abilityHolderComp, Rect rect, List<ForgettingAbility> forgettingAbilities)
+        private static float DoForgettingAbilities(CompAbilityHolder abilityHolderComp, Rect rect, List<Ability> forgettingAbilities)
         {
             float y = 0f;
             for (int i = 0; i < forgettingAbilities.Count; i++)
@@ -514,10 +507,9 @@ namespace RimTES
             return y;
         }
 
-        private static Ability DoForgettingAbilityInterface(Rect abilityRect, ForgettingAbility forgettingAbility, Pawn pawn)
+        private static Ability DoForgettingAbilityInterface(Rect abilityRect, Ability forgettingAbility, Pawn pawn)
         {
             CompAbilityHolder abilityHolderComp = pawn.GetComp<CompAbilityHolder>();
-            Ability ability = forgettingAbility.ability;
 
             GUI.BeginGroup(abilityRect);
             Text.Font = GameFont.Small;
@@ -525,32 +517,30 @@ namespace RimTES
             GUI.color = Color.white;
 
             Rect iconRect = new Rect(0f, 0f, iconSize, iconSize);
-            Widgets_Extensions.AbilityIcon(iconRect, ability);
+            Widgets_Extensions.AbilityIcon(iconRect, forgettingAbility);
 
             Rect labelRect = new Rect(iconRect.width + 2f, 0f, 120f, 32f);
-            Widgets.Label(labelRect, ability.def.LabelCap);
-
-            Rect infoRect = new Rect(abilityRect.xMax - 24f - 24f - 24f - 34f, 0f, 24f, 24f);
-            if (Widgets.ButtonImage(infoRect, Widgets_Extensions.infoTex, Color.white))
-                Log.Warning("clicked info");
+            Widgets.Label(labelRect, forgettingAbility.def.LabelCap);
 
             Rect timerRect = new Rect(abilityRect.xMax - 48f - 34f, 0f, 48f, 24f);
-            GUI.color = forgettingAbility.ticks > forgettingAbility.ticks * 0.5 ? Color.white : forgettingAbility.ticks > forgettingAbility.ticks * 0.2 ? Color.yellow : Color.red;
-            Widgets.Label(timerRect, forgettingAbility.ticks.ToString());
+            GUI.color = forgettingAbility.remainingTicksToForget > forgettingAbility.remainingTicksToForget * 0.5 ? Color.white : forgettingAbility.remainingTicksToForget > forgettingAbility.remainingTicksToForget * 0.2 ? Color.yellow : Color.red;
+            Text.Anchor = TextAnchor.MiddleCenter;
+            Widgets.Label(timerRect, forgettingAbility.remainingTicksToForget.ToString());
             GUI.color = Color.white;
+            Text.Anchor = TextAnchor.MiddleLeft;
 
             Rect deleteRect = new Rect(abilityRect.xMax - 34f, 0f, 24f, 24f); // 24f + 10f (scrollbar) = 34f
             if (Widgets.ButtonImage(deleteRect, Widgets_Extensions.deleteXTex, Color.white))
-                abilityHolderComp.TryRemoveForgettable(ability);
+                abilityHolderComp.ToggleForgettable(forgettingAbility);
 
-            float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - infoRect.width - timerRect.width - deleteRect.width;
+            float effectsWidth = abilityRect.width - iconRect.width - labelRect.width - timerRect.width - deleteRect.width;
             Rect effectsRect = new Rect(labelRect.x + labelRect.width + 2f, 0f, effectsWidth, 32f);
-            Widgets.Label(effectsRect, ability.def.description);
+            Widgets.Label(effectsRect, forgettingAbility.def.description);
 
             GUI.EndGroup();
 
             if (Mouse.IsOver(abilityRect))
-                return ability;
+                return forgettingAbility;
 
             return null;
         }

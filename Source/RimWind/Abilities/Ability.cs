@@ -12,7 +12,12 @@ namespace RimTES
     public class Ability : IExposable
     {
         public AbilityDef def;
+        public int gizmoOrder = -1;
+        public bool clickable = false;
+        public bool forgetting = false;
+        public int remainingTicksToForget = -1;
         public int lastAttemptedForget = 0;
+        public bool isCustom = false;
 
         public CommandBuilder command = null;
 
@@ -26,6 +31,11 @@ namespace RimTES
             Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref command, "command", null, false);
             Scribe_Values.Look(ref lastAttemptedForget, "lastAttemptedForget", 0, false);
+            Scribe_Values.Look(ref remainingTicksToForget, "remainingTicksToForget", -1, false);
+            Scribe_Values.Look(ref forgetting, "forgetting", false, false);
+            Scribe_Values.Look(ref gizmoOrder, "gizmoOrder", -1, false);
+            Scribe_Values.Look(ref clickable, "clickable", false, false);
+            Scribe_Values.Look(ref isCustom, "isCustom", false, false);
         }
     }
 }
