@@ -3,8 +3,9 @@
 <LanguageData>
 
 	<!-- Abilities -->
-	<DefaultLabelKeyNotSetForCommand>Use Ability</DefaultLabelKeyNotSetForCommand>
+<!--	<DefaultLabelKeyNotSetForCommand>Use Ability</DefaultLabelKeyNotSetForCommand>
 	<DefaultDescriptionKeyNotSetForCommand>Use Ability Description.</DefaultDescriptionKeyNotSetForCommand>
+	-->
 	
 	<BurningTouchLabel>Burning Touch</BurningTouchLabel>
 	<BurningTouchDescription>Burning Touch Description</BurningTouchDescription>

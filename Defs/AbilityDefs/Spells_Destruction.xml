@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
+<!-- Gizmo Label and Description Keys are automatically generated for abilities as:
+		defName + "Label"				Example: BurningTouchLabel
+		defName + "Description"			Example: BurningTouchDescription
+	 
+	 Add those two entries to the Language->Gizmos.xml -->
+
 <Defs>
 
 	<RimTES.AbilityCategoryDef>
@@ -13,20 +19,32 @@
 		<texPath>Things/Item/Artifact/PsychicInsanityLance</texPath>
 		<label>burning touch</label>
 		<description>Hot fingers.</description>
-		<ticksToForget>1000</ticksToForget>
+		<ticksToForget>1500000</ticksToForget>
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
 		<tags>
 			<li>Touch</li>
 		</tags>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+
+		<soundDef>TickLow</soundDef>
+		<keyBindingDef>Misc1</keyBindingDef>
+		<iconPath>Designations/HarvestPlant</iconPath>
+		<minRange>1</minRange>
+		<maxRange>1</maxRange>
+
+		<speed>4</speed>
+		<flyOverhead>false</flyOverhead>
+		<alwaysFreeIntercept>false</alwaysFreeIntercept>
+		
+		<damageDef>Bullet</damageDef>
+		<damageAmountBase>1</damageAmountBase>
+		<explosionRadius>0</explosionRadius>
+		<explosionDelay>0</explosionDelay>
+		<applyDamageToExplosionCellsNeighbors>false</applyDamageToExplosionCellsNeighbors>
+		<explosionChanceToStartFire>0</explosionChanceToStartFire>
+		<explosionEffectDef>ArmorDeflect</explosionEffectDef>
+		<ai_IsIncendiary>true</ai_IsIncendiary>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -39,13 +57,8 @@
 		<tags>
 			<li>Touch</li>
 		</tags>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -55,13 +68,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -71,13 +79,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -87,13 +90,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -103,13 +101,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -119,13 +112,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -135,13 +123,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -151,13 +134,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -167,13 +145,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -183,13 +156,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -199,13 +167,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -215,13 +178,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -231,13 +189,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 	
 	<RimTES.AbilityDef>
@@ -247,13 +200,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -266,13 +214,8 @@
 		<tags>
 			<li>Touch</li>
 		</tags>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -282,13 +225,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -298,13 +236,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 	<RimTES.AbilityDef>
@@ -314,13 +247,8 @@
 		<abilityCategoryDefs>
 			<li>SchoolOfMagicka</li>
 		</abilityCategoryDefs>
-		<command>
-			<soundDef>TickLow</soundDef>
-			<keyBindingDef>Misc1</keyBindingDef>
-			<defaultDescriptionKey>"BurningTouchDescription"</defaultDescriptionKey>
-			<defaultLabelKey>"BurningTouchLabel"</defaultLabelKey>
-			<iconPath></iconPath>
-		</command>
+		
+		<iconPath>Designations/HarvestPlant</iconPath>
 	</RimTES.AbilityDef>
 
 </Defs>

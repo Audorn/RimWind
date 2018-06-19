@@ -19,8 +19,6 @@ namespace RimTES
         public int lastAttemptedForget = 0;
         public bool isCustom = false;
 
-        public CommandBuilder command = null;
-
         public Ability() { }
         public Ability(AbilityDef abilityDef) { def = abilityDef; }
 
@@ -29,7 +27,6 @@ namespace RimTES
         public virtual void ExposeData()
         {
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref command, "command", null, false);
             Scribe_Values.Look(ref lastAttemptedForget, "lastAttemptedForget", 0, false);
             Scribe_Values.Look(ref remainingTicksToForget, "remainingTicksToForget", -1, false);
             Scribe_Values.Look(ref forgetting, "forgetting", false, false);

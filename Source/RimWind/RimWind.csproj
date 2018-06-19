@@ -121,7 +121,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abilities\CommandBuilder.cs" />
     <Compile Include="Abilities\CustomAbility.cs" />
     <Compile Include="Abilities\Tag.cs" />
     <Compile Include="Abilities\AbilityCategory.cs" />

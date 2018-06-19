@@ -18,6 +18,7 @@ namespace RimTES
         public List<Ability> abilities = new List<Ability>();
         public List<Ability> Abilities { get { return abilities.NullOrEmpty() ? EmptyAbilitiesList : abilities; } }
         public List<Ability> ClickableAbilities { get { return abilities.FindAll(a => a.clickable == true); } }
+        public List<Ability> SortedClickableAbilities { get { return ClickableAbilities.OrderBy(a => a.gizmoOrder).ToList(); } }
         public List<Ability> ForgettingAbilities { get { return abilities.FindAll(a => a.forgetting == true); } }
 
         public readonly int maxForgettable = 2;
@@ -64,11 +65,14 @@ namespace RimTES
             toggledAbility.clickable = !toggledAbility.clickable;
 
             if (toggledAbility.clickable)
-                toggledAbility.gizmoOrder = NextGizmoNumber;
+            {
+                toggledAbility.gizmoOrder = LastGizmoNumber + 1;
+                return;
+            }
 
             toggledAbility.gizmoOrder = -1;
         }
-        public int NextGizmoNumber
+        public int LastGizmoNumber
         {
             get
             {
@@ -79,7 +83,7 @@ namespace RimTES
                         lastGizmo = ability.gizmoOrder;
                 }
 
-                return ++lastGizmo;
+                return lastGizmo;
             }
         }
         public void ToggleForgettable(Ability ability)
@@ -117,10 +121,15 @@ namespace RimTES
         {
             Ability reorderedAbility = abilities.Find(a => a == ability);
             int num = reorderedAbility.gizmoOrder + offset;
-            foreach (Ability abilityToMove in ClickableAbilities)
+            foreach (Ability abilityToMove in SortedClickableAbilities)
             {
-                if (abilityToMove.gizmoOrder >= num)
-                    abilityToMove.gizmoOrder++;
+                if (abilityToMove.gizmoOrder == num)
+                {
+                    if (offset < 0)
+                        abilityToMove.gizmoOrder++;
+                    else
+                        abilityToMove.gizmoOrder--;
+                }
             }
             reorderedAbility.gizmoOrder = num;
         }
@@ -156,16 +165,52 @@ namespace RimTES
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
+            foreach (Ability ability in SortedClickableAbilities)
+            {
+                SoundDef commandSoundDef;
+                KeyBindingDef commandHotKey;
+                string commandDefaultDescKey;
+                string commandIconPath;
+                string commandDefaultLabelKey;
+
+                if (ability is CustomAbility customAbility)
+                {
+                    commandSoundDef = customAbility.soundDef;
+                    commandHotKey = customAbility.keyBindingDef;
+                    commandDefaultDescKey = customAbility.defaultDescriptionKey;
+                    commandIconPath = customAbility.iconPath;
+                    commandDefaultLabelKey = customAbility.defaultLabelKey;
+                }
+                else
+                {
+                    commandSoundDef = ability.def.soundDef;
+                    commandHotKey = ability.def.keyBindingDef;
+                    commandDefaultDescKey = ability.def.defaultDescriptionKey;
+                    commandIconPath = ability.def.iconPath;
+                    commandDefaultLabelKey = ability.def.defaultLabelKey;
+                }
+
+                yield return new Command_Action
+                {
+                    action = delegate
+                    {
+                        commandSoundDef.PlayOneShotOnCamera(null);
+                        ActivateAbility(ability);
+                    },
+                    hotKey = commandHotKey,
+                    defaultDesc = commandDefaultDescKey.Translate(),
+                    icon = commandIconPath.NullOrEmpty() ? BaseContent.BadTex : ContentFinder<Texture2D>.Get(commandIconPath, true),
+                    defaultLabel = commandDefaultLabelKey.Translate()
+                };
+            }
+
             foreach (Gizmo c in base.CompGetGizmosExtra())
                 yield return c;
+        }
 
-            List<Ability> clickableAbilities = abilities.FindAll(a => a.clickable == true);
-            foreach (Ability ability in clickableAbilities)
-            {
-                //Log.Warning("looking at ability: " + ability.def.LabelCap);
-                if (ability.command != null)
-                    yield return ability.command.Click(ability, this) as Gizmo;
-            }
+        private void ActivateAbility(Ability ability)
+        {
+            Log.Warning(ability.def.LabelCap + " ACTIVATED!");
         }
     }
 }

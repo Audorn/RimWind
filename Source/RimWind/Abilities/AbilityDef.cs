@@ -14,12 +14,46 @@ namespace RimTES
         public List<TagDef> tags = new List<TagDef>();
         public string texPath = "";
         public new Texture2D uiIcon = BaseContent.BadTex; // When remove inheriting from ThingDef remove 'new'
+        public int ticksToForget = 0;
 
         public AbilityDef() { thingClass = typeof(Ability); }
         public AbilityDef(Type thingClass) { this.thingClass = thingClass; }
 
-        public CommandBuilder command = null;
-        public int ticksToForget = 0;
+        public SoundDef soundDef = SoundDefOf.TickTiny;
+        public KeyBindingDef keyBindingDef = KeyBindingDefOf.Misc1;
+        public string defaultDescriptionKey { get { return defName + "Description"; } }
+        public string defaultLabelKey { get { return defName + "Label"; } }
+
+        public string iconPath = "";
+
+        public int minRange = 0;
+        public int maxRange = 0;
+
+
+        // Verb_LaunchProjectile allows player selection of target.
+        public float speed = 4f;
+        public bool flyOverhead = false;
+        public bool alwaysFreeIntercept = false;
+        public DamageDef damageDef = DamageDefOf.Bullet;
+        public int damageAmountBase = 1;
+        public SoundDef soundHitThickRoof = SoundDefOf.BulletImpactMetal;
+        public SoundDef soundExplode = SoundDefOf.BulletImpactMetal;
+        public SoundDef soundImpactAnticipate = SoundDefOf.AmountDecrement;
+        public SoundDef soundAmbient = SoundDefOf.AmbientSpace;
+        public float explosionRadius = 0f;
+        public int explosionDelay = 0;
+        public ThingDef preExplosionSpawnThingDef = ThingDefOf.Silver; // summoning?
+        public float preExplosionSpawnChance = 1f;
+        public int preExplosionSpawnThingCount = 1;
+        public ThingDef postExplosionSpawnThingDef = ThingDefOf.Gold; // summoning?
+        public float postExplosionSpawnThingChance = 1f;
+        public int postExplosionSpawnThingCount = 1;
+        public bool applyDamageToExplosionCellsNeighbors = false;
+        public float explosionChanceToStartFire = 0f;
+        public EffecterDef explosionEffectDef = EffecterDefOf.ArmorDeflect;
+        public bool ai_IsIncendiary = false;
+
+
 
 
 
